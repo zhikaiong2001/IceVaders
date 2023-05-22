@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4415561493658774141}
   - component: {fileID: 4415561493708495850}
   - component: {fileID: 4415561493708495853}
-  - component: {fileID: 4415561493708495852}
   - component: {fileID: 4415561493708495855}
   - component: {fileID: 4415561493708495854}
   - component: {fileID: 4415561493708495825}
+  - component: {fileID: 4415561493708495852}
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 4415561493708495851}
+  - component: {fileID: 181858782017500426}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -119,27 +120,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6431202, y: 2.1680415}
   m_EdgeRadius: 0
---- !u!114 &4415561493708495852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415561493708495827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpableGround:
-    serializedVersion: 2
-    m_Bits: 64
-  jumpSoundEffect: {fileID: 0}
-  tr: {fileID: 4415561493708495825}
-  wallCheck: {fileID: 4415561494289038639}
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!50 &4415561493708495855
 Rigidbody2D:
   serializedVersion: 4
@@ -281,6 +261,28 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &4415561493708495852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 7
+  jumpableGround:
+    serializedVersion: 2
+    m_Bits: 64
+  jumpSoundEffect: {fileID: 0}
+  tr: {fileID: 4415561493708495825}
+  wallCheck: {fileID: 4415561494289038639}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &4415561493708495824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +316,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 3
+--- !u!114 &181858782017500426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e59ba1f4dac14fe4291250f424edf6a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathSound: {fileID: 0}
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

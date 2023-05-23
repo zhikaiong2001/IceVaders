@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
     public LayerMask enemyLayers;
+    public Soul souls;
+    public float soulsPerAttack;
 
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
@@ -45,15 +47,21 @@ public class PlayerAttack : MonoBehaviour
         animator.SetTrigger("Attack");
 
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
+        if (hitEnemies.Length == 0)
+        {
+            return;
+        }
 
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage); 
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            souls.GainSoul(soulsPerAttack);
         }
+        
         
     }
 
-    void onDrawGizmosSelected()
+    private void onDrawGizmosSelected()
     {
         if (attackPoint == null)
         {
@@ -62,4 +70,5 @@ public class PlayerAttack : MonoBehaviour
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
+
 }

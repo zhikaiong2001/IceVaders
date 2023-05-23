@@ -7,12 +7,14 @@ public class Health : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
+    private Rigidbody2D rb;
     private bool dead;
 
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public void TakeDamage(float damage)
@@ -29,6 +31,7 @@ public class Health : MonoBehaviour
             {
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
+                rb.velocity = Vector3.zero; 
                 dead = true;
             }
            

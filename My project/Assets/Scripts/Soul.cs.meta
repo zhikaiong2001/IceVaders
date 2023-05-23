@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+<<<<<<<< Updated upstream:My project/Assets/Scripts/Soul.cs.meta
 guid: 879234e109626ea419f5a5f2ca562c7c
+========
+guid: cf65c0a04f7939a4aa5f8e20b331907f
+>>>>>>>> Stashed changes:My project/Assets/Scripts/PlayerSoulSkills.cs.meta
+=======
+guid: 42c82779c74a2ea41b57bb68e489b858
+>>>>>>> Stashed changes
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

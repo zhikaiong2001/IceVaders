@@ -40,6 +40,10 @@ public class Health : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, startingHealth);
     }
 
+<<<<<<< Updated upstream
     
+=======
+
+>>>>>>> Stashed changes
 
 }

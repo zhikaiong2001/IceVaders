@@ -12,11 +12,19 @@ public class PlayerSoulSkills : MonoBehaviour
     public float healCost = 40f;
     public float healTime = 2f;
 
+<<<<<<< Updated upstream:My project/Assets/Scripts/PlayerSoulSkills.cs
     
     // Start is called before the first frame update
     void Start()
     {
         
+=======
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+>>>>>>> Stashed changes:My project/Assets/Scripts/PlayerScripts/PlayerSoulSkills.cs
     }
 
     // Update is called once per frame
@@ -37,6 +45,10 @@ public class PlayerSoulSkills : MonoBehaviour
             playerHealth.Heal(healAmount);
             playerSoul.UseSoul(healCost);
             isHealing = false;
+<<<<<<< Updated upstream:My project/Assets/Scripts/PlayerSoulSkills.cs
         } 
+=======
+        }
+>>>>>>> Stashed changes:My project/Assets/Scripts/PlayerScripts/PlayerSoulSkills.cs
     }
 }

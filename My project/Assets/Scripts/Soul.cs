@@ -5,14 +5,22 @@ using UnityEngine;
 public class Soul : MonoBehaviour
 {
     [SerializeField] private float startingSouls;
+<<<<<<< Updated upstream
     [SerializeField] private float soulsPerAttack;
+=======
+   // [SerializeField] private float soulsPerAttack;
+>>>>>>> Stashed changes
     public float currentSouls;
 
     // Start is called before the first frame update
     void Start()
     {
         currentSouls = startingSouls;
+<<<<<<< Updated upstream
         
+=======
+
+>>>>>>> Stashed changes
     }
     public void UseSoul(float amount)
     {

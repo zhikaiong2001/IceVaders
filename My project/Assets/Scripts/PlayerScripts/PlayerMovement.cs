@@ -73,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+
+        // Knockback Logic
         if (KBCounter <= .01f && StunDuration <= .01f)
         {
             dirX = Input.GetAxisRaw("Horizontal");
@@ -125,25 +127,30 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
+        if (StunDuration < 0.01f)
+        {
+            Debug.Log(rb.velocity.x);
+        }
+
     }
     private void UpdateAnimationState()
     {
         MovementState state;
-        if (dirX > 0f)
+        if (dirX > 0.1f)
         {
             state = MovementState.running;
-          //  sprite.flipX = false;
         }
-        else if (dirX < 0)
+        else if (dirX < -0.1f)
         {
             state = MovementState.running;
-         //   sprite.flipX = true;
         }
         else
         {
             state = MovementState.idle;
         }
-        if (rb.velocity.y > .1f)
+
+
+        if (rb.velocity.y > 0.1f)
         {
             state = MovementState.jumping;
         }

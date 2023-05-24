@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     [SerializeField] private float damage;
+    [SerializeField] private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +40,18 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
+            playerMovement.setKBCounter(playerMovement.getKBTotalTime());
+            playerMovement.setStunCounter(playerMovement.getStunTotal());
+            
+            if (collision.transform.position.x <= this.transform.position.x)
+            {
+                playerMovement.setKBRight(true);
+            }
+            else
+            {
+                playerMovement.setKBRight(false);
+            }
+
             collision.GetComponent<Health>().TakeDamage(damage);
         }
     }

@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
-    private bool jumpUnlocked = false;
     private bool dashUnlocked = false;
     private bool wallJumpUnlocked = false;
 
@@ -44,6 +43,21 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
+<<<<<<< Updated upstream
+=======
+    //Knockback Variables
+    [SerializeField] private float KBForceHor;
+    [SerializeField] private float KBForceVer;
+    [SerializeField] private float KBCounter;
+    [SerializeField] private float KBTotalTime;
+    [SerializeField] private float StunDuration;
+    [SerializeField] private float StunTotal;
+    [SerializeField] private bool KnockFromRight;
+
+    //Scene transition starting position
+    public VectorValue startingPosition;
+
+>>>>>>> Stashed changes
     //Animation states
     private enum MovementState { idle, running, jumping, falling };
 
@@ -54,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        transform.position = startingPosition.initialValue;
     }
 
     // Update is called once per frame
@@ -67,10 +82,7 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            if (!jumpUnlocked)
-            {
-                return;
-            }
+           
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
@@ -211,11 +223,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "JumpSkillOrb")
-        {
-            jumpUnlocked = true;
-            Destroy(collision.gameObject);
-        }
+        
         if (collision.gameObject.name == "DashSkillOrb")
         {
             dashUnlocked = true;

@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayers;
     public Soul souls;
     public float soulsPerAttack;
+    public bool attackUnlocked;
 
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
@@ -29,7 +30,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime && attackUnlocked)
         {
             if (Input.GetKeyDown(KeyCode.N))
             {
@@ -54,6 +55,17 @@ public class PlayerAttack : MonoBehaviour
             souls.GainSoul(soulsPerAttack);
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.name == "AttackSkillOrb")
+        {
+            attackUnlocked = true;
+            Destroy(collision.gameObject);
+        }
+       
     }
 
     void OnDrawGizmosSelected()

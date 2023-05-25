@@ -9,14 +9,14 @@ public class PlayerMovement : MonoBehaviour
     private SpriteRenderer sprite;
     private Animator anim;
 
-    private bool jumpUnlocked = false;
-    private bool dashUnlocked = false;
-    private bool wallJumpUnlocked = false;
+    [SerializeField] private bool jumpUnlocked = false;
+    [SerializeField] private bool dashUnlocked = false;
+    [SerializeField] private bool wallJumpUnlocked = false;
 
 
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
-    private float jumpForce = 14f;
+    [SerializeField] private float jumpForce = 14f;
     private bool isFacingRight = true;
     private float horizontal;
 

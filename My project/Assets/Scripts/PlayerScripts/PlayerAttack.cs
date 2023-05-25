@@ -53,7 +53,6 @@ public class PlayerAttack : MonoBehaviour
             wf = enemy.GetComponent<WaypointFollower>();
 
             wf.setKBCounter(wf.getKBTotalTime());
-            wf.setStunCounter(wf.getStunTotal());
 
             if (enemy.transform.position.x <= this.transform.position.x)
             {

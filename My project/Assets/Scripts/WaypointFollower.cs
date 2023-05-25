@@ -10,21 +10,27 @@ public class WaypointFollower : MonoBehaviour
 
     [SerializeField] private float speed = 10f;
 
-    [Header("Knockback")]
-    private bool isFacingRight = false;
+    [Header ("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBCounter;
     [SerializeField] private float KBTotalTime;
-    [SerializeField] private float StunDuration;
-    [SerializeField] private float StunTotal;
     [SerializeField] private bool KnockFromRight;
+    private bool isFacingRight = false;
 
     private Rigidbody2D rb;
 
+    [Header("Enemy Attributes")]
+    [SerializeField] private Enemy enemy;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
-        if (KBCounter <= .01f && StunDuration <= .01f)
+        if (KBCounter <= .01f && !enemy.deathStatus())
         {
             Vector3 curWaypointPos = waypoints[currentWaypoint].transform.position;
             if (Vector2.Distance(curWaypointPos, transform.position) < .1f)
@@ -37,7 +43,7 @@ public class WaypointFollower : MonoBehaviour
             }
             transform.position = Vector2.MoveTowards(transform.position, curWaypointPos, Time.deltaTime * speed);
         }
-        else if (KBCounter > .01f)
+        else if (!enemy.deathStatus())
         {
             if (KnockFromRight)
             {
@@ -65,11 +71,6 @@ public class WaypointFollower : MonoBehaviour
             }
 
             KBCounter -= Time.deltaTime;
-            StunDuration -= Time.deltaTime;
-        }
-        else
-        {
-            StunDuration -= Time.deltaTime;
         }
     }
 
@@ -83,16 +84,6 @@ public class WaypointFollower : MonoBehaviour
     public float getKBTotalTime()
     {
         return KBTotalTime;
-    }
-
-    public void setStunCounter(float time)
-    {
-        StunDuration = time;
-    }
-
-    public float getStunTotal()
-    {
-        return StunTotal;
     }
 
     public void setKBRight(bool right)

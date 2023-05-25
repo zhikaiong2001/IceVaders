@@ -17,8 +17,7 @@ GameObject:
   - component: {fileID: 4415561493708495852}
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 4415561493708495851}
-  - component: {fileID: 181858782017500426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +134,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 3
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 0
@@ -273,7 +272,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
+  jumpUnlocked: 0
+  dashUnlocked: 0
+  wallJumpUnlocked: 0
+  moveSpeed: 15
+  jumpForce: 30
   jumpableGround:
     serializedVersion: 2
     m_Bits: 64
@@ -283,6 +286,13 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
+  KBForceHor: 8
+  KBForceVer: 5
+  KBCounter: 0
+  KBTotalTime: 0.3
+  StunDuration: 0
+  StunTotal: 0.7
+  KnockFromRight: 0
 --- !u!114 &4415561493708495824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,7 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4415561493708495854}
   attackPoint: {fileID: 4415561494955582889}
-  attackRange: 0.5
+  attackRange: 1.4
   attackDamage: 40
   enemyLayers:
     serializedVersion: 2
@@ -315,20 +325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
---- !u!114 &181858782017500426
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415561493708495827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59ba1f4dac14fe4291250f424edf6a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  deathSound: {fileID: 0}
+  startingHealth: 5
+  iFramesDuration: 1
+  numberOfFlashes: 1
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4415561494289038639}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall Check
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +368,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4415561494955582889}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

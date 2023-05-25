@@ -43,8 +43,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-<<<<<<< Updated upstream
-=======
+
     //Knockback Variables
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
@@ -57,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
     //Scene transition starting position
     public VectorValue startingPosition;
 
->>>>>>> Stashed changes
+
     //Animation states
     private enum MovementState { idle, running, jumping, falling };
 

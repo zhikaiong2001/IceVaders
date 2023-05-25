@@ -142,12 +142,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Flip();
         }
-
-        if (StunDuration < 0.01f)
-        {
-            Debug.Log(rb.velocity.x);
-        }
-
     }
     private void UpdateAnimationState()
     {

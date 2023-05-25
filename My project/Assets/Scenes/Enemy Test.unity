@@ -6650,7 +6650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &914528520
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7156,8 +7156,8 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 0
-  KBForceHor: 5
-  KBForceVer: 2
+  KBForceHor: 8
+  KBForceVer: 5
   KBCounter: 0
   KBTotalTime: 0.3
   StunDuration: 0
@@ -7524,7 +7524,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5300310268279911068, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6262849ce12248448833f46888a139c2, type: 3}

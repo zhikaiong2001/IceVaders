@@ -5,17 +5,25 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+    [Header ("Health")]
+
     [SerializeField] private float startingHealth;
     public float currentHealth { get; private set; }
     private Animator anim;
     private Rigidbody2D rb;
     private bool dead;
 
+    [Header("iFrames")]
+    [SerializeField] private float iFramesDuration;
+    [SerializeField] private int numberOfFlashes;
+    private SpriteRenderer spriteRend;
+
     private void Awake()
     {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRend = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage(float damage)
@@ -25,6 +33,7 @@ public class Health : MonoBehaviour
         if (currentHealth > 0)
         {
             anim.SetTrigger("hurt");
+            StartCoroutine(Invulnerability());
         }
         else
         {
@@ -39,6 +48,15 @@ public class Health : MonoBehaviour
         }
     }
 
-    
+    private IEnumerator Invulnerability()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+        for (int i = 0; i < numberOfFlashes; i++)
+        {
+            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes));
+        }
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+
+    }
 
 }

@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
-    private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+    private Vector2 wallJumpingPower = new Vector2(20f, 30f);
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private AudioSource jumpSoundEffect;
@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
-    //Knockback Variables
+    [Header ("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBCounter;
@@ -52,6 +52,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float StunDuration;
     [SerializeField] private float StunTotal;
     [SerializeField] private bool KnockFromRight;
+    public bool isStunned { get; private set; }
 
     //Animation states
     private enum MovementState { idle, running, jumping, falling };
@@ -77,11 +78,13 @@ public class PlayerMovement : MonoBehaviour
         // Knockback Logic
         if (KBCounter <= .01f && StunDuration <= .01f)
         {
+            isStunned = false;
             dirX = Input.GetAxisRaw("Horizontal");
             rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
         }
         else if (KBCounter > .01f)
         {
+            isStunned = true;
             if (KnockFromRight)
             {
                 rb.velocity = new Vector2(-KBForceHor, KBForceVer);
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            isStunned = true;
             StunDuration -= Time.deltaTime;
         }
 

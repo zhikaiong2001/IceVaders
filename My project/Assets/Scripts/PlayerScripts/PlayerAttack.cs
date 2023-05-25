@@ -17,6 +17,8 @@ public class PlayerAttack : MonoBehaviour
 
     private WaypointFollower wf;
 
+    [SerializeField] PlayerMovement playerMovement;
+
     
     
 
@@ -29,7 +31,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {
             if (Input.GetKeyDown(KeyCode.N))
             {

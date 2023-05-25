@@ -15,6 +15,8 @@ public class PlayerAttack : MonoBehaviour
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
 
+    private WaypointFollower wf;
+
     
     
 
@@ -48,6 +50,20 @@ public class PlayerAttack : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
+            wf = enemy.GetComponent<WaypointFollower>();
+
+            wf.setKBCounter(wf.getKBTotalTime());
+            wf.setStunCounter(wf.getStunTotal());
+
+            if (enemy.transform.position.x <= this.transform.position.x)
+            {
+                wf.setKBRight(true);
+            }
+            else
+            {
+                wf.setKBRight(false);
+            }
+
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage); 
         }
         

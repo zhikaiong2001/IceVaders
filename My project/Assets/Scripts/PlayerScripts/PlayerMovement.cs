@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingTime = 0.2f;
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
-    private Vector2 wallJumpingPower = new Vector2(20f, 30f);
+    [SerializeField] private Vector2 wallJumpingPower = new Vector2(16f, 32f);
 
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private AudioSource jumpSoundEffect;
@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
 
         // Knockback Logic
-        if (KBCounter <= .01f && StunDuration <= .01f)
+        if (KBCounter <= .01f && StunDuration <= .01f && !isWallJumping)
         {
             isStunned = false;
             dirX = Input.GetAxisRaw("Horizontal");
@@ -128,6 +128,10 @@ public class PlayerMovement : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+        }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             if (!dashUnlocked)
@@ -146,8 +150,10 @@ public class PlayerMovement : MonoBehaviour
         if (isWallJumping == false)
         {
             Flip();
+            
         }
     }
+
     private void UpdateAnimationState()
     {
         MovementState state;
@@ -232,7 +238,8 @@ public class PlayerMovement : MonoBehaviour
         if (isWallSliding)
         {
             isWallJumping = false;
-            wallJumpingDirection = transform.localScale.x;
+            wallJumpingDirection = -transform.localScale.x;
+            
             wallJumpingCounter = wallJumpingTime;
 
             CancelInvoke(nameof(StopWallJumping));

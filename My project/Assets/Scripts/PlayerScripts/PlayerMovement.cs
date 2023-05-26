@@ -54,6 +54,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool KnockFromRight;
     public bool isStunned { get; private set; }
 
+    //Scene transition starting position
+    public VectorValue startingPosition;
+
     //Animation states
     private enum MovementState { idle, running, jumping, falling };
 
@@ -229,7 +232,7 @@ public class PlayerMovement : MonoBehaviour
         if (isWallSliding)
         {
             isWallJumping = false;
-            wallJumpingDirection = -transform.localScale.x;
+            wallJumpingDirection = transform.localScale.x;
             wallJumpingCounter = wallJumpingTime;
 
             CancelInvoke(nameof(StopWallJumping));

@@ -11,6 +11,8 @@ public class PlayerAttack : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
     public LayerMask enemyLayers;
+    public Soul souls;
+    public float soulsPerAttack;
 
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
@@ -52,6 +54,8 @@ public class PlayerAttack : MonoBehaviour
 
         foreach(Collider2D enemy in hitEnemies)
         {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            souls.GainSoul(soulsPerAttack);
             wf = enemy.GetComponent<WaypointFollower>();
 
             wf.setKBCounter(wf.getKBTotalTime());

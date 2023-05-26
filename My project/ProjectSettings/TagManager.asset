@@ -6,6 +6,7 @@ TagManager:
   tags:
   - JumpSkillOrb
   - Enemy
+  - Trap
   layers:
   - Default
   - TransparentFX

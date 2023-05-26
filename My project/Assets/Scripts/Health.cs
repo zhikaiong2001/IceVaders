@@ -47,6 +47,12 @@ public class Health : MonoBehaviour
         }
     }
 
+    public void Heal(float amount)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + amount, 0, startingHealth);
+    }
+
+
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);

@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
+        transform.position = startingPosition.initialValue;
     }
 
     // Update is called once per frame
@@ -121,10 +122,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            if (!jumpUnlocked)
-            {
-                return;
-            }
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
@@ -254,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
             }
             Invoke(nameof(StopWallJumping), wallJumpingDuration);
         }
-        
+
     }
 
     private void StopWallJumping()
@@ -264,11 +262,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "JumpSkillOrb")
-        {
-            jumpUnlocked = true;
-            Destroy(collision.gameObject);
-        }
+
         if (collision.gameObject.name == "DashSkillOrb")
         {
             dashUnlocked = true;

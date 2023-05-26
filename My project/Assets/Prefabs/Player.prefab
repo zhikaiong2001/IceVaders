@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 4415561493708495851}
   m_Layer: 9
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -156,7 +156,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: 
+  m_WarningMessage:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   jumpUnlocked: 0
   dashUnlocked: 0
   wallJumpUnlocked: 0
@@ -303,8 +303,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eaa4e5e3a2f8294aa3e8ae1e0d2ebb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   animator: {fileID: 4415561493708495854}
   attackPoint: {fileID: 4415561494955582889}
   attackRange: 1.4
@@ -312,6 +312,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
+  souls: {fileID: 7528876487338810807}
+  soulsPerAttack: 20
+  attackUnlocked: 0
   attackRate: 2
 --- !u!114 &4415561493708495851
 MonoBehaviour:
@@ -323,8 +326,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   startingHealth: 5
   iFramesDuration: 1
   numberOfFlashes: 1

@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayers;
     public Soul souls;
     public float soulsPerAttack;
+    public bool attackUnlocked;
 
     public float attackRate = 2f;
     private float nextAttackTime = 0f;
@@ -21,13 +22,13 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] PlayerMovement playerMovement;
 
-    
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -41,8 +42,8 @@ public class PlayerAttack : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
-       
-       
+
+
 
     }
 
@@ -69,9 +70,20 @@ public class PlayerAttack : MonoBehaviour
                 wf.setKBRight(false);
             }
 
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage); 
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
-        
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+
+        if (collision.gameObject.name == "AttackSkillOrb")
+        {
+            attackUnlocked = true;
+            Destroy(collision.gameObject);
+        }
+
     }
 
     void OnDrawGizmosSelected()

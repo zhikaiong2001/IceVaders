@@ -48,14 +48,6 @@ public class WaypointFollower : MonoBehaviour
             if (KnockFromRight)
             {
                 rb.velocity = new Vector2(-KBForceHor, KBForceVer);
-
-                if (!isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
             }
             else
             {

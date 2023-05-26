@@ -2873,6 +2873,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slime (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7320314193269513669, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 7320314193269513669, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651451232007826975, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651451232007826975, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.11
+      objectReference: {fileID: 0}
     - target: {fileID: 8767670190719188591, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: playerMovement
       value: 
@@ -7330,7 +7346,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.45
+      value: 31.92
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7369,6 +7385,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493708495824, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
+      propertyPath: attackRange
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495824, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1924713727}
@@ -7383,6 +7403,22 @@ PrefabInstance:
     - target: {fileID: 4415561493708495852, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
       propertyPath: StunDuration
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495853, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
+      propertyPath: m_Size.x
+      value: 1.3890495
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495853, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.32055664
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561494955582889, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561494955582889, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c1f5ba5e392a26418abff4de1577e38, type: 3}

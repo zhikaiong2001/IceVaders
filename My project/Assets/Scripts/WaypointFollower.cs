@@ -30,7 +30,7 @@ public class WaypointFollower : MonoBehaviour
 
     void Update()
     {
-        if (KBCounter <= .01f && !enemy.deathStatus())
+        if (!enemy.deathStatus())
         {
             Vector3 curWaypointPos = waypoints[currentWaypoint].transform.position;
             if (Vector2.Distance(curWaypointPos, transform.position) < .1f)
@@ -43,31 +43,16 @@ public class WaypointFollower : MonoBehaviour
             }
             transform.position = Vector2.MoveTowards(transform.position, curWaypointPos, Time.deltaTime * speed);
         }
-        else if (!enemy.deathStatus())
+
+        if (!enemy.deathStatus() && KBCounter > 0.01f)
         {
             if (KnockFromRight)
             {
                 rb.velocity = new Vector2(-KBForceHor, KBForceVer);
-
-                if (!isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
             }
             else
             {
                 rb.velocity = new Vector2(KBForceHor, KBForceVer);
-
-                if (isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
             }
 
             KBCounter -= Time.deltaTime;

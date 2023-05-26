@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             playerMovement.setKBCounter(playerMovement.getKBTotalTime());
             playerMovement.setStunCounter(playerMovement.getStunTotal());

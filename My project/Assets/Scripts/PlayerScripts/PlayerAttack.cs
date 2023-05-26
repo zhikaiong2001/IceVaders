@@ -17,6 +17,7 @@ public class PlayerAttack : MonoBehaviour
     public LayerMask enemyLayers;
 
     public float attackRate = 2f;
+    public float attackDelay = 0.2f;
     private float nextAttackTime = 0f;
 
     private WaypointFollower wf;
@@ -44,22 +45,45 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.N))
             {
-                Attack();
+                StartCoroutine(Attack());
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
-       
-       
-
     }
 
-    private void Attack()
+    void OnDrawGizmosSelected()
+    {
+        if (attackPointTop == null || attackPointBottom == null)
+        {
+            return;
+        }
+
+        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
+        DrawRect(hitBox);
+        DrawRect(hitBox);
+    }
+
+    void OnDrawGizmos()
+    {
+        // Green
+        Gizmos.color = new Color(0.0f, 1.0f, 0.0f);
+        DrawRect(hitBox);
+    }
+
+    void DrawRect(Rect rect)
+    {
+        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
+    }
+
+    private IEnumerator Attack()
     {
         animator.SetTrigger("Attack");
 
-        Collider2D[] hitEnemies =  Physics2D.OverlapAreaAll(attackPointTop.position, attackPointBottom.position, enemyLayers);
+        yield return new WaitForSeconds(attackDelay);
 
-        foreach(Collider2D enemy in hitEnemies)
+        Collider2D[] hitEnemies = Physics2D.OverlapAreaAll(attackPointTop.position, attackPointBottom.position, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy.gameObject.tag == "Slime")
             {
@@ -91,32 +115,7 @@ public class PlayerAttack : MonoBehaviour
                     ek.setKBRight(false);
                 }
             }
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage); 
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
-        
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (attackPointTop == null || attackPointBottom == null)
-        {
-            return;
-        }
-
-        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
-        DrawRect(hitBox);
-        DrawRect(hitBox);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Green
-        Gizmos.color = new Color(0.0f, 1.0f, 0.0f);
-        DrawRect(hitBox);
-    }
-
-    void DrawRect(Rect rect)
-    {
-        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
     }
 }

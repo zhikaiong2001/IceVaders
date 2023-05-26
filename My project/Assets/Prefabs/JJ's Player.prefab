@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4003234720693003055}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.3000002, y: -0.68000007, z: 0}
+  m_LocalPosition: {x: 2.73, y: -0.68000007, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -338,14 +338,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4415561493708495854}
-  attackPointTop: {fileID: 0}
-  attackPointBottom: {fileID: 0}
+  attackPointTop: {fileID: 4415561494955582889}
+  attackPointBottom: {fileID: 8066812409166897671}
   attackDamage: 40
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
   attackRate: 2
-  playerMovement: {fileID: 0}
+  attackDelay: 0.2
+  playerMovement: {fileID: 4415561493708495852}
 --- !u!114 &4415561493708495851
 MonoBehaviour:
   m_ObjectHideFlags: 0

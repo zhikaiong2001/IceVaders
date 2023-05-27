@@ -6,7 +6,7 @@ TagManager:
   tags:
   - JumpSkillOrb
   - Enemy
-  - Trap
+  - Slime
   layers:
   - Default
   - TransparentFX
@@ -41,12 +41,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 886311741
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Terrain
-    uniqueID: 1761039815
     locked: 0

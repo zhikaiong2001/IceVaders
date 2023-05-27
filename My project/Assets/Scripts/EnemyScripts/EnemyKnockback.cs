@@ -4,25 +4,66 @@ using UnityEngine;
 
 public class EnemyKnockback : MonoBehaviour
 {
+    [Header("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBCounter;
     [SerializeField] private float KBTotalTime;
-    [SerializeField] private float StunDuration;
-    [SerializeField] private float StunTotal;
     [SerializeField] private bool KnockFromRight;
+    private bool isFacingRight = false;
 
     private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
+    [Header("Enemy Attributes")]
+    [SerializeField] private Enemy enemy;
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (KBCounter <= .01f && !enemy.deathStatus())
+        {
+            return;
+        }
+        else if (!enemy.deathStatus())
+        {
+            if (KnockFromRight)
+            {
+                rb.velocity = new Vector2(-KBForceHor, KBForceVer);
+            }
+            else
+            {
+                rb.velocity = new Vector2(KBForceHor, KBForceVer);
+
+                if (isFacingRight)
+                {
+                    isFacingRight = !isFacingRight;
+                    Vector3 localScale = transform.localScale;
+                    localScale.x *= -1f;
+                    transform.localScale = localScale;
+                }
+            }
+
+            KBCounter -= Time.deltaTime;
+        }
+    }
+
+    // Knockback Methods
+    public void setKBCounter(float time)
+    {
+        KBCounter = time;
+    }
+
+    public float getKBTotalTime()
+    {
+        return KBTotalTime;
+    }
+
+    public void setKBRight(bool right)
+    {
+        KnockFromRight = right;
     }
 }

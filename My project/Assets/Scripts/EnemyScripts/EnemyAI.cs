@@ -12,6 +12,19 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] private float updateRate;
 
+    private bool noticesPlayer = false;
+
+    private bool isFacingRight;
+
+    [SerializeField] GoblinWaypoint gw;
+
+    private bool pulledFromGW = false;
+
+    private float dirX;
+
+    [SerializeField] private float noticeDistance;
+
+    // Pathing AI
     private Seeker seeker;
     private Rigidbody2D rb;
 
@@ -64,7 +77,25 @@ public class EnemyAI : MonoBehaviour
             return;
         }
 
-        // TODO: Make Enemy Always look at Player
+        dirX = target.position.x - transform.position.x;
+
+        if (dirX < noticeDistance)
+        {
+            noticesPlayer = true;
+        }
+
+        if (!noticesPlayer)
+        {
+            return;
+        }
+
+        if (!pulledFromGW)
+        {
+            isFacingRight = gw.facingRight();
+            pulledFromGW = true;
+        }
+
+        Flip();
 
         if (path == null)
         {
@@ -95,6 +126,22 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
             return;
+        }
+    }
+
+    public bool notices()
+    {
+        return noticesPlayer;
+    }
+
+    private void Flip()
+    {
+        if (isFacingRight && dirX < 0f || !isFacingRight && dirX > 0f)
+        {
+            isFacingRight = !isFacingRight;
+            Vector3 localScale = transform.localScale;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
         }
     }
 }

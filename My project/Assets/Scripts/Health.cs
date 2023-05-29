@@ -2,12 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
     [Header ("Health")]
     [SerializeField] private float startingHealth;
-    public float currentHealth { get; private set; }
+    public float currentHealth;
     private Animator anim;
     private Rigidbody2D rb;
     private bool dead;
@@ -19,7 +20,7 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = startingHealth;
+        currentHealth = PlayerStatic.health;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
@@ -28,6 +29,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        PlayerStatic.health = currentHealth;
 
         if (currentHealth > 0)
         {
@@ -42,9 +44,17 @@ public class Health : MonoBehaviour
                 GetComponent<PlayerMovement>().enabled = false;
                 rb.velocity = Vector3.zero;
                 dead = true;
+                StartCoroutine(deathProcess());
             }
            
         }
+    }
+
+    IEnumerator deathProcess()
+    {
+        yield return new WaitForSeconds(3);
+        PlayerStatic.health = 5;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Heal(float amount)

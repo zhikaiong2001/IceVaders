@@ -7,6 +7,7 @@ TagManager:
   - JumpSkillOrb
   - Enemy
   - Slime
+  - Door
   layers:
   - Default
   - TransparentFX

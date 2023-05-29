@@ -54,8 +54,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool KnockFromRight;
     public bool isStunned { get; private set; }
 
-    //Scene transition starting position
-    public VectorValue startingPosition;
+    public VectorValue startingPostion;
 
     //Animation states
     private enum MovementState { idle, running, jumping, falling };
@@ -67,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        transform.position = startingPosition.initialValue;
+        transform.position = startingPostion.initialValue;
     }
 
     // Update is called once per frame
@@ -132,15 +131,15 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.Z) && canDash)
         {
-            if (!dashUnlocked)
+            if (!PlayerStatic.canDash)
             {
                 return;
             }
             StartCoroutine(Dash());
         }
-        if (wallJumpUnlocked)
+        if (PlayerStatic.canWallCling)
         {
             WallSlide();
             WallJump();

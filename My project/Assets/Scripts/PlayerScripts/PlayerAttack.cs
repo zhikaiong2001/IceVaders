@@ -43,7 +43,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {
-            if (Input.GetKeyDown(KeyCode.N))
+            if (Input.GetKeyDown(KeyCode.X) && PlayerStatic.canAttack)
             {
                 StartCoroutine(Attack());
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -100,6 +100,10 @@ public class PlayerAttack : MonoBehaviour
                     wf.setKBRight(false);
                 }
             }
+            else if (enemy.gameObject.tag == "Door")
+            {
+                enemy.gameObject.SetActive(false);
+            }
             else
             {
                 ek = enemy.GetComponent<EnemyKnockback>();
@@ -115,7 +119,11 @@ public class PlayerAttack : MonoBehaviour
                     ek.setKBRight(false);
                 }
             }
+
+            if (enemy.tag != "Door")
+            { 
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            }
         }
     }
 }

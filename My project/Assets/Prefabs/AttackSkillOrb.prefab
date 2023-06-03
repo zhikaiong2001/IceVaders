@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8438460878053976811}
   - component: {fileID: 8438460878053976813}
   - component: {fileID: 8438460878053976810}
+  - component: {fileID: 308401638}
   m_Layer: 0
   m_Name: AttackSkillOrb
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8438460878053976808}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -16.58844, y: -8.021955, z: 0.51269126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &308401638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8438460878053976808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 471807ef863ad8b4ba09e4097edd5d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

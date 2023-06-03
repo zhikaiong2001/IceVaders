@@ -5,18 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LevelMove : MonoBehaviour
 {
-    public int sceneBuildIndex;
+    public string sceneToLoad;
     public Vector2 playerPosition;
     public VectorValue playerStorage;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-
         if(collision.tag == "Player")
         {
             playerStorage.initialValue = playerPosition;
-            SceneManager.LoadScene(sceneBuildIndex, LoadSceneMode.Single);
+            SceneManager.LoadScene(sceneToLoad);
         }
     }
 }

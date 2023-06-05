@@ -23,10 +23,14 @@ public class PlayerAttack : MonoBehaviour
     private WaypointFollower wf;
     private EnemyKnockback ek;
 
+    [SerializeField] private Soul playerSoul;
+    [SerializeField] private float soulsPerAttack;
+
     [SerializeField] PlayerMovement playerMovement;
 
-    
-    
+
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +47,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {
-            if (Input.GetKeyDown(KeyCode.X) && PlayerStatic.canAttack)
+            if (Input.GetKeyDown(KeyCode.X))
             {
                 StartCoroutine(Attack());
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -85,6 +89,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            playerSoul.GainSoul(soulsPerAttack);
             if (enemy.gameObject.tag == "Slime")
             {
                 wf = enemy.GetComponent<WaypointFollower>();
@@ -121,7 +126,7 @@ public class PlayerAttack : MonoBehaviour
             }
 
             if (enemy.tag != "Door")
-            { 
+            {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
         }

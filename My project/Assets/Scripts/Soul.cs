@@ -5,7 +5,7 @@ using UnityEngine;
 public class Soul : MonoBehaviour
 {
     [SerializeField] private float startingSouls;
-    [SerializeField] private float soulsPerAttack;
+    
     public float currentSouls;
 
     // Start is called before the first frame update

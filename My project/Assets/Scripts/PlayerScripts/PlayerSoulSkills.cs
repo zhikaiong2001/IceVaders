@@ -12,6 +12,11 @@ public class PlayerSoulSkills : MonoBehaviour
     public float healCost = 40f;
     public float healTime = 2f;
 
+    public Transform firePosition;
+    public GameObject projectile;
+    public float fireBallCost = 50f;
+    public int fireBallDamage = 100;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,11 @@ public class PlayerSoulSkills : MonoBehaviour
             Healing();
         }
 
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            FireBall();
+        }
+
     }
 
     private void Healing()
@@ -38,5 +48,15 @@ public class PlayerSoulSkills : MonoBehaviour
             playerSoul.UseSoul(healCost);
             isHealing = false;
         }
+    }
+
+    private void FireBall()
+    {
+        if(playerSoul.currentSouls >= fireBallCost)
+        {
+            Instantiate(projectile, firePosition.position, transform.rotation);
+            playerSoul.UseSoul(fireBallCost);
+        }
+        
     }
 }

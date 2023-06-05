@@ -14,42 +14,42 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  -
+  - 
   - Water
   - UI
-  - Ground
-  - Wall
   - Enemy
-  - Player
   - Background
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
-  -
+  - Wall
+  - Ground
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 472452307
+    uniqueID: 3257981685
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Borders
-    uniqueID: 3858057769
+  - name: Terrain
+    uniqueID: 509947181
     locked: 0

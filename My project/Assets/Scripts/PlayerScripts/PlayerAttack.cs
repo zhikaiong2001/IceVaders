@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Soul playerSoul;
     [SerializeField] private float soulsPerAttack;
 
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] PlayerMovement2 playerMovement;
 
 
 

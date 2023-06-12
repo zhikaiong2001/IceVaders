@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static PlayerData;
+using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -72,6 +75,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        if (PauseMenu.GameIsPaused)
+        {
+            return;
+        }
+
         if (isDashing)
         {
             return;
@@ -308,5 +316,36 @@ public class PlayerMovement : MonoBehaviour
     public void setKBRight(bool right)
     {
         KnockFromRight = right;
+    }
+
+    // Save and Load
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        Vector2 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        startingPostion.initialValue = position;
+        Debug.Log(position.ToString());
+
+        SceneManager.LoadScene(data.scene);
+
+        PlayerStatic.health = data.currentHealth;
+        this.GetComponent<Health>().setMaxHealth(data.maxHealth);
+
+        //currentSoul = player.GetComponent<Soul>().currentSouls;
+        //maxSoul = player.GetComponent<Soul>().maxSoul;
+
+        PlayerStatic.canAttack = data.unlocked[(int)Abilities.sword];
+        PlayerStatic.canWallCling = data.unlocked[(int)Abilities.wallCling];
+        PlayerStatic.canDash = data.unlocked[(int)Abilities.dash];
+
+        transform.position = position;
     }
 }

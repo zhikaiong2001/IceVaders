@@ -74,4 +74,15 @@ public class Health : MonoBehaviour
 
     }
 
+
+    // Getters and Setters for Saves
+    public float getMaxHealth()
+    {
+        return this.startingHealth;
+    }
+
+    public void setMaxHealth(float health)
+    {
+        startingHealth = health;
+    }
 }

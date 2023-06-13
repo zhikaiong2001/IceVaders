@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231960541}
   - component: {fileID: 231960542}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 10_Mist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -488,7 +488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609999665}
   - component: {fileID: 609999666}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 09_Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -572,7 +572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669978871}
   - component: {fileID: 669978872}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 05_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -646,22 +646,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &798273297 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2152741256879387111, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-  m_PrefabInstance: {fileID: 1815800041}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81cd4824f30e97d4987a63e943bf2610, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &798273306 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-  m_PrefabInstance: {fileID: 1815800041}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &842466273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2507,7 +2491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1133a6805b8716428c4fdfc7eded18b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 798273306}
+  player: {fileID: 1160120817}
   yDisplacement: 4.78
 --- !u!1 &899264430
 GameObject:
@@ -2765,7 +2749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033007485}
   - component: {fileID: 1033007486}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 04_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2848,7 +2832,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063912841}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2892,6 +2876,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4003234720693003055, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2941,8 +2929,24 @@ PrefabInstance:
       value: JJ's Player
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495852, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: jumpableGround.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561494289038638, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561494955582888, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
@@ -2957,6 +2961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1160120817 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  m_PrefabInstance: {fileID: 1160120815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169992326
 GameObject:
   m_ObjectHideFlags: 0
@@ -5452,7 +5461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379629303}
   - component: {fileID: 1379629304}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 03_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5536,7 +5545,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440456270}
   - component: {fileID: 1440456271}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 07_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5696,7 +5705,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554952679}
   - component: {fileID: 1554952680}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 06_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5780,7 +5789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756256554}
   - component: {fileID: 1756256555}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 01_Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5920,67 +5929,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &1815800041
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 15.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386672168944, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3051925386722586205, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: playerMovement
-      value: 
-      objectReference: {fileID: 798273297}
-    - target: {fileID: 3051925386722586206, guid: de4a0213da02fd44096109c241e052d9, type: 3}
-      propertyPath: m_Name
-      value: ZK Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: de4a0213da02fd44096109c241e052d9, type: 3}
 --- !u!1 &2009177954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5991,7 +5939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009177955}
   - component: {fileID: 2009177956}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 02_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6151,7 +6099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2079071260}
   - component: {fileID: 2079071261}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 08_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6251,10 +6199,6 @@ PrefabInstance:
     - target: {fileID: 99744028352603680, guid: 7462c53f099c8af45b2636b0b5092d12, type: 3}
       propertyPath: m_Name
       value: Pause Menu
-      objectReference: {fileID: 0}
-    - target: {fileID: 99744028352603680, guid: 7462c53f099c8af45b2636b0b5092d12, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 99744028352603871, guid: 7462c53f099c8af45b2636b0b5092d12, type: 3}
       propertyPath: m_Pivot.x

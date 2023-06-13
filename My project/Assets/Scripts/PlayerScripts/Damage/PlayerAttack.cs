@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Soul playerSoul;
     [SerializeField] private float soulsPerAttack;
 
-    [SerializeField] PlayerMovement2 playerMovement;
+    [SerializeField] PlayerMovement playerMovement;
 
 
 
@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            playerSoul.GainSoul(soulsPerAttack);
+            //playerSoul.GainSoul(soulsPerAttack);
             if (enemy.gameObject.tag == "Slime")
             {
                 wf = enemy.GetComponent<WaypointFollower>();

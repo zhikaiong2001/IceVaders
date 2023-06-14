@@ -16,9 +16,17 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage = 40;
     public LayerMask enemyLayers;
 
-    public float attackRate = 2f;
-    public float attackDelay = 0.2f;
+    // Attack Rate
+    public float attackCooldown = 0f;
     private float nextAttackTime = 0f;
+
+    // Attack Delay
+    public float attackDelay = 0.2f;
+
+    // Attack Active Frames
+    public float attackDuration;
+    private float durationEnd = 0f;
+
 
     private WaypointFollower wf;
     private EnemyKnockback ek;
@@ -27,6 +35,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float soulsPerAttack;
 
     [SerializeField] PlayerMovement playerMovement;
+
+    private bool isAttacking = false;
 
 
 
@@ -45,46 +55,44 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isAttacking)
+        {
+            playerMovement.disableMovement();
+        }
+        else
+        {
+            playerMovement.enableMovement();
+        }
+
         if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
-                StartCoroutine(Attack());
-                nextAttackTime = Time.time + 1f / attackRate;
+                isAttacking = true;
+                StartCoroutine(wait(attackDelay));
+                animator.SetTrigger("Attack");
+                Attack();
+                nextAttackTime = Time.time + attackCooldown;
+                durationEnd = Time.time + attackDuration;
             }
-        }
-    }
-
-    void OnDrawGizmosSelected()
-    {
-        if (attackPointTop == null || attackPointBottom == null)
+        } 
+        else if (Time.time < durationEnd)
         {
-            return;
+            Attack();
         }
-
-        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
-        DrawRect(hitBox);
-        DrawRect(hitBox);
+        else
+        {
+            isAttacking = false;
+        }
     }
 
-    void OnDrawGizmos()
+    private IEnumerator wait(float delay)
     {
-        // Green
-        Gizmos.color = new Color(0.0f, 1.0f, 0.0f);
-        DrawRect(hitBox);
+        yield return new WaitForSeconds(delay);
     }
 
-    void DrawRect(Rect rect)
+    private void Attack()
     {
-        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
-    }
-
-    private IEnumerator Attack()
-    {
-        animator.SetTrigger("Attack");
-
-        yield return new WaitForSeconds(attackDelay);
-
         Collider2D[] hitEnemies = Physics2D.OverlapAreaAll(attackPointTop.position, attackPointBottom.position, enemyLayers);
 
         foreach (Collider2D enemy in hitEnemies)
@@ -130,5 +138,30 @@ public class PlayerAttack : MonoBehaviour
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
         }
+    }
+
+    // Gizmos
+    void OnDrawGizmosSelected()
+    {
+        if (attackPointTop == null || attackPointBottom == null)
+        {
+            return;
+        }
+
+        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
+        DrawRect(hitBox);
+        DrawRect(hitBox);
+    }
+
+    void OnDrawGizmos()
+    {
+        // Green
+        Gizmos.color = new Color(0.0f, 1.0f, 0.0f);
+        DrawRect(hitBox);
+    }
+
+    void DrawRect(Rect rect)
+    {
+        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
     }
 }

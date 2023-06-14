@@ -27,7 +27,7 @@ public class PlayerData
     // Position
     public float[] position;
 
-    public PlayerData(PlayerMovement player)
+    public PlayerData(Player player)
     {
         currentHealth = PlayerStatic.health;
         maxHealth = player.GetComponent<Health>().getMaxHealth();

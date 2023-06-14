@@ -4,33 +4,41 @@ using UnityEngine;
 using static PlayerData;
 using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
+using System;
 
 public class PlayerMovement : MonoBehaviour
-{
+{  
+    // Components
     private Rigidbody2D rb;
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
+    public VectorValue startingPositon;
 
-    [SerializeField] private bool jumpUnlocked = false;
-    [SerializeField] private bool dashUnlocked = false;
-    [SerializeField] private bool wallJumpUnlocked = false;
-
-
+    // Basic Movement
+    private bool canMove;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
     private bool isFacingRight = true;
     private float horizontal;
+    [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private AudioSource jumpSoundEffect;
 
+    // Animation State
     private string currentState;
+    private enum MovementState { idle, running, jumping, falling };
 
+    // Dash
     private bool canDash = true;
     private bool isDashing;
     private float dashingPower = 24f;
     private float dashingTime = 0.2f;
     private float dashingCooldown = 1f;
+    [SerializeField] private TrailRenderer tr;
 
+
+    // Wall Slide
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
 
@@ -40,13 +48,11 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpingCounter;
     private float wallJumpingDuration = 0.4f;
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(16f, 32f);
-
-    [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private AudioSource jumpSoundEffect;
-    [SerializeField] private TrailRenderer tr;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
 
+
+    // Knockback
     [Header ("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
@@ -57,24 +63,27 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool KnockFromRight;
     public bool isStunned { get; private set; }
 
-    public VectorValue startingPostion;
 
-    //Animation states
-    private enum MovementState { idle, running, jumping, falling };
-
-    // Start is called before the first frame update
     private void Start()
     {
+        canMove = true;
         rb = GetComponent<Rigidbody2D>();
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        transform.position = startingPostion.initialValue;
+        if (Player.startingPosition != null)
+        {
+            transform.position = Player.startingPosition.initialValue;
+        }
+        else
+        {
+            transform.position = startingPositon.initialValue;
+        }
     }
 
-    // Update is called once per frame
     private void Update()
     {
+        if (!canMove) return;
         if (PauseMenu.GameIsPaused)
         {
             return;
@@ -132,7 +141,6 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
@@ -277,20 +285,17 @@ public class PlayerMovement : MonoBehaviour
         isWallJumping = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Universal Movement Controls
+    public void enableMovement()
     {
-
-        if (collision.gameObject.name == "DashSkillOrb")
-        {
-            dashUnlocked = true;
-            Destroy(collision.gameObject);
-        }
-        if (collision.gameObject.name == "WallJumpSkillOrb")
-        {
-            wallJumpUnlocked = true;
-            Destroy(collision.gameObject);
-        }
+        canMove = true;
     }
+
+    public void disableMovement()
+    {
+        canMove = false;
+    }
+
 
     // Knocback Methods
     public void setKBCounter(float time)
@@ -316,36 +321,5 @@ public class PlayerMovement : MonoBehaviour
     public void setKBRight(bool right)
     {
         KnockFromRight = right;
-    }
-
-    // Save and Load
-    public void SavePlayer()
-    {
-        SaveSystem.SavePlayer(this);
-    }
-
-    public void LoadPlayer()
-    {
-        PlayerData data = SaveSystem.LoadPlayer();
-
-        Vector2 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        startingPostion.initialValue = position;
-        Debug.Log(position.ToString());
-
-        SceneManager.LoadScene(data.scene);
-
-        PlayerStatic.health = data.currentHealth;
-        this.GetComponent<Health>().setMaxHealth(data.maxHealth);
-
-        //currentSoul = player.GetComponent<Soul>().currentSouls;
-        //maxSoul = player.GetComponent<Soul>().maxSoul;
-
-        PlayerStatic.canAttack = data.unlocked[(int)Abilities.sword];
-        PlayerStatic.canWallCling = data.unlocked[(int)Abilities.wallCling];
-        PlayerStatic.canDash = data.unlocked[(int)Abilities.dash];
-
-        transform.position = position;
     }
 }

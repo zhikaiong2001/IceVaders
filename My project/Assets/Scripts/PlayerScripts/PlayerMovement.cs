@@ -28,6 +28,8 @@ public class PlayerMovement : MonoBehaviour
     private string currentState;
     private enum MovementState { idle, running, jumping, falling };
 
+    public PlayerAttack playerAttack;
+
     public Dash dash;
 
 
@@ -69,6 +71,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        dash.dashCheck();
+        playerAttack.attackCheck();
         if (!canMove)
         {
             Debug.Log("faggot");
@@ -145,8 +150,6 @@ public class PlayerMovement : MonoBehaviour
             Flip();
             
         }
-
-        dash.dashCheck();
     }
 
     private void UpdateAnimationState()

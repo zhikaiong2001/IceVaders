@@ -54,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void attackCheck()
     {
         if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {

@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
 
     public Animator animator;
-
+    private Rigidbody2D rb;
     public Transform attackPointTop;
     public Transform attackPointBottom;
     private float rectWidth = 0;
@@ -45,6 +45,7 @@ public class PlayerAttack : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         rectWidth = attackPointBottom.position.x - attackPointTop.position.x;
         rectHeight = attackPointTop.position.y - attackPointBottom.position.y;
         centreX = rectWidth / 2;
@@ -55,20 +56,13 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttacking)
-        {
-            playerMovement.disableMovement();
-        }
-        else
-        {
-            playerMovement.enableMovement();
-        }
-
         if (Time.time >= nextAttackTime && !playerMovement.isStunned)
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
                 isAttacking = true;
+                playerMovement.disableMovement();
+                rb.velocity = new Vector2(0f, rb.velocity.y);
                 StartCoroutine(wait(attackDelay));
                 animator.SetTrigger("Attack");
                 Attack();
@@ -83,6 +77,7 @@ public class PlayerAttack : MonoBehaviour
         else
         {
             isAttacking = false;
+            playerMovement.enableMovement();
         }
     }
 

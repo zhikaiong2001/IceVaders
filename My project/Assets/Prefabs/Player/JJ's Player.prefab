@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 4415561493708495854}
   - component: {fileID: 4415561493708495825}
   - component: {fileID: 4415561493708495852}
+  - component: {fileID: 7345779578713646445}
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 4415561493708495851}
   - component: {fileID: 1791104502}
@@ -312,7 +313,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   jumpSoundEffect: {fileID: 0}
-  tr: {fileID: 4415561493708495825}
+  dash: {fileID: 7345779578713646445}
   wallJumpingPower: {x: 16, y: 32}
   wallCheck: {fileID: 4415561494289038639}
   wallLayer:
@@ -325,6 +326,20 @@ MonoBehaviour:
   StunDuration: 0
   StunTotal: 0.7
   KnockFromRight: 0
+--- !u!114 &7345779578713646445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8871e175e2be0b84b901dfdf5e42e769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 4415561493708495852}
+  tr: {fileID: 0}
 --- !u!114 &4415561493708495824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,9 +359,9 @@ MonoBehaviour:
   enemyLayers:
     serializedVersion: 2
     m_Bits: 256
-  attackCooldown: 1
+  attackCooldown: 0.5
   attackDelay: 0.2
-  attackDuration: 0.5
+  attackDuration: 0.3
   playerSoul: {fileID: 0}
   soulsPerAttack: 0
   playerMovement: {fileID: 4415561493708495852}

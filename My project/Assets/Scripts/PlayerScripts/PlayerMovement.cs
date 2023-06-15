@@ -13,10 +13,9 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D coll;
     private SpriteRenderer sprite;
     private Animator anim;
-    public VectorValue startingPositon;
 
     // Basic Movement
-    private bool canMove;
+    private bool canMove = true;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
@@ -29,13 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private string currentState;
     private enum MovementState { idle, running, jumping, falling };
 
-    // Dash
-    private bool canDash = true;
-    private bool isDashing;
-    private float dashingPower = 24f;
-    private float dashingTime = 0.2f;
-    private float dashingCooldown = 1f;
-    [SerializeField] private TrailRenderer tr;
+    public Dash dash;
 
 
     // Wall Slide
@@ -71,29 +64,21 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        if (Player.startingPosition != null)
-        {
-            transform.position = Player.startingPosition.initialValue;
-        }
-        else
-        {
-            transform.position = startingPositon.initialValue;
-        }
+        transform.position = Player.startingPosition.initialValue;
     }
 
     private void Update()
     {
-        if (!canMove) return;
+        if (!canMove)
+        {
+            Debug.Log("faggot");
+            return;
+        }
+
         if (PauseMenu.GameIsPaused)
         {
             return;
         }
-
-        if (isDashing)
-        {
-            return;
-        }
-
 
         // Knockback Logic
         if (KBCounter <= .01f && StunDuration <= .01f && !isWallJumping)
@@ -147,14 +132,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
-        if (Input.GetKeyDown(KeyCode.Z) && canDash)
-        {
-            if (!PlayerStatic.canDash)
-            {
-                return;
-            }
-            StartCoroutine(Dash());
-        }
+
         if (PlayerStatic.canWallCling)
         {
             WallSlide();
@@ -167,6 +145,8 @@ public class PlayerMovement : MonoBehaviour
             Flip();
             
         }
+
+        dash.dashCheck();
     }
 
     private void UpdateAnimationState()
@@ -212,22 +192,6 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
-    }
-
-    private IEnumerator Dash()
-    {
-        canDash = false;
-        isDashing = true;
-        float originalGravity = rb.gravityScale;
-        rb.gravityScale = 0f;
-        rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
-        rb.gravityScale = originalGravity;
-        isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
     }
 
     private bool IsWalled()

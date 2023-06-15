@@ -26,7 +26,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Soul playerSoul;
     [SerializeField] private float soulsPerAttack;
 
-    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] PlayerMovement2 playerMovement;
+    [SerializeField] AudioSource attackSoundEffect; 
 
 
 
@@ -51,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 StartCoroutine(Attack());
                 nextAttackTime = Time.time + 1f / attackRate;
+                attackSoundEffect.Play();
             }
         }
     }

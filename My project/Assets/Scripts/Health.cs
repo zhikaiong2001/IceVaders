@@ -18,6 +18,9 @@ public class Health : MonoBehaviour
     [SerializeField] private int numberOfFlashes;
     private SpriteRenderer spriteRend;
 
+    [SerializeField] private AudioSource takeDamageSoundEffect;
+    [SerializeField] private AudioSource dieSoundEffect;
+
     private void Awake()
     {
         currentHealth = PlayerStatic.health;
@@ -35,16 +38,18 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
+            takeDamageSoundEffect.Play();
         }
         else
         {
             if (!dead)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<PlayerMovement2>().enabled = false;
                 rb.velocity = Vector3.zero;
                 dead = true;
                 StartCoroutine(deathProcess());
+                dieSoundEffect.Play();
             }
            
         }

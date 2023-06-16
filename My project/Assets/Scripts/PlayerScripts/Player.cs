@@ -22,6 +22,10 @@ public class Player : MonoBehaviour
     public float currentSoulTemp;
     public float maxSoulTemp;
 
+    // Attack Damage
+    public static int attackDamage;
+    public int attackDamageTemp;
+
     // Abilities
     public enum Abilities { sword, wallCling, dash, fireball };
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];

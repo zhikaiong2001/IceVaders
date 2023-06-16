@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
 
     // Basic Movement
-    private bool canMove = true;
+    public bool canMove { get; private set; } = true;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
@@ -72,11 +72,8 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
 
-        dash.dashCheck();
-        playerAttack.attackCheck();
         if (!canMove)
         {
-            Debug.Log("faggot");
             return;
         }
 
@@ -150,6 +147,9 @@ public class PlayerMovement : MonoBehaviour
             Flip();
             
         }
+
+        dash.dashCheck();
+        playerAttack.attackCheck();
     }
 
     private void UpdateAnimationState()

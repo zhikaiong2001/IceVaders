@@ -5,28 +5,19 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
 
+    public AttackHitbox attackHitbox;
     public Animator animator;
     private Rigidbody2D rb;
-    public Transform attackPointTop;
-    public Transform attackPointBottom;
-    private float rectWidth = 0;
-    private float rectHeight = 0;
-    private float centreX = 0, centreY = 0;
-    private Rect hitBox;
-    public int attackDamage = 40;
     public LayerMask enemyLayers;
 
     // Attack Rate
-    public float attackCooldown = 0f;
-    private float nextAttackTime = 0f;
+    public float attackCooldown;
 
     // Attack Delay
-    public float attackDelay = 0.2f;
+    public float attackDelay;
 
     // Attack Active Frames
     public float attackDuration;
-    private float durationEnd = 0f;
-
 
     private WaypointFollower wf;
     private EnemyKnockback ek;
@@ -37,56 +28,42 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
 
     private bool isAttacking = false;
-
-
-
+    private bool canAttack = true;
 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rectWidth = attackPointBottom.position.x - attackPointTop.position.x;
-        rectHeight = attackPointTop.position.y - attackPointBottom.position.y;
-        centreX = rectWidth / 2;
-        centreY = rectHeight / 2;
-        hitBox = new Rect(centreX, centreY, rectWidth, rectHeight);
     }
 
     // Update is called once per frame
     public void attackCheck()
     {
-        if (Time.time >= nextAttackTime && !playerMovement.isStunned)
+        if (canAttack && Input.GetKeyDown(KeyCode.X) && Player.unlocked[(int)Player.Abilities.sword])
         {
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                isAttacking = true;
-                playerMovement.disableMovement();
-                rb.velocity = new Vector2(0f, rb.velocity.y);
-                StartCoroutine(wait(attackDelay));
-                animator.SetTrigger("Attack");
-                Attack();
-                nextAttackTime = Time.time + attackCooldown;
-                durationEnd = Time.time + attackDuration;
-            }
-        } 
-        else if (Time.time < durationEnd)
-        {
-            Attack();
-        }
-        else
-        {
-            isAttacking = false;
-            playerMovement.enableMovement();
+            StartCoroutine(Attack());
         }
     }
 
-    private IEnumerator wait(float delay)
+    private IEnumerator Attack()
     {
-        yield return new WaitForSeconds(delay);
+        isAttacking = true;
+        canAttack = false;
+        playerMovement.disableMovement();
+        rb.velocity = new Vector2(0f, rb.velocity.y);
+        animator.SetTrigger("Attack");
+        yield return new WaitForSeconds(attackDelay);
+        attackHitbox.gameObject.SetActive(true);
+        yield return new WaitForSeconds(attackDuration);
+        isAttacking = false;
+        attackHitbox.gameObject.SetActive(false);
+        playerMovement.enableMovement();
+        yield return new WaitForSeconds(attackCooldown);
+        canAttack = true;
     }
 
-    private void Attack()
+    /*private void activateHitbox()
     {
         Collider2D[] hitEnemies = Physics2D.OverlapAreaAll(attackPointTop.position, attackPointBottom.position, enemyLayers);
 
@@ -130,33 +107,13 @@ public class PlayerAttack : MonoBehaviour
 
             if (enemy.tag != "Door")
             {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
             }
         }
     }
 
-    // Gizmos
-    void OnDrawGizmosSelected()
+    private void deactivateHitbox()
     {
-        if (attackPointTop == null || attackPointBottom == null)
-        {
-            return;
-        }
-
-        Gizmos.color = new Color(1.0f, 0.5f, 0.0f);
-        DrawRect(hitBox);
-        DrawRect(hitBox);
-    }
-
-    void OnDrawGizmos()
-    {
-        // Green
-        Gizmos.color = new Color(0.0f, 1.0f, 0.0f);
-        DrawRect(hitBox);
-    }
-
-    void DrawRect(Rect rect)
-    {
-        Gizmos.DrawWireCube(new Vector3(rect.center.x, rect.center.y, 0.01f), new Vector3(rect.size.x, rect.size.y, 0.01f));
-    }
+        return;
+    }*/
 }

@@ -9,7 +9,7 @@ public class DashOrb : MonoBehaviour
         if (collision.tag == "Player")
         {
             gameObject.SetActive(false);
-            PlayerStatic.canDash = true;
+            Player.unlocked[(int)Player.Abilities.dash] = true;
         }
     }
 }

@@ -9,7 +9,7 @@ public class WallClingOrb : MonoBehaviour
         if (collision.tag == "Player")
         {
             gameObject.SetActive(false);
-            PlayerStatic.canWallCling = true;
+            Player.unlocked[(int)Player.Abilities.wallCling] = true;
         }
     }
 }

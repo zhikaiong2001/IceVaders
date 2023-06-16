@@ -6,12 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    [Header ("Health")]
-    [SerializeField] private float startingHealth;
-    public float currentHealth;
     private Animator anim;
     private Rigidbody2D rb;
-    private bool dead;
+    private bool isDead;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -20,46 +17,44 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        currentHealth = PlayerStatic.health;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
-        PlayerStatic.health = currentHealth;
+        Player.currentHealth = Mathf.Clamp(Player.currentHealth - damage, 0, Player.maxHealth);
 
-        if (currentHealth > 0)
+        if (Player.currentHealth > 0)
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
         }
         else
         {
-            if (!dead)
+            if (!isDead)
             {
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
-                rb.velocity = Vector3.zero;
-                dead = true;
-                StartCoroutine(deathProcess());
+                rb.velocity = Vector2.zero;
+                isDead = true;
+                StartCoroutine(respawn()); // replace with load
             }
-           
+
         }
     }
 
-    IEnumerator deathProcess()
+    IEnumerator respawn()
     {
         yield return new WaitForSeconds(3);
-        PlayerStatic.health = 5;
+        Player.currentHealth = 5;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Heal(float amount)
+    public void Heal(int amount)
     {
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, startingHealth);
+        Player.currentHealth = Mathf.Clamp(Player.currentHealth + amount, 0, Player.maxHealth);
     }
 
 
@@ -71,18 +66,5 @@ public class Health : MonoBehaviour
             yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes));
         }
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
-
-    }
-
-
-    // Getters and Setters for Saves
-    public float getMaxHealth()
-    {
-        return this.startingHealth;
-    }
-
-    public void setMaxHealth(float health)
-    {
-        startingHealth = health;
     }
 }

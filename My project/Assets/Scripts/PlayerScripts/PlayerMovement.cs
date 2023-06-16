@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 using System;
 
 public class PlayerMovement : MonoBehaviour
-{  
+{
     // Components
     private Rigidbody2D rb;
     private BoxCollider2D coll;
@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     // Knockback
-    [Header ("Knockback")]
+    [Header("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBCounter;
@@ -71,7 +71,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
         if (!canMove)
         {
             return;
@@ -135,17 +134,18 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
-        if (PlayerStatic.canWallCling)
+        if (Player.unlocked[(int)Abilities.wallCling])
         {
             WallSlide();
             WallJump();
         }
+
         UpdateAnimationState();
 
         if (isWallJumping == false)
         {
             Flip();
-            
+
         }
 
         dash.dashCheck();
@@ -221,7 +221,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isWallJumping = false;
             wallJumpingDirection = -transform.localScale.x;
-            
+
             wallJumpingCounter = wallJumpingTime;
 
             CancelInvoke(nameof(StopWallJumping));

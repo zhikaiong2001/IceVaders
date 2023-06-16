@@ -10,8 +10,8 @@ using UnityEngine.SceneManagement;
 public class PlayerData
 {
     // Health
-    public float currentHealth;
-    public float maxHealth;
+    public int currentHealth;
+    public int maxHealth;
 
     // Soul
     public float currentSoul;
@@ -29,15 +29,15 @@ public class PlayerData
 
     public PlayerData(Player player)
     {
-        currentHealth = PlayerStatic.health;
-        maxHealth = player.GetComponent<Health>().getMaxHealth();
+        currentHealth = Player.currentHealth;
+        maxHealth = Player.maxHealth;
 
         //currentSoul = player.GetComponent<Soul>().currentSouls;
         //maxSoul = player.GetComponent<Soul>().maxSoul;
 
-        unlocked[(int)Abilities.sword] = PlayerStatic.canAttack;
-        unlocked[(int)Abilities.wallCling] = PlayerStatic.canWallCling;
-        unlocked[(int)Abilities.dash] = PlayerStatic.canDash;
+        unlocked[(int)Abilities.sword] = Player.unlocked[(int)Abilities.sword];
+        unlocked[(int)Abilities.wallCling] = Player.unlocked[(int)Abilities.wallCling];
+        unlocked[(int)Abilities.dash] = Player.unlocked[(int)Abilities.dash];
 
         scene = SceneManager.GetActiveScene().name;
 

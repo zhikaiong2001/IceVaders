@@ -8,7 +8,7 @@ public class PlayerSoulSkills : MonoBehaviour
     [SerializeField] private Soul playerSoul;
 
     private bool isHealing = false;
-    public float healAmount = 1f;
+    public int healAmount = 1;
     public float healCost = 40f;
     public float healTime = 2f;
 

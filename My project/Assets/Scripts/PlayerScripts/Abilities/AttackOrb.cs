@@ -9,7 +9,7 @@ public class AttackOrb : MonoBehaviour
         if (collision.tag == "Player")
         {
             gameObject.SetActive(false);
-            PlayerStatic.canAttack = true;
+            Player.unlocked[(int)Player.Abilities.sword] = true;
         }
     }
 }

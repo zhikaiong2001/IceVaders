@@ -11,10 +11,10 @@ public class Player : MonoBehaviour
     public VectorValue startingPositionTemp;
 
     // Health
-    public static float currentHealth;
-    public static float maxHealth;
-    public float currentHealthTemp;
-    public float maxHealthTemp;
+    public static int currentHealth;
+    public static int maxHealth;
+    public int currentHealthTemp;
+    public int maxHealthTemp;
 
     // Soul
     public static float currentSoul;
@@ -60,15 +60,15 @@ public class Player : MonoBehaviour
 
         SceneManager.LoadScene(data.scene);
 
-        PlayerStatic.health = data.currentHealth;
-        this.GetComponent<Health>().setMaxHealth(data.maxHealth);
+        currentHealth = data.currentHealth;
+        maxHealth = data.maxHealth;
 
         //currentSoul = player.GetComponent<Soul>().currentSouls;
         //maxSoul = player.GetComponent<Soul>().maxSoul;
 
-        PlayerStatic.canAttack = data.unlocked[(int)Abilities.sword];
-        PlayerStatic.canWallCling = data.unlocked[(int)Abilities.wallCling];
-        PlayerStatic.canDash = data.unlocked[(int)Abilities.dash];
+        unlocked[(int)Abilities.sword] = data.unlocked[(int)Abilities.sword];
+        unlocked[(int)Abilities.wallCling] = data.unlocked[(int)Abilities.wallCling];
+        unlocked[(int)Abilities.dash] = data.unlocked[(int)Abilities.dash];
 
         transform.position = position;
     }

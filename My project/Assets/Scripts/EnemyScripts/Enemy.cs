@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
     [Header ("Attributes")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
-    [SerializeField] private int damage;
+    public int damage { get; private set; }
     [SerializeField] private PlayerMovement2 playerMovement;
 
     [Header ("Hurt Frames")]

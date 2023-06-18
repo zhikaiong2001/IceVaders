@@ -10,6 +10,10 @@ public class Player : MonoBehaviour
     public static VectorValue startingPosition;
     public VectorValue startingPositionTemp;
 
+    // States
+    public static bool isDead;
+    public bool isDeadTemp;
+
     // Health
     public static int currentHealth;
     public static int maxHealth;

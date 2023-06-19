@@ -175,12 +175,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1165160126693205279, guid: 36c306bbdf8331549ad33fdf28f674e7, type: 3}
+  m_Sprite: {fileID: 1576031485842391493, guid: b10637f2784b63b40bd690a812eb02d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -225,7 +225,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -251,7 +251,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -275,8 +275,8 @@ MonoBehaviour:
   - {fileID: 1513523263874906550}
   - {fileID: 2448488120084171640}
   speed: 2
-  KBForceHor: 4
-  KBForceVer: 3
+  KBForceHor: 10
+  KBForceVer: 0
   KBCounter: 0
   KBTotalTime: 0.3
   KnockFromRight: 0
@@ -291,7 +291,7 @@ Animator:
   m_GameObject: {fileID: 6982955870229506990}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 80fb7d9fe8e22e0479e99d0d40ca7b50, type: 2}
+  m_Controller: {fileID: 9100000, guid: 16a10fe778f39a845957006d381f5402, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -317,8 +317,18 @@ MonoBehaviour:
   animator: {fileID: 613816293180598780}
   maxHealth: 100
   currentHealth: 0
+  damage: 1
   playerMovement: {fileID: 0}
+  isFlyingEnemy: 0
   hurtFramesDuration: 0.5
   numberOfFlashes: 3
   defaultShader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   GUIShader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
+  attackOffset: {x: 0, y: 0, z: 0}
+  attackRange: 1
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 0
+  attackDamage: 20
+  attackCoolDown: 1
+  attackCounter: 0

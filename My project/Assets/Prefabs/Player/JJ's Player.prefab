@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 4415561493708495851}
   - component: {fileID: 1791104502}
   - component: {fileID: 1791104506}
+  - component: {fileID: 898500913982857825}
   m_Layer: 10
   m_Name: JJ's Player
   m_TagString: Player
@@ -426,13 +427,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpSoundEffect: {fileID: 0}
-  playerAttack: {fileID: 4415561493708495824}
-  dash: {fileID: 7345779578713646445}
-  wallJumpingPower: {x: 16, y: 32}
-  wallCheck: {fileID: 4415561494289038639}
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &7345779578713646445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -468,7 +462,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   attackCooldown: 0
-  attackDelay: 0.1
+  attackDelay: 0.2
   attackDuration: 0.3
   playerSoul: {fileID: 0}
   soulsPerAttack: 0
@@ -484,6 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerCollisions: {fileID: 1142529242}
   iFramesDuration: 0.5
   numberOfFlashes: 1
 --- !u!114 &1791104502
@@ -500,7 +495,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPositionTemp: {fileID: 11400000, guid: 0013f1e955663de49bcfa3ae1ccf59e6, type: 2}
   isDeadTemp: 0
-  currentHealthTemp: 5
+  currentHealthTemp: 1
   maxHealthTemp: 5
   currentSoulTemp: 0
   maxSoulTemp: 0
@@ -522,6 +517,23 @@ MonoBehaviour:
   KBForceVer: 10
   KBTime: 0.5
   fromRight: 0
+--- !u!114 &898500913982857825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c940df1af8e72214f8e6cd97362e4996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallJumpingPower: {x: 16, y: 32}
+  wallCheck: {fileID: 4415561494289038639}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

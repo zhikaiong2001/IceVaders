@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private int currentHealth;
     [SerializeField] private float damage;
     [SerializeField] private PlayerMovement2 playerMovement;
+    [SerializeField] private bool isFlyingEnemy = false;
 
     [Header ("Hurt Frames")]
     [SerializeField] private float hurtFramesDuration;
@@ -19,11 +20,29 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Shader GUIShader;
     private SpriteRenderer spriteRend;
 
+    [Header ("Enemy Attack")]
+    public Vector3 attackOffset;
+    public float attackRange = 1f;
+    public LayerMask attackMask;
+    public int attackDamage = 20;
+    public float attackCoolDown = 1f;
+    public float attackCounter;
+    private Health playerHealth;
+
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         spriteRend = GetComponent<SpriteRenderer>();
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+    }
+
+    void Update()
+    {
+        if (attackCounter > 0f)
+        {
+            attackCounter -= Time.deltaTime;
+        }
     }
 
     public void TakeDamage(int damage)
@@ -49,7 +68,13 @@ public class Enemy : MonoBehaviour
             c.enabled = false;
         }
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        GetComponent<EnemyAI>().enabled = false;
         this.enabled = false;
+        if (isFlyingEnemy)
+        {
+            Destroy(gameObject, 1.5f);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -87,4 +112,22 @@ public class Enemy : MonoBehaviour
             spriteRend.material.shader = defaultShader;
         }
     }
+
+    public void Attack()
+    {
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        Vector3 pos = transform.position;
+        pos += transform.right * attackOffset.x;
+        pos += transform.up * attackOffset.y;
+
+        Collider2D colInfo = Physics2D.OverlapCircle(pos, attackRange, attackMask);
+        if (colInfo != null)
+        {
+            colInfo.GetComponent<Health>().TakeDamage(attackDamage);
+       
+        }
+      
+    }
+
+   
 }

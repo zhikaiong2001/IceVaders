@@ -40,7 +40,6 @@ public class Dash : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        Debug.Log(rb.velocity.ToString());
         tr.emitting = true;
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;

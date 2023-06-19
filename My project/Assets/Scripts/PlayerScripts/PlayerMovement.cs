@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 14f;
-    public bool isFacingRight { get; private set; } = true;
+    [HideInInspector] public bool isFacingRight = true;
     private float horizontal;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private AudioSource jumpSoundEffect;
@@ -47,18 +47,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
 
-    // Knockback
-    [Header("Knockback")]
-    [SerializeField] private float KBForceHor;
-    [SerializeField] private float KBForceVer;
-    [SerializeField] private float KBCounter;
-    [SerializeField] private float KBTotalTime;
-    [SerializeField] private float StunDuration;
-    [SerializeField] private float StunTotal;
-    [SerializeField] private bool KnockFromRight;
-    public bool isStunned { get; private set; }
-
-
     private void Start()
     {
         canMove = true;
@@ -68,6 +56,7 @@ public class PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         transform.position = Player.startingPosition.initialValue;
     }
+
 
     private void Update()
     {
@@ -81,49 +70,8 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        // Knockback Logic
-        if (KBCounter <= .01f && StunDuration <= .01f && !isWallJumping)
-        {
-            isStunned = false;
-            dirX = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-        }
-        else if (KBCounter > .01f)
-        {
-            isStunned = true;
-            if (KnockFromRight)
-            {
-                rb.velocity = new Vector2(-KBForceHor, KBForceVer);
-
-                if (!isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
-            }
-            else
-            {
-                rb.velocity = new Vector2(KBForceHor, KBForceVer);
-
-                if (isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
-            }
-
-            KBCounter -= Time.deltaTime;
-            StunDuration -= Time.deltaTime;
-        }
-        else
-        {
-            isStunned = true;
-            StunDuration -= Time.deltaTime;
-        }
+        dirX = Input.GetAxisRaw("Horizontal");
+        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
@@ -144,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isWallJumping == false)
         {
-            Flip();
+            flipCheck();
 
         }
 
@@ -155,11 +103,11 @@ public class PlayerMovement : MonoBehaviour
     private void UpdateAnimationState()
     {
         MovementState state;
-        if (dirX > 0.1f)
+        if (dirX > 0.5f)
         {
             state = MovementState.running;
         }
-        else if (dirX < -0.1f)
+        else if (dirX < -0.5f)
         {
             state = MovementState.running;
         }
@@ -180,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("state", (int)state);
     }
 
-    private void Flip()
+    private void flipCheck()
     {
         if (isFacingRight && dirX < 0f || !isFacingRight && dirX > 0f)
         {
@@ -261,32 +209,5 @@ public class PlayerMovement : MonoBehaviour
     public void disableMovement()
     {
         canMove = false;
-    }
-
-
-    // Knocback Methods
-    public void setKBCounter(float time)
-    {
-        KBCounter = time;
-    }
-
-    public float getKBTotalTime()
-    {
-        return KBTotalTime;
-    }
-
-    public void setStunCounter(float time)
-    {
-        StunDuration = time;
-    }
-
-    public float getStunTotal()
-    {
-        return StunTotal;
-    }
-
-    public void setKBRight(bool right)
-    {
-        KnockFromRight = right;
     }
 }

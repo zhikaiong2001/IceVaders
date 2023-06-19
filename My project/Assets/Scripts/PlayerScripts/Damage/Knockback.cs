@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class Knockback : MonoBehaviour
 {
@@ -36,6 +37,34 @@ public class Knockback : MonoBehaviour
     {
         isStunned = true;
         playerMovement.disableMovement();
-        yield return null;
+        if (fromRight)
+        {
+            rb.velocity = new Vector2(-KBForceHor, KBForceVer);
+
+            if (!playerMovement.isFacingRight)
+            {
+                flip();
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(KBForceHor, KBForceVer);
+
+            if (playerMovement.isFacingRight)
+            {
+                flip();
+            }
+        }
+        yield return new WaitForSeconds(KBTime);
+        isStunned = false;
+        playerMovement.enableMovement();
+    }
+
+    private void flip()
+    {
+        playerMovement.isFacingRight = !playerMovement.isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
     }
 }

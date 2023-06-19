@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     [Header ("Attributes")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
-    public int damage { get; private set; }
-    [SerializeField] private PlayerMovement2 playerMovement;
+    public int damage;
+    [SerializeField] private PlayerMovement playerMovement;
 
     [Header ("Hurt Frames")]
     [SerializeField] private float hurtFramesDuration;
@@ -19,7 +19,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Shader GUIShader;
     private SpriteRenderer spriteRend;
 
-    // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
@@ -50,26 +49,6 @@ public class Enemy : MonoBehaviour
         }
         GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         this.enabled = false;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
-        {
-            playerMovement.setKBCounter(playerMovement.getKBTotalTime());
-            playerMovement.setStunCounter(playerMovement.getStunTotal());
-            
-            if (collision.transform.position.x <= this.transform.position.x)
-            {
-                playerMovement.setKBRight(true);
-            }
-            else
-            {
-                playerMovement.setKBRight(false);
-            }
-
-            collision.GetComponent<Health>().TakeDamage(damage);
-        }
     }
 
     public bool deathStatus()

@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7651451232007826975}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Waypoint 1
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513523263874906550}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -1.11, z: 0}
+  m_LocalPosition: {x: -14.14, y: -1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7713922744691584373}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: Waypoint 2
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
@@ -55,7 +55,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2448488120084171640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.67, y: -1.11, z: 0}
+  m_LocalPosition: {x: 16.77, y: -1.11, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 292044457720426623}
   - component: {fileID: 613816293180598780}
   - component: {fileID: 8767670190719188591}
-  m_Layer: 8
+  m_Layer: 6
   m_Name: SlimeBody
   m_TagString: Slime
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ MonoBehaviour:
   KBCounter: 0
   KBTotalTime: 0.3
   KnockFromRight: 0
-  enemy: {fileID: 8767670190719188591}
+  enemy: {fileID: 0}
 --- !u!95 &613816293180598780
 Animator:
   serializedVersion: 5
@@ -317,7 +317,6 @@ MonoBehaviour:
   animator: {fileID: 613816293180598780}
   maxHealth: 100
   currentHealth: 0
-  damage: 1
   playerMovement: {fileID: 0}
   hurtFramesDuration: 0.5
   numberOfFlashes: 3

@@ -8,7 +8,6 @@ public class Health : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
-    private bool isDead;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -33,12 +32,14 @@ public class Health : MonoBehaviour
         }
         else
         {
-            if (!isDead)
+            if (!Player.isDead)
             {
                 anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
+                GetComponent<PlayerCollisions>().enabled = false;
                 rb.velocity = Vector2.zero;
-                isDead = true;
+                GetComponent<Rigidbody2D>().isKinematic = true;
+                Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load
             }
 

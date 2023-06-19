@@ -90,6 +90,8 @@ GameObject:
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 4415561493708495851}
   - component: {fileID: 1791104502}
+  - component: {fileID: 1791104496}
+  - component: {fileID: 1791104506}
   m_Layer: 10
   m_Name: JJ's Player
   m_TagString: Player
@@ -347,6 +349,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 15
   jumpForce: 30
+  isFacingRight: 1
   jumpableGround:
     serializedVersion: 2
     m_Bits: 512
@@ -358,13 +361,6 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 128
-  KBForceHor: 8
-  KBForceVer: 5
-  KBCounter: 0
-  KBTotalTime: 0.3
-  StunDuration: 0
-  StunTotal: 0.7
-  KnockFromRight: 0
 --- !u!114 &7345779578713646445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,7 +394,7 @@ MonoBehaviour:
   animator: {fileID: 4415561493708495854}
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 64
   attackCooldown: 0
   attackDelay: 0.2
   attackDuration: 0.3
@@ -432,12 +428,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingPositionTemp: {fileID: 11400000, guid: 0013f1e955663de49bcfa3ae1ccf59e6, type: 2}
-  currentHealthTemp: 1
+  isDeadTemp: 0
+  currentHealthTemp: 5
   maxHealthTemp: 5
   currentSoulTemp: 0
   maxSoulTemp: 0
   attackDamageTemp: 40
   unlockedTemp: 01010101
+--- !u!114 &1791104496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbac2680bada0d4486a248fda8e460c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1791104506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a9662ad1832d844978fc9c9c62deb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KBForceHor: 10
+  KBForceVer: 20
+  KBTime: 1
+  fromRight: 0
+  playerMovement: {fileID: 4415561493708495852}
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

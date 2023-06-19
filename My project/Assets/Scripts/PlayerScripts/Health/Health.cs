@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
 
+    [SerializeField] private AudioSource takeDamageSoundEffect;
+    [SerializeField] private AudioSource dieSoundEffect;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,12 +35,14 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
+            takeDamageSoundEffect.Play();
         }
         else
         {
             if (!Player.isDead)
             {
                 anim.SetTrigger("die");
+<<<<<<< HEAD:My project/Assets/Scripts/PlayerScripts/Health/Health.cs
                 playerMovement.enabled = false;
                 playerCollisions.gameObject.SetActive(false);
                 rb.velocity = Vector2.zero;
@@ -45,6 +50,13 @@ public class Health : MonoBehaviour
                 bc.enabled = false;
                 Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load
+=======
+                GetComponent<PlayerMovement2>().enabled = false;
+                rb.velocity = Vector3.zero;
+                dead = true;
+                StartCoroutine(deathProcess());
+                dieSoundEffect.Play();
+>>>>>>> ba42d5f2fd5cac182014ef2746347cd660d49435:My project/Assets/Scripts/Health.cs
             }
 
         }

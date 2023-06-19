@@ -7,15 +7,20 @@ public class PlayerSoulSkills : MonoBehaviour
     [SerializeField] private Health playerHealth;
     [SerializeField] private Soul playerSoul;
 
+<<<<<<< HEAD:My project/Assets/Scripts/PlayerScripts/Soul/PlayerSoulSkills.cs
     private bool isHealing = false;
     public int healAmount = 1;
+=======
+    public float healAmount = 1f;
+>>>>>>> ba42d5f2fd5cac182014ef2746347cd660d49435:My project/Assets/Scripts/PlayerScripts/PlayerSoulSkills.cs
     public float healCost = 40f;
-    public float healTime = 2f;
+    [SerializeField] private AudioSource healSoundEffect;
 
     public Transform firePosition;
     public GameObject projectile;
     public float fireBallCost = 50f;
     public int fireBallDamage = 100;
+    [SerializeField] private AudioSource fireballSoundEffect;
 
 
     // Start is called before the first frame update
@@ -27,7 +32,7 @@ public class PlayerSoulSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U) && !isHealing)
+        if (Input.GetKeyDown(KeyCode.U))
         {
             Healing();
         }
@@ -43,10 +48,9 @@ public class PlayerSoulSkills : MonoBehaviour
     {
         if (playerSoul.currentSouls >= healCost)
         {
-            isHealing = true;
             playerHealth.Heal(healAmount);
             playerSoul.UseSoul(healCost);
-            isHealing = false;
+            healSoundEffect.Play();
         }
     }
 
@@ -56,6 +60,7 @@ public class PlayerSoulSkills : MonoBehaviour
         {
             Instantiate(projectile, firePosition.position, transform.rotation);
             playerSoul.UseSoul(fireBallCost);
+            fireballSoundEffect.Play();
         }
         
     }

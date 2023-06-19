@@ -16,6 +16,9 @@ public class Health : MonoBehaviour
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
 
+    [SerializeField] private AudioSource takeDamageSoundEffect;
+    [SerializeField] private AudioSource dieSoundEffect;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -32,6 +35,7 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
+            takeDamageSoundEffect.Play();
         }
         else
         {
@@ -44,6 +48,7 @@ public class Health : MonoBehaviour
                 bc.enabled = false;
                 Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load
+                dieSoundEffect.Play();
             }
 
         }

@@ -499,14 +499,6 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 894649876}
-    - target: {fileID: 292044457720426623, guid: 6262849ce12248448833f46888a139c2, type: 3}
-      propertyPath: KBForceHor
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 292044457720426623, guid: 6262849ce12248448833f46888a139c2, type: 3}
-      propertyPath: KBForceVer
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2038642371754713877, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -554,10 +546,6 @@ PrefabInstance:
     - target: {fileID: 5300310268279911068, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 8767670190719188591, guid: 6262849ce12248448833f46888a139c2, type: 3}
-      propertyPath: damage
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8767670190719188591, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: playerMovement
@@ -3543,17 +3531,6 @@ MonoBehaviour:
   - Their acid bodies are toxic and will hurt you.
   - Use spacebar to jump across the platforms.
   textSpeed: 0
---- !u!114 &1142529242 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1142529242, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-  m_PrefabInstance: {fileID: 1160120815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbac2680bada0d4486a248fda8e460c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1160120815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3561,10 +3538,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: currentHealthTemp
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3612,14 +3585,6 @@ PrefabInstance:
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_Name
       value: JJ's Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4415561493708495851, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: playerCollisions
-      value: 
-      objectReference: {fileID: 1142529242}
-    - target: {fileID: 4415561493708495852, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: wallLayer.m_Bits
-      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}

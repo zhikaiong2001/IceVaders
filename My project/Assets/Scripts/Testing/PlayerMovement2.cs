@@ -34,6 +34,7 @@ public class PlayerMovement2 : MonoBehaviour
     [SerializeField] private float dashingPower = 24f;
     [SerializeField] private float dashingTime = 0.2f;
     [SerializeField] private float dashingCooldown = 1f;
+    [SerializeField] private AudioSource dashSoundEffect;
 
     private bool isWallSliding;
     private float wallSlidingSpeed = 2f;
@@ -148,6 +149,7 @@ public class PlayerMovement2 : MonoBehaviour
 
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             doubleJump = !doubleJump;
+            jumpSoundEffect.Play();
 
         }
         //Double jump
@@ -158,6 +160,7 @@ public class PlayerMovement2 : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, doubleJumpingPower);
                 doubleJump = !doubleJump;
+                jumpSoundEffect.Play();
             }
         }
 
@@ -252,6 +255,7 @@ public class PlayerMovement2 : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         tr.emitting = true;
+        dashSoundEffect.Play();
         yield return new WaitForSeconds(dashingTime);
         tr.emitting = false;
         rb.gravityScale = originalGravity;
@@ -271,6 +275,7 @@ public class PlayerMovement2 : MonoBehaviour
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+           
         }
         else
         {
@@ -286,7 +291,7 @@ public class PlayerMovement2 : MonoBehaviour
             wallJumpingDirection = -transform.localScale.x;
 
             wallJumpingCounter = wallJumpingTime;
-
+            
             CancelInvoke(nameof(StopWallJumping));
         }
         else
@@ -298,6 +303,7 @@ public class PlayerMovement2 : MonoBehaviour
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
+            jumpSoundEffect.Play();
             if (transform.localScale.x != wallJumpingDirection)
             {
                 isFacingRight = !isFacingRight;

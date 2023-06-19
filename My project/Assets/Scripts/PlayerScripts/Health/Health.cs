@@ -41,7 +41,6 @@ public class Health : MonoBehaviour
                 playerMovement.enabled = false;
                 playerCollisions.gameObject.SetActive(false);
                 rb.velocity = Vector2.zero;
-                rb.isKinematic = true;
                 bc.enabled = false;
                 Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load

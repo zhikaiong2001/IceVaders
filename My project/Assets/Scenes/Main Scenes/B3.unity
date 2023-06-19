@@ -563,6 +563,14 @@ PrefabInstance:
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: 1791104495}
+    - target: {fileID: 9031315683803457180, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1165160126693205279, guid: 36c306bbdf8331549ad33fdf28f674e7, type: 3}
+    - target: {fileID: 9031315683803457180, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6262849ce12248448833f46888a139c2, type: 3}
 --- !u!1 &609999664
@@ -3615,6 +3623,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+--- !u!4 &1160120816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4415561494289038639, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  m_PrefabInstance: {fileID: 1160120815}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1160120817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  m_PrefabInstance: {fileID: 1160120815}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1169992326
 GameObject:
   m_ObjectHideFlags: 0
@@ -6812,12 +6830,29 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4415561493708495852, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
   m_PrefabInstance: {fileID: 1160120815}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1160120817}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1791104496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160120817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c940df1af8e72214f8e6cd97362e4996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallJumpingPower: {x: 16, y: 32}
+  wallCheck: {fileID: 1160120816}
+  wallLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &2009177954
 GameObject:
   m_ObjectHideFlags: 0

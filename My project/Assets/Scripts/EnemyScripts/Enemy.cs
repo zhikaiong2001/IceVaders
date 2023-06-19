@@ -9,14 +9,9 @@ public class Enemy : MonoBehaviour
     [Header ("Attributes")]
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
-<<<<<<< HEAD
     public int damage;
     [SerializeField] private PlayerMovement playerMovement;
-=======
-    [SerializeField] private float damage;
-    [SerializeField] private PlayerMovement2 playerMovement;
     [SerializeField] private bool isFlyingEnemy = false;
->>>>>>> ba42d5f2fd5cac182014ef2746347cd660d49435
 
     [Header ("Hurt Frames")]
     [SerializeField] private float hurtFramesDuration;
@@ -25,8 +20,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Shader GUIShader;
     private SpriteRenderer spriteRend;
 
-<<<<<<< HEAD
-=======
     [Header ("Enemy Attack")]
     public Vector3 attackOffset;
     public float attackRange = 1f;
@@ -36,8 +29,6 @@ public class Enemy : MonoBehaviour
     public float attackCounter;
     private Health playerHealth;
 
-    // Start is called before the first frame update
->>>>>>> ba42d5f2fd5cac182014ef2746347cd660d49435
     void Start()
     {
         currentHealth = maxHealth;

@@ -7,12 +7,8 @@ public class PlayerSoulSkills : MonoBehaviour
     [SerializeField] private Health playerHealth;
     [SerializeField] private Soul playerSoul;
 
-<<<<<<< HEAD:My project/Assets/Scripts/PlayerScripts/Soul/PlayerSoulSkills.cs
     private bool isHealing = false;
     public int healAmount = 1;
-=======
-    public float healAmount = 1f;
->>>>>>> ba42d5f2fd5cac182014ef2746347cd660d49435:My project/Assets/Scripts/PlayerScripts/PlayerSoulSkills.cs
     public float healCost = 40f;
     [SerializeField] private AudioSource healSoundEffect;
 

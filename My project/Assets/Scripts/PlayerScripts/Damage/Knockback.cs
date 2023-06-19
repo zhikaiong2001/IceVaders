@@ -13,12 +13,12 @@ public class Knockback : MonoBehaviour
     private bool isStunned;
 
     private Rigidbody2D rb;
-
-    public PlayerMovement playerMovement;
+    private PlayerMovement playerMovement;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void knockCheck()

@@ -166,7 +166,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231960541}
   - component: {fileID: 231960542}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 10_Mist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,6 +499,14 @@ PrefabInstance:
       propertyPath: enemy
       value: 
       objectReference: {fileID: 894649876}
+    - target: {fileID: 292044457720426623, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: KBForceHor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 292044457720426623, guid: 6262849ce12248448833f46888a139c2, type: 3}
+      propertyPath: KBForceVer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2038642371754713877, guid: 6262849ce12248448833f46888a139c2, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -567,7 +575,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609999665}
   - component: {fileID: 609999666}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 09_Bushes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -725,7 +733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669978871}
   - component: {fileID: 669978872}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 05_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -948,7 +956,7 @@ GameObject:
   - component: {fileID: 842466277}
   - component: {fileID: 842466278}
   - component: {fileID: 842466279}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3316,7 +3324,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1033007485}
   - component: {fileID: 1033007486}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 04_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3399,7 +3407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1063912841}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3527,6 +3535,17 @@ MonoBehaviour:
   - Their acid bodies are toxic and will hurt you.
   - Use spacebar to jump across the platforms.
   textSpeed: 0
+--- !u!114 &1142529242 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1142529242, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  m_PrefabInstance: {fileID: 1160120815}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbac2680bada0d4486a248fda8e460c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1160120815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3534,9 +3553,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1791104506, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: KBTime
-      value: 0.5
+    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: currentHealthTemp
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_RootOrder
@@ -3585,6 +3604,14 @@ PrefabInstance:
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_Name
       value: JJ's Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495851, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: playerCollisions
+      value: 
+      objectReference: {fileID: 1142529242}
+    - target: {fileID: 4415561493708495852, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: wallLayer.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
@@ -6219,7 +6246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1379629303}
   - component: {fileID: 1379629304}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 03_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6303,7 +6330,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1440456270}
   - component: {fileID: 1440456271}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 07_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6463,7 +6490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1554952679}
   - component: {fileID: 1554952680}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 06_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6653,7 +6680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1756256554}
   - component: {fileID: 1756256555}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 01_Sky
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6801,7 +6828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009177955}
   - component: {fileID: 2009177956}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 02_Forest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7108,7 +7135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2079071260}
   - component: {fileID: 2079071261}
-  m_Layer: 10
+  m_Layer: 7
   m_Name: 08_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

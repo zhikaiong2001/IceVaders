@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    private Knockback kb;
+    public Knockback kb;
+    private Health health;
 
     private void Start()
     {
-        kb = GetComponent<Knockback>();
+        health = kb.GetComponent<Health>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,7 +24,7 @@ public class PlayerCollisions : MonoBehaviour
                 kb.fromRight = false;
             }
 
-            GetComponent<Health>().TakeDamage(collision.GetComponent<Enemy>().damage);
+            health.TakeDamage(collision.GetComponent<Enemy>().damage);
             kb.knockCheck();
         }
     }

@@ -8,17 +8,20 @@ public class Health : MonoBehaviour
 {
     private Animator anim;
     private Rigidbody2D rb;
+    private PlayerMovement playerMovement;
+    private BoxCollider2D bc;
+    public PlayerCollisions playerCollisions;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
-    private SpriteRenderer spriteRend;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRend = GetComponent<SpriteRenderer>();
+        bc = GetComponent<BoxCollider2D>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void TakeDamage(int damage)
@@ -35,10 +38,11 @@ public class Health : MonoBehaviour
             if (!Player.isDead)
             {
                 anim.SetTrigger("die");
-                GetComponent<PlayerMovement>().enabled = false;
-                GetComponent<PlayerCollisions>().enabled = false;
+                playerMovement.enabled = false;
+                playerCollisions.gameObject.SetActive(false);
                 rb.velocity = Vector2.zero;
-                GetComponent<Rigidbody2D>().isKinematic = true;
+                rb.isKinematic = true;
+                bc.enabled = false;
                 Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load
             }

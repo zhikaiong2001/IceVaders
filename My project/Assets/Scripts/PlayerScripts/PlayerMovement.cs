@@ -9,18 +9,17 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     // Components
-    private Rigidbody2D rb;
-    private BoxCollider2D coll;
-    private SpriteRenderer sprite;
+    private Rigidbody2D rb; 
+    private BoxCollider2D bc;
     private Animator anim;
 
     // Basic Movement
     public bool canMove { get; private set; } = true;
     private float dirX = 0f;
     [SerializeField] private float moveSpeed = 7f;
-    [SerializeField] private float jumpForce = 14f;
     [HideInInspector] public bool isFacingRight = true;
-    private float horizontal;
+    [SerializeField] private float jumpForce = 14f;
+    private float jumpScale;
     [SerializeField] private LayerMask jumpableGround;
     [SerializeField] private AudioSource jumpSoundEffect;
 
@@ -28,32 +27,20 @@ public class PlayerMovement : MonoBehaviour
     private string currentState;
     private enum MovementState { idle, running, jumping, falling };
 
-    public PlayerAttack playerAttack;
-
-    public Dash dash;
-
-
-    // Wall Slide
-    private bool isWallSliding;
-    private float wallSlidingSpeed = 2f;
-
-    private bool isWallJumping;
-    private float wallJumpingDirection;
-    private float wallJumpingTime = 0.2f;
-    private float wallJumpingCounter;
-    private float wallJumpingDuration = 0.4f;
-    [SerializeField] private Vector2 wallJumpingPower = new Vector2(16f, 32f);
-    [SerializeField] private Transform wallCheck;
-    [SerializeField] private LayerMask wallLayer;
-
+    // Add-Ons
+    private PlayerAttack playerAttack;
+    private Dash dash;
+    private WallCling wallClling;
 
     private void Start()
     {
         canMove = true;
         rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<BoxCollider2D>();
-        sprite = GetComponent<SpriteRenderer>();
+        bc = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
+        playerAttack = GetComponent<PlayerAttack>();
+        dash = GetComponent<Dash>();
+        wallClling = GetComponent<WallCling>();
         transform.position = Player.startingPosition.initialValue;
     }
 
@@ -73,34 +60,25 @@ public class PlayerMovement : MonoBehaviour
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
-        if (Input.GetButtonDown("Jump") && IsGrounded())
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            rb.velocity = new Vector2(rb.velocity.x, 0f);
         }
 
-        if (Player.unlocked[(int)Abilities.wallCling])
-        {
-            WallSlide();
-            WallJump();
-        }
-
-        UpdateAnimationState();
-
-        if (isWallJumping == false)
-        {
-            flipCheck();
-
-        }
+        flipCheck();
 
         dash.dashCheck();
         playerAttack.attackCheck();
+        wallClling.wallClingCheck();
+
+        updateAnimationState();
     }
 
-    private void UpdateAnimationState()
+    private void updateAnimationState()
     {
         MovementState state;
         if (dirX > 0.5f)
@@ -115,7 +93,6 @@ public class PlayerMovement : MonoBehaviour
         {
             state = MovementState.idle;
         }
-
 
         if (rb.velocity.y > 0.1f)
         {
@@ -140,65 +117,12 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private bool IsGrounded()
+    public bool isGrounded()
     {
-        return Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
-    private bool IsWalled()
-    {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
-    }
 
-    private void WallSlide()
-    {
-        if (IsWalled() && !IsGrounded() && dirX != 0f)
-        {
-            isWallSliding = true;
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
-        }
-        else
-        {
-            isWallSliding = false;
-        }
-    }
-
-    private void WallJump()
-    {
-        if (isWallSliding)
-        {
-            isWallJumping = false;
-            wallJumpingDirection = -transform.localScale.x;
-
-            wallJumpingCounter = wallJumpingTime;
-
-            CancelInvoke(nameof(StopWallJumping));
-        }
-        else
-        {
-            wallJumpingCounter -= Time.deltaTime;
-        }
-        if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
-        {
-            isWallJumping = true;
-            rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
-            wallJumpingCounter = 0f;
-            if (transform.localScale.x != wallJumpingDirection)
-            {
-                isFacingRight = !isFacingRight;
-                Vector3 localScale = transform.localScale;
-                localScale.x *= -1f;
-                transform.localScale = localScale;
-            }
-            Invoke(nameof(StopWallJumping), wallJumpingDuration);
-        }
-
-    }
-
-    private void StopWallJumping()
-    {
-        isWallJumping = false;
-    }
 
     // Universal Movement Controls
     public void enableMovement()

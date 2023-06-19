@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public AttackHitbox attackHitbox;
     public Animator animator;
     private Rigidbody2D rb;
+    private PlayerMovement playerMovement;
     public LayerMask enemyLayers;
 
     // Attack Rate
@@ -25,8 +26,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Soul playerSoul;
     [SerializeField] private float soulsPerAttack;
 
-    [SerializeField] PlayerMovement playerMovement;
-
     private bool isAttacking = false;
     private bool canAttack = true;
 
@@ -35,12 +34,13 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerMovement = GetComponent<PlayerMovement>(); 
     }
 
     // Update is called once per frame
     public void attackCheck()
     {
-        if (canAttack && Input.GetKeyDown(KeyCode.X) && Player.unlocked[(int)Player.Abilities.sword])
+        if (canAttack && !isAttacking && Input.GetKeyDown(KeyCode.X) && Player.unlocked[(int)Player.Abilities.sword])
         {
             StartCoroutine(Attack());
         }
@@ -51,7 +51,7 @@ public class PlayerAttack : MonoBehaviour
         isAttacking = true;
         canAttack = false;
         playerMovement.disableMovement();
-        rb.velocity = new Vector2(0f, rb.velocity.y);
+        rb.velocity = new Vector2(rb.velocity.x * 0.5f, 0f);
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackDelay);
         attackHitbox.gameObject.SetActive(true);
@@ -62,58 +62,4 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
     }
-
-    /*private void activateHitbox()
-    {
-        Collider2D[] hitEnemies = Physics2D.OverlapAreaAll(attackPointTop.position, attackPointBottom.position, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            //playerSoul.GainSoul(soulsPerAttack);
-            if (enemy.gameObject.tag == "Slime")
-            {
-                wf = enemy.GetComponent<WaypointFollower>();
-
-                wf.setKBCounter(wf.getKBTotalTime());
-
-                if (enemy.transform.position.x <= this.transform.position.x)
-                {
-                    wf.setKBRight(true);
-                }
-                else
-                {
-                    wf.setKBRight(false);
-                }
-            }
-            else if (enemy.gameObject.tag == "Door")
-            {
-                enemy.gameObject.SetActive(false);
-            }
-            else
-            {
-                ek = enemy.GetComponent<EnemyKnockback>();
-
-                ek.setKBCounter(ek.getKBTotalTime());
-
-                if (enemy.transform.position.x <= this.transform.position.x)
-                {
-                    ek.setKBRight(true);
-                }
-                else
-                {
-                    ek.setKBRight(false);
-                }
-            }
-
-            if (enemy.tag != "Door")
-            {
-                enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
-            }
-        }
-    }
-
-    private void deactivateHitbox()
-    {
-        return;
-    }*/
 }

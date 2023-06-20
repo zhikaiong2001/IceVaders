@@ -5,8 +5,6 @@ using UnityEngine;
 public class EnemyIdling : MonoBehaviour
 {
     private EnemyMovement enemyMovement;
-
-    [SerializeField] private EnemyAI enemyAI;
     public bool isFacingRight { get; private set; }
 
     [Header("Waypoint")]

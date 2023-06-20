@@ -21,6 +21,8 @@ public class AttackHitbox : MonoBehaviour
             {
                 wf.setKBRight(false);
             }
+
+            collision.GetComponent<EnemyHealth>().TakeDamage(Player.attackDamage);
         }
         else if (collision.gameObject.tag == "Door")
         {
@@ -30,18 +32,9 @@ public class AttackHitbox : MonoBehaviour
         {
             EnemyKnockback ek = collision.GetComponent<EnemyKnockback>();
 
-            ek.setKBCounter(ek.getKBTotalTime());
+            ek.knockCheck();
 
-            if (collision.transform.position.x <= this.transform.position.x)
-            {
-                ek.setKBRight(true);
-            }
-            else
-            {
-                ek.setKBRight(false);
-            }
-
-            collision.GetComponent<Enemy>().TakeDamage(Player.attackDamage);
+            collision.GetComponent<EnemyHealth>().TakeDamage(Player.attackDamage);
         }
     }
 }

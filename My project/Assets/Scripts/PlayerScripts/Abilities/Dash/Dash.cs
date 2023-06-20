@@ -33,7 +33,6 @@ public class Dash : MonoBehaviour
 
     private IEnumerator startDash()
     {
-        Debug.Log("coroutine");
         canDash = false;
         isDashing = true;
         playerMovement.disableMovement();

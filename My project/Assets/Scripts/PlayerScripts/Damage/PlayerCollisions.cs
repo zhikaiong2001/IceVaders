@@ -13,7 +13,7 @@ public class PlayerCollisions : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyHurtLayer"))
         {
             if (this.transform.position.x <= collision.transform.position.x)
             {

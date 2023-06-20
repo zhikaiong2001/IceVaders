@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
-    private void Start()
+    private void OnEnable()
     {
         startingPosition = startingPositionTemp;
         currentHealth = currentHealthTemp;

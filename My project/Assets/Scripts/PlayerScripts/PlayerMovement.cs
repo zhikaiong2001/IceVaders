@@ -9,7 +9,7 @@ using System;
 public class PlayerMovement : MonoBehaviour
 {
     // Components
-    private Rigidbody2D rb; 
+    private Rigidbody2D rb;
     private BoxCollider2D bc;
     private Animator anim;
 
@@ -121,8 +121,6 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
-
-
 
     // Universal Movement Controls
     public void enableMovement()

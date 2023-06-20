@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-
     public AttackHitbox attackHitbox;
     public Animator animator;
     private Rigidbody2D rb;
@@ -19,9 +18,6 @@ public class PlayerAttack : MonoBehaviour
 
     // Attack Active Frames
     public float attackDuration;
-
-    private WaypointFollower wf;
-    private EnemyKnockback ek;
 
     [SerializeField] private Soul playerSoul;
     [SerializeField] private float soulsPerAttack;

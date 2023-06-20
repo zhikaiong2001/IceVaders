@@ -4,25 +4,15 @@ using UnityEngine;
 using Pathfinding;
 using Unity.VisualScripting;
 
-[RequireComponent (typeof(Rigidbody2D))]
-[RequireComponent (typeof(Seeker))]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Seeker))]
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] private Transform target;
 
     [SerializeField] private float updateRate;
 
-    private bool noticesPlayer = false;
-
-    private bool isFacingRight;
-
-    [SerializeField] GoblinWaypoint gw;
-
-    private bool pulledFromGW = false;
-
-    private float dirX;
-
-    [SerializeField] private float noticeDistance;
+    private bool alerted;
 
     // Pathing AI
     private Seeker seeker;
@@ -61,7 +51,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    void OnPathComplete (Path p)
+    void OnPathComplete(Path p)
     {
         if (!p.error)
         {
@@ -70,32 +60,22 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    public void chaseCheck(bool alerted)
+    {
+        this.alerted = alerted;
+    }
+
     private void FixedUpdate()
     {
+        if (!alerted)
+        {
+            return;
+        }
+
         if (target == null)
         {
             return;
         }
-
-        dirX = target.position.x - transform.position.x;
-
-        if (dirX < noticeDistance)
-        {
-            noticesPlayer = true;
-        }
-
-        if (!noticesPlayer)
-        {
-            return;
-        }
-
-        if (!pulledFromGW)
-        {
-            isFacingRight = gw.facingRight();
-            pulledFromGW = true;
-        }
-
-        Flip();
 
         if (path == null)
         {
@@ -115,7 +95,7 @@ public class EnemyAI : MonoBehaviour
 
         pathIsEnded = false;
 
-        Vector2 dir = ( path.vectorPath[currentWaypoint] - transform.position ).normalized;
+        Vector2 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
         dir *= speed * Time.fixedDeltaTime;
 
         rb.AddForce(dir, fMode);
@@ -126,22 +106,6 @@ public class EnemyAI : MonoBehaviour
         {
             currentWaypoint++;
             return;
-        }
-    }
-
-    public bool notices()
-    {
-        return noticesPlayer;
-    }
-
-    private void Flip()
-    {
-        if (isFacingRight && dirX < 0f || !isFacingRight && dirX > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
         }
     }
 }

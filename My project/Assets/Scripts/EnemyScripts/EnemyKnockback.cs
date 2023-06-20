@@ -7,63 +7,75 @@ public class EnemyKnockback : MonoBehaviour
     [Header("Knockback")]
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
-    [SerializeField] private float KBCounter;
-    [SerializeField] private float KBTotalTime;
-    [SerializeField] private bool KnockFromRight;
-    private bool isFacingRight = false;
+    [SerializeField] private float KBTime;
+    private bool fromRight;
+    private bool isStunned;
 
     private Rigidbody2D rb;
+    private EnemyMovement enemyMovement;
+    private EnemyHealth enemyHealth;
 
-    [Header("Enemy Attributes")]
-    [SerializeField] private Enemy enemy;
-
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        enemyMovement = GetComponent<EnemyMovement>();
+        enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    void Update()
+    public void knockCheck()
     {
-        if (KBCounter <= .01f && !enemy.deathStatus())
+        if (enemyHealth.isDead || isStunned)
         {
             return;
         }
-        else if (!enemy.deathStatus())
+        else
         {
-            if (KnockFromRight)
-            {
-                rb.velocity = new Vector2(-KBForceHor, KBForceVer);
-            }
-            else
-            {
-                rb.velocity = new Vector2(KBForceHor, KBForceVer);
-
-                if (isFacingRight)
-                {
-                    isFacingRight = !isFacingRight;
-                    Vector3 localScale = transform.localScale;
-                    localScale.x *= -1f;
-                    transform.localScale = localScale;
-                }
-            }
-
-            KBCounter -= Time.deltaTime;
+            StartCoroutine(knock());
         }
     }
 
-    // Knockback Methods
-    public void setKBCounter(float time)
+    private IEnumerator knock()
     {
-        KBCounter = time;
+        dirCheck();
+
+        isStunned = true;
+        enemyMovement.disableMovement();
+        if (fromRight)
+        {
+            rb.velocity = new Vector2(-KBForceHor, KBForceVer);
+
+            if (!enemyMovement.isFacingRight)
+            {
+                flip();
+            }
+        }
+        else
+        {
+            rb.velocity = new Vector2(KBForceHor, KBForceVer);
+
+            if (enemyMovement.isFacingRight)
+            {
+                flip();
+            }
+        }
+        yield return new WaitForSeconds(KBTime);
+        isStunned = false;
+        enemyMovement.enableMovement();
     }
 
-    public float getKBTotalTime()
+    private void dirCheck()
     {
-        return KBTotalTime;
+        if (enemyMovement.rPos > 0f)
+        {
+            fromRight = false;
+        }
     }
 
-    public void setKBRight(bool right)
+    private void flip()
     {
-        KnockFromRight = right;
+        enemyMovement.isFacingRight = !enemyMovement.isFacingRight;
+        Vector3 localScale = transform.localScale;
+        localScale.x *= -1f;
+        transform.localScale = localScale;
     }
 }

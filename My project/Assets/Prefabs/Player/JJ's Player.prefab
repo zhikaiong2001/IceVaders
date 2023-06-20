@@ -157,13 +157,13 @@ GameObject:
   - component: {fileID: 4415561493708495855}
   - component: {fileID: 4415561493708495854}
   - component: {fileID: 4415561493708495825}
-  - component: {fileID: 4415561493708495852}
-  - component: {fileID: 7345779578713646445}
-  - component: {fileID: 4415561493708495824}
-  - component: {fileID: 4415561493708495851}
   - component: {fileID: 1791104502}
+  - component: {fileID: 4415561493708495852}
+  - component: {fileID: 4415561493708495851}
   - component: {fileID: 1791104506}
+  - component: {fileID: 4415561493708495824}
   - component: {fileID: 898500913982857825}
+  - component: {fileID: 7345779578713646445}
   m_Layer: 10
   m_Name: JJ's Player
   m_TagString: Player
@@ -408,6 +408,26 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 0
+--- !u!114 &1791104502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPositionTemp: {fileID: 11400000, guid: 0013f1e955663de49bcfa3ae1ccf59e6, type: 2}
+  isDeadTemp: 0
+  currentHealthTemp: 1
+  maxHealthTemp: 5
+  currentSoulTemp: 0
+  maxSoulTemp: 0
+  attackDamageTemp: 40
+  unlockedTemp: 01010101
 --- !u!114 &4415561493708495852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +447,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpSoundEffect: {fileID: 0}
---- !u!114 &7345779578713646445
+--- !u!114 &4415561493708495851
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -436,14 +456,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 4415561493708495827}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8871e175e2be0b84b901dfdf5e42e769, type: 3}
+  m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovement: {fileID: 4415561493708495852}
-  dashingPower: 20
-  dashingTime: 1
-  dashingCooldown: 0
-  tr: {fileID: 4415561493708495825}
+  playerCollisions: {fileID: 1142529242}
+  iFramesDuration: 0.5
+  numberOfFlashes: 1
+  takeDamageSoundEffect: {fileID: 0}
+  dieSoundEffect: {fileID: 0}
+--- !u!114 &1791104506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a9662ad1832d844978fc9c9c62deb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KBForceHor: 10
+  KBForceVer: 10
+  KBTime: 0.5
+  fromRight: 0
 --- !u!114 &4415561493708495824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,57 +502,6 @@ MonoBehaviour:
   attackDuration: 0.3
   playerSoul: {fileID: 0}
   soulsPerAttack: 0
---- !u!114 &4415561493708495851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415561493708495827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollisions: {fileID: 1142529242}
-  iFramesDuration: 0.5
-  numberOfFlashes: 1
---- !u!114 &1791104502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415561493708495827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingPositionTemp: {fileID: 11400000, guid: 0013f1e955663de49bcfa3ae1ccf59e6, type: 2}
-  isDeadTemp: 0
-  currentHealthTemp: 1
-  maxHealthTemp: 5
-  currentSoulTemp: 0
-  maxSoulTemp: 0
-  attackDamageTemp: 40
-  unlockedTemp: 01010101
---- !u!114 &1791104506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4415561493708495827}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3a9662ad1832d844978fc9c9c62deb9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  KBForceHor: 10
-  KBForceVer: 10
-  KBTime: 0.5
-  fromRight: 0
 --- !u!114 &898500913982857825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,6 +519,23 @@ MonoBehaviour:
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &7345779578713646445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8871e175e2be0b84b901dfdf5e42e769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 4415561493708495852}
+  dashingPower: 20
+  dashingTime: 1
+  dashingCooldown: 0
+  tr: {fileID: 4415561493708495825}
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

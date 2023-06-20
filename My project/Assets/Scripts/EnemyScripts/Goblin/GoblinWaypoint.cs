@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GoblinWaypoint : MonoBehaviour
 {
+    public EnemyMovement enemyMovement;
     [SerializeField] private EnemyAI enemyAI;
     private bool isFacingRight = false;
     private float dirX;
@@ -26,7 +27,7 @@ public class GoblinWaypoint : MonoBehaviour
 
     void Update()
     {
-        if (!enemyAI.notices())
+        if (!enemyMovement.alerted)
         {
             Vector3 curWaypointPos = waypoints[currentWaypoint].transform.position;
             if (Vector2.Distance(curWaypointPos, transform.position) < .1f)

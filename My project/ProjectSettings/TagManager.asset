@@ -22,9 +22,9 @@ TagManager:
   - Wall
   - Ground
   - Player
-  - 
-  - 
-  - 
+  - Dead
+  - EnemyHurtLayer
+  - PlayerHurtLayer
   - 
   - 
   - 

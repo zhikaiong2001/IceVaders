@@ -20,8 +20,8 @@ public class Healthbar : MonoBehaviour
     private void Update()
     {
         currentHealth = Player.currentHealth;
+        totalHealthBar.fillAmount = maxHealth / 10;
         currentHealthBar.fillAmount = currentHealth / 10;
-
     }
 
 }

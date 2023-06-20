@@ -9,13 +9,13 @@ public class Health : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
-    private BoxCollider2D bc;
     public PlayerCollisions playerCollisions;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
     [SerializeField] private int numberOfFlashes;
 
+    [Header("Sounds")]
     [SerializeField] private AudioSource takeDamageSoundEffect;
     [SerializeField] private AudioSource dieSoundEffect;
 
@@ -23,7 +23,6 @@ public class Health : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -35,7 +34,7 @@ public class Health : MonoBehaviour
         {
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
-            takeDamageSoundEffect.Play();
+            //takeDamageSoundEffect.Play();
         }
         else
         {
@@ -45,11 +44,10 @@ public class Health : MonoBehaviour
                 playerMovement.enabled = false;
                 playerCollisions.gameObject.SetActive(false);
                 rb.velocity = Vector2.zero;
-                rb.isKinematic = true;
-                bc.enabled = false;
+                this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 Player.isDead = true;
                 StartCoroutine(respawn()); // replace with load
-                dieSoundEffect.Play();
+                //dieSoundEffect.Play();
             }
 
         }

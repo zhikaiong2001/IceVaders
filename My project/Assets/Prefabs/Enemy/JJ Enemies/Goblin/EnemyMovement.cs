@@ -36,6 +36,7 @@ public class EnemyMovement : MonoBehaviour
         enemyIdling = GetComponent<EnemyIdling>();
         enemyAttack = GetComponent<EnemyAttack>();
         enemyAI = GetComponent<EnemyAI>();
+        alerted = false;
         isFacingRight = true;
     }
 
@@ -60,7 +61,6 @@ public class EnemyMovement : MonoBehaviour
         }
 
         enemyIdling.idleCheck();
-        enemyAI.chaseCheck(alerted);
         enemyAttack.attackCheck();
 
         flipCheck();
@@ -83,7 +83,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        if (isFacingRight && rPos < 0f || !isFacingRight && rPos > 0f)
+        if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

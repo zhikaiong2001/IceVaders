@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Box
       objectReference: {fileID: 0}
+    - target: {fileID: 3950104293620223348, guid: 706b9e1422cf87c41990b214d1fc7293, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3950104293620223350, guid: 706b9e1422cf87c41990b214d1fc7293, type: 3}
       propertyPath: lines.Array.size
       value: 1
@@ -9507,33 +9511,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1142529240, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: m_Layer
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1142529243, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: maxHealthTemp
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: currentHealthTemp
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: startingPositionTemp
-      value: 
-      objectReference: {fileID: 11400000, guid: 2a7cefd5bd6bc6b49acb2f9a9540e6e1, type: 2}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11
+      value: -6.57
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9574,10 +9558,6 @@ PrefabInstance:
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_Name
       value: JJ's Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7345779578713646445, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-      propertyPath: dashingTime
-      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
@@ -13049,7 +13029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABAIexja7GUdAIAACsFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK54XCDhi8t11CyB5IqJCtXHwR9hirkCWXHjyS4t9XI9vYYU+I7nn0tEb+IkzoClIj1UqxbC0zID8HBM/kx6Ajn+FM91Js2Se0MR8sMwUGUR/zRg2TDg8wTcsSjGLpL7HnGDx2oBUsl6pcZntYSG20g3PKNThKSYPZwkFfA3J2P8MYUy7uFM7w9OlO8XhwdccUhAHVhcajOIyieN7GjyYP8XwazKImbTJ6iMJZHC2H45kvYEXKaVlBhtN0daK246TuI9ycTQTOlErOmW5EEnOpvAnbqgAF6ELGqJvZC8PwAti+MKinn/ua5xpMY4iil0emnHV1UfJb1n6WVB9qWUfKLbaJJl5RXXP9Hz0MPJ0rWT63bYMxtjAFSw9v9JJSbXp+9+HH77qtOFF+oDsOHwWIF7lS0orMkUZZTLUawsfu722yRQHpocNrqXegrTq3W7Pby8UZrn7484KzcofUaFIDWy69234nQLl7+eME+43RTQmHooq/Gt7pvr9aDfHElDaOaqYUKG8nrcJQsvSe4TTWLKQS4OFGdAWCcnPZuDLm/gbvuF7bO+aJ4iNqmjdc+zbuUjzcxY/Hd9RGnm6XpQt5WoMuXq3hTEAnGokX59NCClEvWN+TNm1rVU7TXtresuz7apEcdiGdzgOgD8F0NouHYZSn8zwKp+6ZBWE4JX73mHBzUr6phTb2uFsTXXHh9qz9tgxWilZ+2TNFTyv2Wcqe5UzkcpsqAPFaV7gJB+WauDeZLTPmDNqCMUz4+yZfCeEyPUCW3AolftLl2SiadFUSUrGjNIgkZOE/JglB+LbLGwVHBids3ha7kus/UEsDBBQAAAgIAABAIey5ofvEbQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM011FQSi9KLMgoBooYgjilmSkgdrRSWmqSUaKphWFqorGhqbm5pa6RWVqyRZqZkamJsaWhkZGpUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAABAIexja7GUdAIAACsFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAABAIey5ofvEbQAAAHgAAAAJACQAAAAAAAAAAAAAAMECAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAeQMAAAAA
+    dataString: UEsDBBQAAAgIAABAIeylvJtidQIAACwFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK54XCDth4b7uEkD0koUK2cvFF2GOsQpZcegRIin9fjWxjhz0huufR0xr5izCha8iMVGvF8ieZA/k5IngmP0Y9+Qgnupdiyz6hi3lnuSkxiPqYV2qYdHiAaVpWYBTLfok9x+CpA61ghVTVKt/DUmqjHVxQrsFRShrMFg76GpGT+xknmHJ2pzDG06c7JdPRxR0zEAZUH5pMkjCKkkUXP5ndJYt5EEdt2mxyF4VxEq3G09gXsCLjtKohx2n6OlHXcdb0EW7ONgJnyiTnTLciiTnX3oRtXYICdCFn1M3shWF4CWxfGtQzzH0pCg2mNUTR8z1TzrqmKPktGz8rqg+NrA/KLbaJo4WX1BR9+o8fB54ulKweu77BFHuYkmWHV3rOqDYDw4fw/XfhVhwpP9Adh/cSxLNcK2lF7kijLKZaDeF9//c62rKE7NDjjdQb0Na93Z3b3e3iDBc//WnJWbVDajJrgC2X3m6/FKDcxfxxgv3K6LaEQ1HFXw1vdD/crZZ4YEobR7VTCpS3k1ZhKFl5z3Aaa5ZSCfBwK7oGQbk5b1wZc3uFN9yg7Q3zQPEVtc1brnscNyke7uOn0xtqI4/Xy9KlPD6BLl+s4UxALxqJZ+fTUgrRbNjQky5ta1VBs0Ha3rL8+2qRAnYhnS8CoHfBPI6TcRgV2aKIwrl7Z0EYzonfPSbcnJRvGqGtPe7WRF9cuD3rPi6jtaK13/Zc0eOafVZyYDkThdxmCkC8NBWuwkG5Ju5R5qucOYO2YAwT/r7JV0q4zA6Qp9dCqZ90dTKKpn2VlNTsQxpEUrL0X5OUIHzd5Y2CDwZHbN4Vu5DLP1BLAwQUAAAICAAAQCHsuaH7xG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UlpqklGiqYVhaqKxoam5uaWukVlaskWamZGpibGloZGRqVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAQCHspbybYnUCAAAsBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAQCHsuaH7xG0AAAB4AAAACQAkAAAAAAAAAAAAAADCAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAHoDAAAAAA==
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 

@@ -9,7 +9,7 @@ public class Knockback : MonoBehaviour
     [SerializeField] private float KBForceHor;
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBTime;
-    [HideInInspector] public bool fromRight;
+    private bool fromRight;
     private bool isStunned;
 
     private Rigidbody2D rb;
@@ -21,8 +21,9 @@ public class Knockback : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    public void knockCheck()
+    public void knockCheck(bool rightSide)
     {
+        fromRight = rightSide;
         if (Player.isDead || isStunned)
         {
             return;

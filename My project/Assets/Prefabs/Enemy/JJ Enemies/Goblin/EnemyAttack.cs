@@ -23,12 +23,11 @@ public class EnemyAttack : MonoBehaviour
 
     // Attack Range
     public float range;
-    public bool inRange;
 
     // Attack Active Frames
     public float attackDuration;
-    private bool isAttacking = false;
-    private bool canAttack = true;
+    private bool isAttacking;
+    private bool canAttack;
 
 
     // Start is called before the first frame update
@@ -37,6 +36,8 @@ public class EnemyAttack : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         enemyMovement = GetComponent<EnemyMovement>();
+        canAttack = true;
+        isAttacking = false;
     }
 
     // Update is called once per frame

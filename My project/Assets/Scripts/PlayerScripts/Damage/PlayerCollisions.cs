@@ -4,28 +4,19 @@ using UnityEngine;
 
 public class PlayerCollisions : MonoBehaviour
 {
-    public Knockback kb;
+    public GameObject player;
+    public GameObject enemy;
+    private Knockback kb;
     private Health health;
+    private bool rightSide;
 
     private void Start()
     {
-        health = kb.GetComponent<Health>();
+        kb = player.GetComponent<Knockback>();
+        health = player.GetComponent<Health>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("EnemyHurtLayer"))
-        {
-            if (this.transform.position.x <= collision.transform.position.x)
-            {
-                kb.fromRight = true;
-            }
-            else
-            {
-                kb.fromRight = false;
-            }
 
-            health.TakeDamage(collision.GetComponent<Enemy>().damage);
-            kb.knockCheck();
-        }
     }
 }

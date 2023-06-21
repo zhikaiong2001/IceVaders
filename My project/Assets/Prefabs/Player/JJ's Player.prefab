@@ -43,7 +43,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.44759196, y: -0.42677295}
@@ -71,7 +71,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edbac2680bada0d4486a248fda8e460c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kb: {fileID: 1791104506}
+  player: {fileID: 4415561493708495827}
+  enemy: {fileID: 0}
 --- !u!1 &934991598631618092
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,7 +84,7 @@ GameObject:
   - component: {fileID: 3324242596064312721}
   - component: {fileID: 474810898776454050}
   - component: {fileID: 4891533228411874686}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: AttackHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +165,7 @@ GameObject:
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 898500913982857825}
   - component: {fileID: 7345779578713646445}
-  m_Layer: 10
+  m_Layer: 13
   m_Name: JJ's Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -420,10 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPositionTemp: {fileID: 11400000, guid: 0013f1e955663de49bcfa3ae1ccf59e6, type: 2}
+  startingPositionTemp: {fileID: 0}
   isDeadTemp: 0
-  currentHealthTemp: 1
-  maxHealthTemp: 5
+  currentHealthTemp: 10
+  maxHealthTemp: 10
   currentSoulTemp: 0
   maxSoulTemp: 0
   attackDamageTemp: 40
@@ -479,7 +480,6 @@ MonoBehaviour:
   KBForceHor: 10
   KBForceVer: 10
   KBTime: 0.5
-  fromRight: 0
 --- !u!114 &4415561493708495824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 4415561493708495852}
   dashingPower: 20
-  dashingTime: 1
+  dashingTime: 0.2
   dashingCooldown: 0
   tr: {fileID: 4415561493708495825}
 --- !u!1 &4415561494289038638

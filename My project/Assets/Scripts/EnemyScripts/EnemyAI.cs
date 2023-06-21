@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 [RequireComponent(typeof(Seeker))]
 public class EnemyAI : MonoBehaviour
 {
+    private EnemyMovement enemyMovement;
     [SerializeField] private Transform target;
 
     [SerializeField] private float updateRate;
@@ -32,6 +33,7 @@ public class EnemyAI : MonoBehaviour
 
     void Start()
     {
+        enemyMovement = GetComponent<EnemyMovement>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
 
@@ -60,14 +62,14 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    public void chaseCheck(bool alerted)
-    {
-        this.alerted = alerted;
-    }
-
     private void FixedUpdate()
     {
-        if (!alerted)
+        if (!enemyMovement.alerted)
+        {
+            return;
+        }
+
+        if (!enemyMovement.canMove) 
         {
             return;
         }

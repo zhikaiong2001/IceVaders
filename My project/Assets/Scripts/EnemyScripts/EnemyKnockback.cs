@@ -9,7 +9,7 @@ public class EnemyKnockback : MonoBehaviour
     [SerializeField] private float KBForceVer;
     [SerializeField] private float KBTime;
     private bool fromRight;
-    private bool isStunned;
+    public bool isStunned { get; private set; }
 
     private Rigidbody2D rb;
     private EnemyMovement enemyMovement;

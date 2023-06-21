@@ -43,6 +43,7 @@ public class Player : MonoBehaviour
         currentSoul = currentSoulTemp;
         maxSoul = maxSoulTemp;
         unlocked = unlockedTemp;
+        attackDamage = attackDamageTemp;
     }
 
 

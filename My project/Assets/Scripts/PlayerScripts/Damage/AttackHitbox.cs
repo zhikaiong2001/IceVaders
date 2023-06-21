@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class AttackHitbox : MonoBehaviour
 {
+    private GameObject enemy;
+    private EnemyKnockback ek;
+    private EnemyHealth enemyHealth;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //playerSoul.GainSoul(soulsPerAttack);
@@ -28,13 +31,15 @@ public class AttackHitbox : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
         }
-        else if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            EnemyKnockback ek = collision.GetComponent<EnemyKnockback>();
+            enemy = collision.GetComponent<EnemyAttackHitbox>().enemy;
+
+            ek = enemy.GetComponent<EnemyKnockback>();
+            enemyHealth = enemy.GetComponent<EnemyHealth>();
 
             ek.knockCheck();
-
-            collision.GetComponent<EnemyHealth>().TakeDamage(Player.attackDamage);
+            enemyHealth.TakeDamage(Player.attackDamage);
         }
     }
 }

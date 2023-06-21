@@ -4,27 +4,37 @@ using UnityEngine;
 
 public class EnemyAttackHitbox : MonoBehaviour
 {
+    private GameObject player;
+    public GameObject enemy;
     private Knockback kb;
-    public EnemyAttack enemyAttack;
+    private EnemyAttack enemyAttack;
 
+    private bool rightSide;
+
+    private void Start()
+    {
+        enemyAttack = enemy.GetComponent<EnemyAttack>();
+    }
+     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerHurtLayer"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            kb = collision.GetComponent<Knockback>();
+            player = collision.GetComponent<PlayerCollisions>().player;
+            kb = player.GetComponent<Knockback>();
 
-            kb.knockCheck();
-
-            if (collision.transform.position.x <= this.transform.position.x)
+            if (collision.transform.position.x <= enemy.transform.position.x)
             {
-                kb.fromRight = true;
+                rightSide = true;
             }
             else
             {
-                kb.fromRight = false;
+                rightSide = false;
             }
 
-            collision.GetComponent<Health>().TakeDamage(enemyAttack.attackDamage);
+            kb.knockCheck(rightSide);
+
+            player.GetComponent<Health>().TakeDamage(enemyAttack.attackDamage);
         }
     }
 }

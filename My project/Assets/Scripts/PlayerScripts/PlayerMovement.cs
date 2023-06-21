@@ -41,7 +41,10 @@ public class PlayerMovement : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         dash = GetComponent<Dash>();
         wallClling = GetComponent<WallCling>();
-        transform.position = Player.startingPosition.initialValue;
+        if (Player.startingPosition != null)
+        {
+            transform.position = Player.startingPosition.initialValue;
+        }
     }
 
 

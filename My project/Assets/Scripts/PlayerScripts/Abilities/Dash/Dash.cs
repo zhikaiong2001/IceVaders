@@ -9,7 +9,7 @@ public class Dash : MonoBehaviour
     private Rigidbody2D rb;
 
     public bool isDashing { get; private set; }
-    private bool canDash = true;
+    private bool canDash;
     private bool dashUnlocked;
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
@@ -18,11 +18,18 @@ public class Dash : MonoBehaviour
 
     private void Start()
     {
+        isDashing = false;
+        canDash = true;
         rb = GetComponent<Rigidbody2D>();
     }
 
     public void dashCheck()
     {
+        if (playerMovement.isGrounded())
+        {
+            canDash = true;
+        }
+
         dashUnlocked = Player.unlocked[(int)Player.Abilities.dash];
 
         if (Input.GetKeyDown(KeyCode.Z) && canDash && dashUnlocked)
@@ -46,6 +53,5 @@ public class Dash : MonoBehaviour
         isDashing = false;
         playerMovement.enableMovement();
         yield return new WaitForSeconds(dashingCooldown);
-        canDash = true;
     }
 }

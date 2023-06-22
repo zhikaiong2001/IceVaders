@@ -22,9 +22,10 @@ public class EnemyKnockback : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    public void knockCheck()
+    public void knockCheck(bool rightSide)
     {
-        if (enemyHealth.isDead || isStunned)
+        fromRight = rightSide;
+        if (Player.isDead || isStunned)
         {
             return;
         }

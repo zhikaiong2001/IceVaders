@@ -88,7 +88,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 18.75, y: 18.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -154,7 +154,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 18.75, y: 18.75}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 18.75, y: 18.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -180,7 +180,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 18.75, y: 18.75}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 18.75, y: 18.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -246,10 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KBForceHor: 0
   KBForceVer: 0
-  KBCounter: 0
-  KBTotalTime: 0
-  KnockFromRight: 0
-  enemy: {fileID: 1926223327183074218}
+  KBTime: 0
 --- !u!114 &1926223327183074220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -262,6 +259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ae4c91074e44e8ba663ea09cfc05c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMovement: {fileID: 0}
   enemyAI: {fileID: 4019173687422877739, guid: ed52f1aa738045b458569a965a2bfb20, type: 3}
   waypoints:
   - {fileID: 1926223327870735003}
@@ -282,8 +280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   updateRate: 3
-  gw: {fileID: 1926223327183074220}
-  noticeDistance: 200
   speed: 300
   fMode: 0
   nextWaypointDistance: 3

@@ -47,7 +47,6 @@ public class EnemyIdling : MonoBehaviour
         {        
             animator.SetBool("Idling", true);
             waitCounter = waitTime;
-            Debug.Log(waitCounter.ToString());
             currentWaypoint++;
             if (currentWaypoint >= waypoints.Length)
             {
@@ -67,6 +66,7 @@ public class EnemyIdling : MonoBehaviour
     {
         if (enemyMovement.isFacingRight && wRPos > 0f || !enemyMovement.isFacingRight && wRPos < 0f)
         {
+            Debug.Log("check");
             enemyMovement.isFacingRight = !enemyMovement.isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

@@ -161,10 +161,12 @@ GameObject:
   - component: {fileID: 1791104502}
   - component: {fileID: 4415561493708495852}
   - component: {fileID: 4415561493708495851}
+  - component: {fileID: 1791104508}
   - component: {fileID: 1791104506}
   - component: {fileID: 4415561493708495824}
   - component: {fileID: 898500913982857825}
   - component: {fileID: 7345779578713646445}
+  - component: {fileID: 1791104507}
   m_Layer: 13
   m_Name: JJ's Player
   m_TagString: Player
@@ -423,10 +425,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPositionTemp: {fileID: 0}
   isDeadTemp: 0
-  currentHealthTemp: 10
+  currentHealthTemp: 5
   maxHealthTemp: 10
-  currentSoulTemp: 0
-  maxSoulTemp: 0
+  currentManaTemp: 10
+  maxManaTemp: 10
   attackDamageTemp: 40
   unlockedTemp: 01010101
 --- !u!114 &4415561493708495852
@@ -461,10 +463,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCollisions: {fileID: 1142529242}
+  healAmount: 1
+  healCost: 0
+  initiationTime: 0.1
+  initiationCounter: 0
+  healTime: 1
+  healCounter: 0
   iFramesDuration: 0.5
-  numberOfFlashes: 1
   takeDamageSoundEffect: {fileID: 0}
   dieSoundEffect: {fileID: 0}
+  healSoundEffect: {fileID: 0}
+--- !u!114 &1791104508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cb0f87c2a5a5f943b053044d2001688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1791104506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +556,26 @@ MonoBehaviour:
   dashingTime: 0.2
   dashingCooldown: 0
   tr: {fileID: 4415561493708495825}
+--- !u!114 &1791104507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4415561493708495827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b29181d12012a044a664f24c0dbabdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firePosition: {fileID: 4415561493658774141}
+  fireball: {fileID: 1633948178378277258, guid: f82accb99dbfa854684d3682c93edda9, type: 3}
+  cost: 0
+  damage: 100
+  speed: 30
+  fireTime: 0.3
+  fireCooldown: 0.3
+  fireballSoundEffect: {fileID: 0}
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

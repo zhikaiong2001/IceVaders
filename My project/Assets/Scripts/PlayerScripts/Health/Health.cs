@@ -11,19 +11,31 @@ public class Health : MonoBehaviour
     private PlayerMovement playerMovement;
     public PlayerCollisions playerCollisions;
 
+    [Header("Healing")]
+    public int healAmount;
+    public float healCost;
+    public float initiationTime;
+    private float initiationCounter;
+    public float healTime;
+    private float healCounter;
+    public bool isHealing { get; private set; }
+
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
-    [SerializeField] private int numberOfFlashes;
 
     [Header("Sounds")]
     [SerializeField] private AudioSource takeDamageSoundEffect;
     [SerializeField] private AudioSource dieSoundEffect;
+    [SerializeField] private AudioSource healSoundEffect;
 
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         playerMovement = GetComponent<PlayerMovement>();
+        isHealing = false;
+        initiationCounter = initiationTime;
+        healCounter = healTime;
     }
 
     public void TakeDamage(int damage)
@@ -60,19 +72,54 @@ public class Health : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void Heal(int amount)
+    public void healCheck()
     {
-        Player.currentHealth = Mathf.Clamp(Player.currentHealth + amount, 0, Player.maxHealth);
+        if (Input.GetKey(KeyCode.C) && Player.currentMana >= healCost)
+        {
+            if (initiationCounter > 0f)
+            {
+                initiationCounter -= Time.deltaTime;
+            }
+            else
+            {
+                if (healCounter > 0f)
+                {
+                    healCounter -= Time.deltaTime;
+                    isHealing = true;
+                }
+                else
+                {
+                    heal();
+                }
+            }
+        }
+
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            healCounter = healTime;
+            isHealing = false;
+            initiationCounter = initiationTime;
+        }
+    }
+
+    public void heal()
+    {
+        Player.currentHealth = Mathf.Clamp(Player.currentHealth + healAmount, 0, Player.maxHealth);
+        Player.currentMana = Mathf.Clamp(Player.currentMana - healCost, 0, Player.maxMana);
+        //healSoundEffect.Play();
+        healCounter = healTime;
+        isHealing = false;
     }
 
 
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
-        for (int i = 0; i < numberOfFlashes; i++)
-        {
-            yield return new WaitForSeconds(iFramesDuration / (numberOfFlashes));
-        }
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyAttack"), true);
+
+        yield return new WaitForSeconds(iFramesDuration);
+
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyAttack"), false);
     }
 }

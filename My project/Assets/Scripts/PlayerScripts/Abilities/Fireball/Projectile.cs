@@ -4,28 +4,27 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float projectileSpeed;
+    private float projectileSpeed;
     public GameObject impactEffect;
     private bool isFacingRight;
     private int fireBallDamage;
+    private GameObject enemy;
 
     private Rigidbody2D rb;
-    // Start is called before the first frame update
+
     void Start()
     {
 
-
         rb = GetComponent<Rigidbody2D>();
-        isFacingRight = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement2>().isFacingRight;
-        fireBallDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerSoulSkills>().fireBallDamage;
+        isFacingRight = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isFacingRight;
+        fireBallDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<FireballSkill>().damage;
+        projectileSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<FireballSkill>().speed;
         if (!isFacingRight)
         {
             transform.Rotate(0, 180f, 0);
             
         }
         rb.velocity = transform.right * projectileSpeed;
-
-
     }
 
     
@@ -34,9 +33,8 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Debug.Log("hit");
-            //Destroy(collision.gameObject);
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(fireBallDamage);
+            enemy = collision.gameObject.GetComponent<EnemyAttackHitbox>().enemy;
+            enemy.GetComponent<EnemyHealth>().TakeDamage(fireBallDamage);
             Destroy(gameObject);
             Instantiate(impactEffect, transform.position, Quaternion.identity);
         }
@@ -47,7 +45,5 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             Instantiate(impactEffect, transform.position, Quaternion.identity);
         }
-
-
     }
 }

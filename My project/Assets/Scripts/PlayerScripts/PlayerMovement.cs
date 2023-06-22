@@ -13,15 +13,17 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D bc;
     private Animator anim;
 
-    // Basic Movement
+    [Header("Jump")]
+    public float moveSpeed;
+    public float jumpForce;
+    [HideInInspector] public bool jumped;
+    [HideInInspector] public bool isFirstJump;
     public bool canMove { get; private set; } = true;
     private float dirX = 0f;
-    [SerializeField] private float moveSpeed = 7f;
-    [HideInInspector] public bool isFacingRight = true;
-    [SerializeField] private float jumpForce = 14f;
-    private float jumpScale;
     [SerializeField] private LayerMask jumpableGround;
-    [SerializeField] private AudioSource jumpSoundEffect;
+    public AudioSource jumpSoundEffect;
+
+    [HideInInspector] public bool isFacingRight = true;
 
     // Animation State
     private string currentState;
@@ -31,6 +33,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerAttack playerAttack;
     private Dash dash;
     private WallCling wallClling;
+    private FireballSkill fireballSkill;
+    private Health health;
+    private DoubleJump doubleJump;
 
     private void Start()
     {
@@ -41,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         dash = GetComponent<Dash>();
         wallClling = GetComponent<WallCling>();
+        fireballSkill = GetComponent<FireballSkill>();
+        health = GetComponent<Health>();
+        doubleJump = GetComponent<DoubleJump>();
+        jumped = false;
+        isFirstJump = true;
         if (Player.startingPosition != null)
         {
             transform.position = Player.startingPosition.initialValue;
@@ -60,14 +70,21 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
+        if (isGrounded())
+        {
+            jumped = false;
+        }
+
         dirX = Input.GetAxisRaw("Horizontal");
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
         if (Input.GetButtonDown("Jump") && isGrounded())
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            jumped = true;
+            isFirstJump = false;
         }
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && isFirstJump)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
         }
@@ -77,6 +94,9 @@ public class PlayerMovement : MonoBehaviour
         dash.dashCheck();
         playerAttack.attackCheck();
         wallClling.wallClingCheck();
+        fireballSkill.fireballCheck();
+        health.healCheck();
+        doubleJump.doubleJumpCheck();
 
         updateAnimationState();
     }

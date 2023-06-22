@@ -6,32 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
-    // Scene Starting Position
+    [Header("Scene Starting Position")]
     public static VectorValue startingPosition;
     public VectorValue startingPositionTemp;
 
-    // States
+    [Header("States")]
     public static bool isDead;
     public bool isDeadTemp;
 
-    // Health
+    [Header("Health")]
     public static int currentHealth;
     public static int maxHealth;
     public int currentHealthTemp;
     public int maxHealthTemp;
 
-    // Soul
-    public static float currentSoul;
-    public static float maxSoul;
-    public float currentSoulTemp;
-    public float maxSoulTemp;
+    [Header("Mana")]
+    public static float currentMana;
+    public static float maxMana;
+    public float currentManaTemp;
+    public float maxManaTemp;
 
-    // Attack Damage
+    [Header("Attack Damage")]
     public static int attackDamage;
     public int attackDamageTemp;
 
     // Abilities
-    public enum Abilities { sword, wallCling, dash, fireball };
+    public enum Abilities { sword, wallCling, dash, fireball, doubleJump };
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
@@ -40,12 +40,16 @@ public class Player : MonoBehaviour
         startingPosition = startingPositionTemp;
         currentHealth = currentHealthTemp;
         maxHealth = maxHealthTemp;
-        currentSoul = currentSoulTemp;
-        maxSoul = maxSoulTemp;
+        currentMana = currentManaTemp;
+        maxMana = maxManaTemp;
         unlocked = unlockedTemp;
         attackDamage = attackDamageTemp;
     }
 
+    public static bool unlockCheck(int ability)
+    {
+        return unlocked[ability];
+    }
 
     // Save and Load
     public void SavePlayer()

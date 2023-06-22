@@ -8,6 +8,7 @@ public class EnemyAttackHitbox : MonoBehaviour
     public GameObject enemy;
     private Knockback kb;
     private EnemyAttack enemyAttack;
+    private Health playerHealth;
 
     private bool rightSide;
 
@@ -22,6 +23,7 @@ public class EnemyAttackHitbox : MonoBehaviour
         {
             player = collision.GetComponent<PlayerCollisions>().player;
             kb = player.GetComponent<Knockback>();
+            playerHealth = player.GetComponent<Health>();
 
             if (collision.transform.position.x <= enemy.transform.position.x)
             {
@@ -33,8 +35,7 @@ public class EnemyAttackHitbox : MonoBehaviour
             }
 
             kb.knockCheck(rightSide);
-
-            player.GetComponent<Health>().TakeDamage(enemyAttack.attackDamage);
+            playerHealth.TakeDamage(enemyAttack.attackDamage);
         }
     }
 }

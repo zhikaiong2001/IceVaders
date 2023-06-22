@@ -195,8 +195,6 @@ GameObject:
   - component: {fileID: 3647730437742336780}
   - component: {fileID: 3647730437742336771}
   - component: {fileID: 3647730437742336781}
-  - component: {fileID: 3647730437742336768}
-  - component: {fileID: 3647730437742336769}
   - component: {fileID: 1043263824}
   m_Layer: 12
   m_Name: GoblinBody
@@ -355,7 +353,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  alertDist: 8
+  speed: 8
+  alertDist: 10
   isFacingRight: 0
 --- !u!114 &3647730437742336780
 MonoBehaviour:
@@ -369,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e84ca7a059b8c49a544bc89bd9d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 100
   currentHealth: 0
   hurtFramesDuration: 0.5
   numberOfFlashes: 3
@@ -415,51 +414,6 @@ MonoBehaviour:
   attackDelay: 0.2
   range: 3
   attackDuration: 0.3
---- !u!114 &3647730437742336768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647730437742336779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 0
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      serializedVersion: 2
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask:
-    value: -1
---- !u!114 &3647730437742336769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3647730437742336779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e118fa5b887ea74db002fc242957b3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  updateRate: 4
-  speed: 200
-  fMode: 0
-  nextWaypointDistance: 3
 --- !u!114 &1043263824
 MonoBehaviour:
   m_ObjectHideFlags: 0

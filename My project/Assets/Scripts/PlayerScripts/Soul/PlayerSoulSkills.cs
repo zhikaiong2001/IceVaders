@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerSoulSkills : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
-    [SerializeField] private Soul playerSoul;
+    private Health playerHealth;
+    private Soul playerSoul;
 
     private bool isHealing = false;
     public int healAmount = 1;
@@ -22,7 +22,8 @@ public class PlayerSoulSkills : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerHealth = GetComponent<Health>();
+        playerSoul = GetComponent<Soul>();
     }
 
     // Update is called once per frame
@@ -30,7 +31,7 @@ public class PlayerSoulSkills : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            Healing();
+            //Healing();
         }
 
         if(Input.GetKeyDown(KeyCode.C))
@@ -40,15 +41,15 @@ public class PlayerSoulSkills : MonoBehaviour
 
     }
 
-    private void Healing()
+    /*private void Healing()
     {
         if (playerSoul.currentSouls >= healCost)
         {
-            playerHealth.Heal(healAmount);
+            playerHealth.heal(healAmount);
             playerSoul.UseSoul(healCost);
             healSoundEffect.Play();
         }
-    }
+    }*/
 
     private void FireBall()
     {

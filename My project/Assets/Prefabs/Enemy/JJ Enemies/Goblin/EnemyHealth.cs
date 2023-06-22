@@ -41,8 +41,6 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log(damage.ToString());
-
         currentHealth = Mathf.Clamp(currentHealth - damage, 0, maxHealth);
 
         if (currentHealth > 0)
@@ -58,9 +56,6 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetBool("isDead", true);
                 anim.SetTrigger("Hurt");
-                enemyMovement.enabled = false;
-                enemyAI.enabled = false;
-                Debug.Log(enemyMovement.canMove.ToString());
                 rb.velocity = Vector2.zero;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 foreach (Transform child in transform)

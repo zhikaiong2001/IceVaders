@@ -11,6 +11,10 @@ public class EnemyMovement : MonoBehaviour
     private Animator anim;
     public Transform player;
 
+    [Header("Chase Attributes")]
+    public float speed;
+
+
     // State Control
     public bool canMove { get; private set; }
     public bool alerted { get; private set; }
@@ -25,7 +29,7 @@ public class EnemyMovement : MonoBehaviour
     // Add-Ons
     private EnemyAttack enemyAttack;
     private EnemyIdling enemyIdling;
-    private EnemyAI enemyAI;
+    private EnemyHealth enemyHealth;
 
     private void Start()
     {
@@ -35,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         enemyIdling = GetComponent<EnemyIdling>();
         enemyAttack = GetComponent<EnemyAttack>();
-        enemyAI = GetComponent<EnemyAI>();
+        enemyHealth = GetComponent<EnemyHealth>();
         alerted = false;
         isFacingRight = true;
     }
@@ -43,6 +47,16 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown("t"))
+        {
+            Debug.Log(isFacingRight);
+        }
+
+        if (enemyHealth.isDead)
+        {
+            return;
+        }
+
         if (!canMove)
         {
             return;
@@ -55,12 +69,19 @@ public class EnemyMovement : MonoBehaviour
 
         rPos = transform.position.x - player.position.x;
 
-        if (rPos < alertDist)
+        if (Mathf.Abs(rPos) < alertDist)
         {
             alerted = true;
         }
 
         enemyIdling.idleCheck();
+
+        if (alerted)
+        {
+            Vector2 newPos = new Vector2(player.position.x, transform.position.y);
+            transform.position = Vector2.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
+        }
+
         enemyAttack.attackCheck();
 
         flipCheck();
@@ -85,6 +106,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
+            Debug.Log("check");
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

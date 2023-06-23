@@ -3,21 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Soulbar : MonoBehaviour
+public class Manabar : MonoBehaviour
 {
-    public Image soulBar;
-    [SerializeField] private Soul playerSoul;
+    public Image manaBar;
 
     // Start is called before the first frame update
     void Start()
     {
-        soulBar.fillAmount = playerSoul.currentSouls / 100f;
+        manaBar.fillAmount = Player.currentMana / 100f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        soulBar.fillAmount = playerSoul.currentSouls / 100f;
+        manaBar.fillAmount = Player.currentMana / 100f;
     }
 }

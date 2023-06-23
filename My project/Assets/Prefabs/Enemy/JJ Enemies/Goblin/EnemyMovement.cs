@@ -30,6 +30,9 @@ public class EnemyMovement : MonoBehaviour
     private EnemyAttack enemyAttack;
     private EnemyIdling enemyIdling;
     private EnemyHealth enemyHealth;
+    private EnemyAI enemyAI;
+
+    public bool isFlyingEnemy = false;
 
     private void Start()
     {
@@ -40,6 +43,7 @@ public class EnemyMovement : MonoBehaviour
         enemyIdling = GetComponent<EnemyIdling>();
         enemyAttack = GetComponent<EnemyAttack>();
         enemyHealth = GetComponent<EnemyHealth>();
+        enemyAI = GetComponent<EnemyAI>();
         alerted = false;
         isFacingRight = true;
     }
@@ -78,8 +82,15 @@ public class EnemyMovement : MonoBehaviour
 
         if (alerted)
         {
-            Vector2 newPos = new Vector2(player.position.x, transform.position.y);
+            if (isFlyingEnemy)
+            {
+                enemyAI.enabled = true;
+            } else
+            {
+                Vector2 newPos = new Vector2(player.position.x, transform.position.y);
             transform.position = Vector2.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
+            }
+            
         }
 
         enemyAttack.attackCheck();

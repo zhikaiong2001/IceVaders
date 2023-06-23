@@ -64,6 +64,11 @@ public class EnemyHealth : MonoBehaviour
                 }
                 isDead = true;
                 //dieSoundEffect.Play();
+                if(enemyAI.enabled)
+                {
+                    enemyAI.enabled = false;
+                    rb.gravityScale = 1f;
+                }
             }
 
         }

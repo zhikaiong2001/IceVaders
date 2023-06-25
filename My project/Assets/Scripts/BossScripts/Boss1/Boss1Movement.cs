@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public class Boss1Movement : MonoBehaviour
 {
     // Components
     private Rigidbody2D rb;
@@ -17,19 +16,23 @@ public class EnemyMovement : MonoBehaviour
 
     // State Control
     public bool canMove { get; private set; }
-    public bool alerted { get; private set; }
     public float rPos { get; private set; }
     public float alertDist;
     [HideInInspector] public bool isFacingRight;
+    private enum AttackState { fireball, flamingfrenzy, firestorm }
+    private AttackState currentAttackState;
+    private int currentAttackIndex;
+    private AttackState[] attackOrder = { AttackState.fireball, AttackState.flamingfrenzy, AttackState.fireball, AttackState.firestorm };
 
     // Animation State
     private string currentState;
     private enum MovementState { idle, alerted };
 
     // Add-Ons
-    private EnemyAttack enemyAttack;
-    private EnemyIdling enemyIdling;
     private EnemyHealth enemyHealth;
+    private FlamingFrenzy flamingFrenzy;
+    private Boss1Fireball boss1Fireball;
+    private FireStorm fireStorm;
 
     private void Start()
     {
@@ -37,11 +40,11 @@ public class EnemyMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
-        enemyIdling = GetComponent<EnemyIdling>();
-        enemyAttack = GetComponent<EnemyAttack>();
         enemyHealth = GetComponent<EnemyHealth>();
-        alerted = false;
+        flamingFrenzy = GetComponent<FlamingFrenzy>();
+        boss1Fireball = GetComponent<Boss1Fireball>();
         isFacingRight = true;
+        currentAttackIndex = -1;
     }
 
 
@@ -62,43 +65,32 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
+        if (currentAttackIndex >= attackOrder.Length)
+        {
+            currentAttackIndex = 0;
+        }
+        currentAttackState = attackOrder[currentAttackIndex];
+
         rPos = transform.position.x - player.position.x;
-
-        if (Mathf.Abs(rPos) < alertDist)
-        {
-            alerted = true;
-        }
-
-        enemyIdling.idleCheck();
-
-        if (alerted)
-        {
-            Vector2 newPos = new Vector2(player.position.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
-        }
-
-        enemyAttack.attackCheck();
 
         flipCheck();
 
-        updateAnimationState();
-    }
-
-    private void updateAnimationState()
-    {
-        if (alerted)
+        if (currentAttackState == AttackState.flamingfrenzy)
         {
-            anim.SetTrigger("Alerted");
-        } 
+            flamingFrenzy.frenzyCheck();
+        }
+        else if (currentAttackState == AttackState.fireball)
+        {
+            boss1Fireball.fireballCheck();
+        }
+        else if (currentAttackState == AttackState.firestorm)
+        {
+            fireStorm.fireStormCheck();
+        }
     }
 
     public void flipCheck()
     {
-        if (!alerted)
-        {
-            return;
-        }
-
         if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
             Debug.Log("check");
@@ -119,5 +111,10 @@ public class EnemyMovement : MonoBehaviour
     public void disableMovement()
     {
         canMove = false;
+    }
+
+    public void nextAttack()
+    {
+        currentAttackIndex++;
     }
 }

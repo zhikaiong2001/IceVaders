@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerAfterImage : MonoBehaviour
 {
 
-    private float activeTime = 0.1f;
+    private float activeTime = 13f;
     private float timeActivated;
     private float alpha;
-    private float alphaSet = 0.8f;
-    private float alphaMultiplier = 0.85f;
+    private float alphaSet = 2f;
+    private float alphaDecay = 10f;
 
     private Transform player;
 
@@ -27,13 +27,13 @@ public class PlayerAfterImage : MonoBehaviour
         alpha = alphaSet;
         SR.sprite = playerSR.sprite;
         transform.position = player.position;
-        transform.rotation = player.rotation;
+        transform.localScale = player.localScale;
         timeActivated = Time.time;
     }
 
     private void Update()
     {
-        alpha *= alphaMultiplier;
+        alpha -= alphaDecay * Time.deltaTime;
         color = new Color(1f, 1f, 1f, alpha);
         SR.color = color;
 

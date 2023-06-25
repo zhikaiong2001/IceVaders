@@ -14,7 +14,8 @@ public class Dash : MonoBehaviour
     public float dashingPower = 24f;
     public float dashingTime = 0.2f;
     public float dashingCooldown = 1f;
-    [SerializeField] private TrailRenderer tr;
+    public float distanceBetweenImages;
+    private float lastImageXpos;
 
     private void Start()
     {
@@ -36,6 +37,15 @@ public class Dash : MonoBehaviour
         {
             StartCoroutine(startDash());
         }
+
+        if (isDashing && dashingTime > 0f)
+        {
+            if (Mathf.Abs(transform.position.x - lastImageXpos) > distanceBetweenImages)
+            {
+                PlayerAfterImagePool.Instance.GetFromPool();
+                lastImageXpos = transform.position.x;
+            }
+        }
     }
 
     private IEnumerator startDash()
@@ -46,9 +56,9 @@ public class Dash : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
-        tr.emitting = true;
+        PlayerAfterImagePool.Instance.GetFromPool();
+        lastImageXpos = transform.position.x;
         yield return new WaitForSeconds(dashingTime);
-        tr.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         playerMovement.enableMovement();

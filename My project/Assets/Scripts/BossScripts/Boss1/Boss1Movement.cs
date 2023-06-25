@@ -13,13 +13,13 @@ public class Boss1Movement : MonoBehaviour
 
     // State Control
     public bool canMove { get; private set; }
-    public float rPos { get; private set; }
+    [HideInInspector] public float rPos;
     [HideInInspector] public bool isFacingRight;
-    private enum AttackState 
-    { 
-        fireball, 
-        flamingfrenzy, 
-        firestorm 
+    private enum AttackState
+    {
+        fireball,
+        flamingfrenzy,
+        firestorm
     }
     private AttackState currentAttackState;
     private int currentAttackIndex;
@@ -30,10 +30,6 @@ public class Boss1Movement : MonoBehaviour
         AttackState.fireball,
         AttackState.firestorm
     };
-
-    // Animation State
-    private string currentState;
-    private enum MovementState { idle, alerted };
 
     // Add-Ons
     private EnemyHealth enemyHealth;
@@ -50,6 +46,7 @@ public class Boss1Movement : MonoBehaviour
         enemyHealth = GetComponent<EnemyHealth>();
         flamingFrenzy = GetComponent<FlamingFrenzy>();
         boss1Fireball = GetComponent<Boss1Fireball>();
+        fireStorm = GetComponent<FireStorm>();
         isFacingRight = true;
         currentAttackIndex = 0;
     }
@@ -78,18 +75,14 @@ public class Boss1Movement : MonoBehaviour
         }
         currentAttackState = attackOrder[currentAttackIndex];
 
-        rPos = transform.position.x - player.position.x;
-
         flipCheck();
 
         if (currentAttackState == AttackState.flamingfrenzy)
         {
-            //Debug.Log("flaming");
             flamingFrenzy.frenzyCheck();
         }
         else if (currentAttackState == AttackState.fireball)
         {
-            //Debug.Log("fireball");
             boss1Fireball.fireballCheck();
         }
         else if (currentAttackState == AttackState.firestorm)
@@ -100,6 +93,8 @@ public class Boss1Movement : MonoBehaviour
 
     public void flipCheck()
     {
+        rPos = transform.position.x - player.position.x;
+
         if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
             isFacingRight = !isFacingRight;
@@ -124,5 +119,10 @@ public class Boss1Movement : MonoBehaviour
     public void nextAttack()
     {
         currentAttackIndex++;
+    }
+
+    public void updateRPos()
+    {
+        rPos = transform.position.x - player.position.x;
     }
 }

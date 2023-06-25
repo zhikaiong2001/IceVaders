@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6217017180752193684}
   - component: {fileID: 6217017180752193685}
   - component: {fileID: 6217017180752193686}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: EnemyFireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -143,9 +143,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.86, y: -0.16}
+  m_Offset: {x: 0.69020116, y: -0.15999997}
   serializedVersion: 2
-  m_Radius: 0.8460258
+  m_Radius: 1.0158247
 --- !u!114 &6217017180752193686
 MonoBehaviour:
   m_ObjectHideFlags: 0

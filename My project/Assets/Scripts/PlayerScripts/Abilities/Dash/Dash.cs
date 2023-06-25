@@ -26,11 +26,6 @@ public class Dash : MonoBehaviour
 
     public void dashCheck()
     {
-        if (playerMovement.isGrounded())
-        {
-            canDash = true;
-        }
-
         dashUnlocked = Player.unlocked[(int)Player.Abilities.dash];
 
         if (Input.GetKeyDown(KeyCode.Z) && canDash && dashUnlocked)
@@ -55,13 +50,18 @@ public class Dash : MonoBehaviour
         playerMovement.disableMovement();
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyAttack"), true);
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         PlayerAfterImagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;
         yield return new WaitForSeconds(dashingTime);
         rb.gravityScale = originalGravity;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyAttack"), false);
         isDashing = false;
         playerMovement.enableMovement();
         yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }

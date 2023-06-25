@@ -356,6 +356,7 @@ MonoBehaviour:
   speed: 8
   alertDist: 10
   isFacingRight: 0
+  isFlyingEnemy: 0
 --- !u!114 &3647730437742336780
 MonoBehaviour:
   m_ObjectHideFlags: 0

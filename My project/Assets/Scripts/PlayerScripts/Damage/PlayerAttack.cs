@@ -19,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
     // Attack Active Frames
     public float attackDuration;
 
-    [SerializeField] private Soul playerSoul;
-    [SerializeField] private float soulsPerAttack;
+    [SerializeField] private Mana Mana;
+    public float manaGainPerAttack;
 
     private bool isAttacking = false;
     private bool canAttack = true;

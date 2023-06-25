@@ -40,7 +40,6 @@ public class FireballSkill : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.C) && canFire && fireballUnlocked && !health.isHealing)
         {
-            Debug.Log("check");
             StartCoroutine(fire());
         }
     }

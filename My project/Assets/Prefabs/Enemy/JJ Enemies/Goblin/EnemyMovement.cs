@@ -112,7 +112,6 @@ public class EnemyMovement : MonoBehaviour
 
         if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
-            Debug.Log("check");
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

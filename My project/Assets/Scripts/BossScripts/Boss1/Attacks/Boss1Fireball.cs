@@ -20,10 +20,9 @@ public class Boss1Fireball : MonoBehaviour
     public GameObject fireball;
     public int damage;
     public float speed;
-    public float fireTime;
-    public float fireCooldown;
     private bool isFiring;
     public float startUpTime;
+    public float fireTime;
     public float endTime;
 
     [Header("Sounds")]
@@ -45,8 +44,8 @@ public class Boss1Fireball : MonoBehaviour
         {
             transform.position = curWaypointPos;
             rb.velocity = Vector2.zero;
-            Debug.Log("check");
-            fire();
+            //Debug.Log("check");
+            StartCoroutine(fire());
         }
     }
 
@@ -54,12 +53,15 @@ public class Boss1Fireball : MonoBehaviour
     {
         isFiring = true;
         boss1Movement.disableMovement();
-        animator.SetTrigger("FireballStart");
+        boss1Movement.flipCheck();
+        Debug.Log(boss1Movement.isFacingRight);
         yield return new WaitForSeconds(startUpTime);
+        animator.SetTrigger("FireballStart");
+        yield return new WaitForSeconds(fireTime);
         Instantiate(fireball, firePosition.position, transform.rotation);
         //fireballSoundEffect.Play();
-        yield return new WaitForSeconds(endTime);
         animator.SetTrigger("FireballEnd");
+        yield return new WaitForSeconds(endTime);
         boss1Movement.enableMovement();
         isFiring = false;
         currentWaypoint++;

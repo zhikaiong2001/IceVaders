@@ -11,16 +11,25 @@ public class FireStormProjectile : MonoBehaviour
     public float offSet;
 
     private Rigidbody2D rb;
+    private GameObject player;
+    private Knockback kb;
+    private EnemyAttack enemyAttack;
+    private Health playerHealth;
+    private bool rightSide;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        isFacingRight = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isFacingRight;
-        fireBallDamage = GameObject.FindGameObjectWithTag("Player").GetComponent<FireballSkill>().damage;
-        projectileSpeed = GameObject.FindGameObjectWithTag("Player").GetComponent<FireballSkill>().speed;
+        isFacingRight = GameObject.FindGameObjectWithTag("FireApostle").GetComponent<Boss1Movement>().isFacingRight;
+        fireBallDamage = GameObject.FindGameObjectWithTag("FireApostle").GetComponent<FireStorm>().damage;
+        projectileSpeed = GameObject.FindGameObjectWithTag("FireApostle").GetComponent<FireStorm>().speed;
         if (!isFacingRight)
         {
-            transform.Rotate(0, 180f, 0);
+            transform.Rotate(0, 180f, -90f);
+        }
+        else
+        {
+            transform.Rotate(0, 0, -90f);
         }
         rb.velocity = new Vector2(0, -projectileSpeed);
     }
@@ -31,14 +40,29 @@ public class FireStormProjectile : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            collision.gameObject.GetComponent<Health>().TakeDamage(fireBallDamage);
-            impact();
+            player = collision.GetComponent<PlayerCollisions>().player;
+            kb = player.GetComponent<Knockback>();
+            playerHealth = player.GetComponent<Health>();
+
+            if (collision.transform.position.x <= this.transform.position.x)
+            {
+                rightSide = true;
+            }
+            else
+            {
+                rightSide = false;
+            }
+
+            kb.knockCheck(rightSide);
+            playerHealth.TakeDamage(fireBallDamage);
+            //impact();
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
-            impact();
+            Destroy(gameObject);
+            //impact();
         }
     }
 

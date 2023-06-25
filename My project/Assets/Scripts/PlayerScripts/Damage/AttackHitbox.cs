@@ -7,30 +7,21 @@ public class AttackHitbox : MonoBehaviour
     private GameObject enemy;
     private EnemyKnockback ek;
     private EnemyHealth enemyHealth;
+    public GameObject player;
+    private Mana mana;
+    private PlayerAttack playerAttack;
 
     private bool rightSide;
 
+    private void Start()
+    {
+        mana = player.GetComponent<Mana>();
+        playerAttack = player.GetComponent<PlayerAttack>();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //playerSoul.GainSoul(soulsPerAttack);
-        if (collision.gameObject.tag == "Slime")
-        {
-            WaypointFollower wf = collision.GetComponent<WaypointFollower>();
-
-            wf.setKBCounter(wf.getKBTotalTime());
-
-            if (collision.transform.position.x <= this.transform.position.x)
-            {
-                wf.setKBRight(true);
-            }
-            else
-            {
-                wf.setKBRight(false);
-            }
-
-            collision.GetComponent<EnemyHealth>().TakeDamage(Player.attackDamage);
-        }
-        else if (collision.gameObject.tag == "Door")
+        if (collision.gameObject.tag == "Door")
         {
             collision.gameObject.SetActive(false);
         }
@@ -51,6 +42,7 @@ public class AttackHitbox : MonoBehaviour
 
             ek.knockCheck(rightSide);
             enemyHealth.TakeDamage(Player.attackDamage);
+            mana.gainMana(playerAttack.manaGainPerAttack);
         }
     }
 }

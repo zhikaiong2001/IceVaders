@@ -57,8 +57,8 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetBool("isDead", true);
                 anim.SetTrigger("Hurt");
-                anim.SetTrigger("Die");
                 rb.velocity = Vector2.zero;
+                rb.gravityScale = 1.0f;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 foreach (Transform child in transform)
                 {
@@ -82,6 +82,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Attack"), LayerMask.NameToLayer("Enemy"), true);
 
         for (int i = 0; i < numberOfFlashes; i++)
         {
@@ -92,5 +93,6 @@ public class EnemyHealth : MonoBehaviour
         }
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Attack"), LayerMask.NameToLayer("Enemy"), false);
     }
 }

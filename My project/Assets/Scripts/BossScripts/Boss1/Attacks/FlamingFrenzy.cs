@@ -32,7 +32,9 @@ public class FlamingFrenzy : MonoBehaviour
     {
         boss1Movement = GetComponent<Boss1Movement>();
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         starting = true;
+        canAttack = true;
     }
 
     public void frenzyCheck()
@@ -50,9 +52,10 @@ public class FlamingFrenzy : MonoBehaviour
         }
         else
         {
-            if (rangeCheck())
+            if (canAttack && rangeCheck())
             {
-                StartCoroutine(Attack());
+                StopAllCoroutines();
+                StartCoroutine(SpewFire());
             }
             if (!isAttacking)
             {
@@ -63,10 +66,12 @@ public class FlamingFrenzy : MonoBehaviour
 
     private bool rangeCheck()
     {
+        boss1Movement.updateRPos();
+
         return Mathf.Abs(boss1Movement.rPos) < range;
     }
 
-    private IEnumerator Attack()
+    private IEnumerator SpewFire()
     {
         isAttacking = true;
         canAttack = false;

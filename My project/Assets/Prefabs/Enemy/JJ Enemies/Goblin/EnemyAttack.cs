@@ -43,6 +43,11 @@ public class EnemyAttack : MonoBehaviour
 
     private bool rangeCheck()
     {
+        if (range < 0)
+        {
+            return false;
+        }
+
         return Mathf.Abs(enemyMovement.rPos) < range;
     }
 

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670078937}
   - component: {fileID: 8965937176194475931}
-  - component: {fileID: 8564378363510559994}
+  - component: {fileID: 472637598}
   m_Layer: 6
   m_Name: Boss1_Hurtbox
   m_TagString: Untagged
@@ -59,7 +59,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.2165966, y: 5.6234355}
   m_EdgeRadius: 0
---- !u!114 &8564378363510559994
+--- !u!114 &472637598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -68,10 +68,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 670078936}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f00eac146d2b9418f23e0ae8d0117d, type: 3}
+  m_Script: {fileID: 11500000, guid: 368ff9237c2d2d443b996bcdbdcefea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 1926223327183074231}
+  enemy: {fileID: 1926223327183074231}
 --- !u!1 &1926223327183074231
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,9 +90,10 @@ GameObject:
   - component: {fileID: 7739223280554108728}
   - component: {fileID: 9210303379700181258}
   - component: {fileID: 5642098309889806179}
+  - component: {fileID: 418326955}
   m_Layer: 12
   m_Name: Boss1_Body
-  m_TagString: Enemy
+  m_TagString: FireApostle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,12 +247,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e84ca7a059b8c49a544bc89bd9d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 1
   currentHealth: 0
-  hurtFramesDuration: 0
-  numberOfFlashes: 0
-  defaultShader: {fileID: 0}
-  GUIShader: {fileID: 0}
+  hurtFramesDuration: 1
+  numberOfFlashes: 3
+  defaultShader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+  GUIShader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   takeDamageSoundEffect: {fileID: 0}
   dieSoundEffect: {fileID: 0}
 --- !u!114 &6222968181409504549
@@ -267,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 10
+  rPos: 0
   isFacingRight: 0
 --- !u!114 &7739223280554108728
 MonoBehaviour:
@@ -310,7 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb3b49d7eea3eff488733761e823ab64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackHitbox: {fileID: 0}
+  attackHitbox: {fileID: 399168694}
   damageLayers:
     serializedVersion: 2
     m_Bits: 1024
@@ -334,19 +335,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6298ba19e2b6954e8dd0556cfba9368, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypoints: []
+  waypoints:
+  - {fileID: 4430634687671946913}
+  - {fileID: 2137315234336190978}
+  - {fileID: 1926223327870735003}
   damageLayers:
     serializedVersion: 2
     m_Bits: 1024
   firePosition: {fileID: 1926223327183074228}
   fireball: {fileID: 6217017180752193687, guid: 573c7640d7f5aae40867eebec3c0ae79, type: 3}
-  damage: 0
-  speed: 5
-  fireTime: 1
-  fireCooldown: 1
+  damage: 1
+  speed: 20
   startUpTime: 1
-  endTime: 1
+  fireTime: 1
+  endTime: 3
   fireballSoundEffect: {fileID: 0}
+--- !u!114 &418326955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926223327183074231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4848a0b21847e24682797d27ffa58e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KBForceHor: 0
+  KBForceVer: 0
+  KBTime: 0
 --- !u!1 &1926223327230994143
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2137315234336190978}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.74, y: -1.44, z: 0}
+  m_LocalPosition: {x: -20.47, y: -1.44, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -484,8 +502,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8409218762814915742}
   - component: {fileID: 2923208021981351427}
-  - component: {fileID: 3181051697993425565}
-  m_Layer: 6
+  - component: {fileID: 399168694}
+  m_Layer: 15
   m_Name: FrenzyHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -533,7 +551,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.0571995, y: 3.8473556}
   m_EdgeRadius: 0
---- !u!114 &3181051697993425565
+--- !u!114 &399168694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,10 +560,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3070124284287272641}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5f00eac146d2b9418f23e0ae8d0117d, type: 3}
+  m_Script: {fileID: 11500000, guid: 368ff9237c2d2d443b996bcdbdcefea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boss: {fileID: 1926223327183074231}
+  enemy: {fileID: 1926223327183074231}
 --- !u!1 &4046227510552830846
 GameObject:
   m_ObjectHideFlags: 0

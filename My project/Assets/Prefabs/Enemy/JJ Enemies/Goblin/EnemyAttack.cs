@@ -12,19 +12,11 @@ public class EnemyAttack : MonoBehaviour
     private EnemyMovement enemyMovement;
     public LayerMask damageLayers;
 
-    // Attack Damage
+    [Header("Attack")]
     public int attackDamage;
-
-    // Attack Rate
     public float attackCooldown;
-
-    // Attack Delay
     public float attackDelay;
-
-    // Attack Range
     public float range;
-
-    // Attack Active Frames
     public float attackDuration;
     private bool isAttacking;
     private bool canAttack;

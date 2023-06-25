@@ -66,7 +66,6 @@ public class EnemyIdling : MonoBehaviour
     {
         if (enemyMovement.isFacingRight && wRPos > 0f || !enemyMovement.isFacingRight && wRPos < 0f)
         {
-            Debug.Log("check");
             enemyMovement.isFacingRight = !enemyMovement.isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

@@ -65,6 +65,5 @@ public class FireballSkill : MonoBehaviour
             yield return new WaitForSeconds(fireCooldown);
             canFire = true;    
         }
-
     }
 }

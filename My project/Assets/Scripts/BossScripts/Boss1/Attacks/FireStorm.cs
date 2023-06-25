@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Unity.Mathematics;
 
 public class FireStorm : MonoBehaviour
 {
@@ -11,7 +12,8 @@ public class FireStorm : MonoBehaviour
     private Rigidbody2D rb;
 
     [Header("Waypoints")]
-    [SerializeField] private GameObject[] firePoints;
+    [SerializeField] private GameObject[] firePointObjects;
+    private Vector2[] firePoints;
     public GameObject channelPoint;
 
     [Header("Attributes")]
@@ -27,16 +29,18 @@ public class FireStorm : MonoBehaviour
 
     public int numberOfFires;
     public float fireDelay;
-    private GameObject currentFirePoint;
+    private Vector2 currentFirePoint;
 
     [Header("Sounds")]
     public AudioSource fireballSoundEffect;
 
-    void Start()
+    void OnAwake()
     {
         boss1Movement = GetComponent<Boss1Movement>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        firePoints[0] = firePointObjects[0].transform.position;
+        firePoints[1] = firePointObjects[1].transform.position;
     }
 
     public void fireStormCheck()
@@ -55,7 +59,7 @@ public class FireStorm : MonoBehaviour
         for (int i = 0; i < numberOfFires; i++)
         {
             System.Random rnd = new System.Random();
-            currentFirePoint = firePoints[rnd.Next(6)];
+            currentFirePoint = new Vector2(firePoints[0].x + (float) rnd.NextDouble() * (firePoints[0].x - firePoints[1].x), firePoints[0].y);
             fire(currentFirePoint);
             yield return new WaitForSeconds(fireDelay);
         }
@@ -66,9 +70,9 @@ public class FireStorm : MonoBehaviour
         boss1Movement.nextAttack();
     }
 
-    private void fire(GameObject firePosition)
+    private void fire(Vector2 firePosition)
     {
-        Instantiate(fireball, firePosition.transform.position, firePosition.transform.rotation);
+        Instantiate(fireball, firePosition, quaternion.identity);
         //fireballSoundEffect.Play();
     }
 }

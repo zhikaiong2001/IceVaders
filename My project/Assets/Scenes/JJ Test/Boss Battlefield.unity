@@ -386,6 +386,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &399168690 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3070124284287272641, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &399168694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399168690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368ff9237c2d2d443b996bcdbdcefea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 418326941}
+--- !u!1 &418326941 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1926223327183074231, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &418326954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418326941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef12d97c17d0824b8d81e565a1ce1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAttackHitbox: {fileID: 399168694}
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackDamage: 1
+  attackCooldown: 1
+  attackDelay: 1
+  range: 0
+  attackDuration: 1
+--- !u!114 &418326955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418326941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4848a0b21847e24682797d27ffa58e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KBForceHor: 0
+  KBForceVer: 0
+  KBTime: 0
 --- !u!1 &470566013
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,6 +519,24 @@ Transform:
   m_Father: {fileID: 20625626}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &472637594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 670078936, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &472637598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 472637594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368ff9237c2d2d443b996bcdbdcefea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 418326941}
 --- !u!1 &629538619
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +611,11 @@ MonoBehaviour:
   sceneToLoad: B2
   playerPosition: {x: 34, y: 0.4784594}
   playerStorage: {fileID: 11400000, guid: fddbca4f385836d4581e31147f583b74, type: 2}
+--- !u!1 &647252616 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1926223327870735003, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &683674817
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,7 +733,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 757493392}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.94, y: 4.125825, z: -10}
+  m_LocalPosition: {x: 0.37, y: 4.125825, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1032,7 +1114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885604758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.087998, y: 4.1198497, z: -10}
+  m_LocalPosition: {x: 6.087998, y: 4.12298, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1344,6 +1426,11 @@ MonoBehaviour:
   - Their acid bodies are toxic and will hurt you.
   - Use spacebar to jump across the platforms.
   textSpeed: 0
+--- !u!1 &1140217855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2137315234336190978, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1160120815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1357,7 +1444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.94
+      value: 0.37
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1398,6 +1485,14 @@ PrefabInstance:
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_Name
       value: JJ's Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4415561493708495851, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: iFramesDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345779578713646445, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: dashingPower
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
@@ -5490,9 +5585,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1926223327230994143, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4403796549493890023, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: GUIShader
+      value: 
+      objectReference: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4403796549493890023, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: maxHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403796549493890023, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: defaultShader
+      value: 
+      objectReference: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 4403796549493890023, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: numberOfFlashes
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403796549493890023, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: hurtFramesDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642098309889806179, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5642098309889806179, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1849710354}
+    - target: {fileID: 5642098309889806179, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 647252616}
+    - target: {fileID: 5642098309889806179, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1140217855}
+    - target: {fileID: 6222968181409504549, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1179149629}
+    - target: {fileID: 9210303379700181258, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+      propertyPath: attackHitbox
+      value: 
+      objectReference: {fileID: 399168694}
+    m_RemovedComponents:
+    - {fileID: 8564378363510559994, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+    - {fileID: 3181051697993425565, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
 --- !u!1 &1474452895
 GameObject:
@@ -5856,6 +5997,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 6.9859695, y: 32.70047}
   m_EdgeRadius: 0
+--- !u!1 &1849710354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4430634687671946913, guid: f96c9b23e2b51ba4c8f2dd6d029030af, type: 3}
+  m_PrefabInstance: {fileID: 1436331667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1914688328
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,19 +11,25 @@ public class Boss1Movement : MonoBehaviour
     private Animator anim;
     public Transform player;
 
-    [Header("Chase Attributes")]
-    public float speed;
-
-
     // State Control
     public bool canMove { get; private set; }
     public float rPos { get; private set; }
-    public float alertDist;
     [HideInInspector] public bool isFacingRight;
-    private enum AttackState { fireball, flamingfrenzy, firestorm }
+    private enum AttackState 
+    { 
+        fireball, 
+        flamingfrenzy, 
+        firestorm 
+    }
     private AttackState currentAttackState;
     private int currentAttackIndex;
-    private AttackState[] attackOrder = { AttackState.fireball, AttackState.flamingfrenzy, AttackState.fireball, AttackState.firestorm };
+    private AttackState[] attackOrder =
+    {
+        AttackState.fireball,
+        AttackState.flamingfrenzy,
+        AttackState.fireball,
+        AttackState.firestorm
+    };
 
     // Animation State
     private string currentState;
@@ -44,7 +51,7 @@ public class Boss1Movement : MonoBehaviour
         flamingFrenzy = GetComponent<FlamingFrenzy>();
         boss1Fireball = GetComponent<Boss1Fireball>();
         isFacingRight = true;
-        currentAttackIndex = -1;
+        currentAttackIndex = 0;
     }
 
 
@@ -77,10 +84,12 @@ public class Boss1Movement : MonoBehaviour
 
         if (currentAttackState == AttackState.flamingfrenzy)
         {
+            //Debug.Log("flaming");
             flamingFrenzy.frenzyCheck();
         }
         else if (currentAttackState == AttackState.fireball)
         {
+            //Debug.Log("fireball");
             boss1Fireball.fireballCheck();
         }
         else if (currentAttackState == AttackState.firestorm)
@@ -93,7 +102,6 @@ public class Boss1Movement : MonoBehaviour
     {
         if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
         {
-            Debug.Log("check");
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;
             localScale.x *= -1f;

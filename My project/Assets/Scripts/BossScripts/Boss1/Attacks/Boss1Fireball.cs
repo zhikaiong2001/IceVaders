@@ -11,14 +11,13 @@ public class Boss1Fireball : MonoBehaviour
 
     [Header("Waypoints")]
     [SerializeField] private GameObject[] waypoints;
-    private int currentWaypoint = 0;
+    private int currentWaypoint;
     private Vector3 curWaypointPos;
 
     [Header("Attributes")]
     public LayerMask damageLayers;
     public Transform firePosition;
     public GameObject fireball;
-    public float cost;
     public int damage;
     public float speed;
     public float fireTime;
@@ -35,6 +34,8 @@ public class Boss1Fireball : MonoBehaviour
         boss1Movement = GetComponent<Boss1Movement>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        currentWaypoint = 0;
+        isFiring = false;
     }
 
     public void fireballCheck()
@@ -44,6 +45,7 @@ public class Boss1Fireball : MonoBehaviour
         {
             transform.position = curWaypointPos;
             rb.velocity = Vector2.zero;
+            Debug.Log("check");
             fire();
         }
     }

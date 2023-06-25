@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private EnemyMovement enemyMovement;
+    private Boss1Movement boss1;
     private EnemyAI enemyAI;
     public bool isDead {  get; private set; }
 
@@ -56,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetBool("isDead", true);
                 anim.SetTrigger("Hurt");
+                anim.SetTrigger("Die");
                 rb.velocity = Vector2.zero;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 foreach (Transform child in transform)
@@ -64,10 +66,13 @@ public class EnemyHealth : MonoBehaviour
                 }
                 isDead = true;
                 //dieSoundEffect.Play();
-                if(enemyAI.enabled)
+                if (enemyAI != null)
                 {
-                    enemyAI.enabled = false;
-                    rb.gravityScale = 1f;
+                    if (enemyAI.enabled)
+                    {
+                        enemyAI.enabled = false;
+                        rb.gravityScale = 1f;
+                    }
                 }
             }
 

@@ -7,7 +7,7 @@ public class FlamingFrenzy : MonoBehaviour
 {
     private Boss1Movement boss1Movement;
     private Animator animator;
-    public EnemyAttackHitbox enemyAttackHitbox;
+    public EnemyAttackHitbox attackHitbox;
     private Rigidbody2D rb;
     public LayerMask damageLayers;
 
@@ -74,11 +74,11 @@ public class FlamingFrenzy : MonoBehaviour
         rb.velocity = new Vector2(0f, 0f);
         yield return new WaitForSeconds(attackDelay);
         animator.SetTrigger("FlamingFrenzyStart");
-        enemyAttackHitbox.gameObject.SetActive(true);
+        attackHitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
         boss1Movement.enableMovement();
-        enemyAttackHitbox.gameObject.SetActive(false);
+        attackHitbox.gameObject.SetActive(false);
         animator.SetTrigger("FlamingFrenzyEnd");
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;

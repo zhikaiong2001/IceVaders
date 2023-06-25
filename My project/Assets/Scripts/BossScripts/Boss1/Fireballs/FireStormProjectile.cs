@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class FireStormProjectile : MonoBehaviour
 {
     public float projectileSpeed;
     public GameObject impactEffect;
@@ -11,10 +11,6 @@ public class Projectile : MonoBehaviour
     public float offSet;
 
     private Rigidbody2D rb;
-    private GameObject enemy;
-    private EnemyKnockback ek;
-    private EnemyHealth enemyHealth;
-    private bool rightSide;
 
     void Start()
     {
@@ -26,30 +22,16 @@ public class Projectile : MonoBehaviour
         {
             transform.Rotate(0, 180f, 0);
         }
-        rb.velocity = transform.right * projectileSpeed;
+        rb.velocity = new Vector2(0, -projectileSpeed);
     }
 
-    
-    
+
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            enemy = collision.GetComponent<EnemyAttackHitbox>().enemy;
-            ek = enemy.GetComponent<EnemyKnockback>();
-            enemyHealth = enemy.GetComponent<EnemyHealth>();
-
-            if (collision.transform.position.x <= enemy.transform.position.x)
-            {
-                rightSide = true;
-            }
-            else
-            {
-                rightSide = false;
-            }
-
-            ek.knockCheck(rightSide);
-            enemyHealth.TakeDamage(fireBallDamage);
+            collision.gameObject.GetComponent<Health>().TakeDamage(fireBallDamage);
             impact();
         }
 

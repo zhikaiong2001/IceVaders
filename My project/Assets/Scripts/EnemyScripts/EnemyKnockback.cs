@@ -29,6 +29,10 @@ public class EnemyKnockback : MonoBehaviour
         {
             return;
         }
+        else if (KBTime == 0)
+        {
+            return;
+        }
         else
         {
             StartCoroutine(knock());

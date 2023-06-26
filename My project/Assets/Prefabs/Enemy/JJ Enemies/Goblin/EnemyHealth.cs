@@ -57,6 +57,7 @@ public class EnemyHealth : MonoBehaviour
             {
                 anim.SetBool("isDead", true);
                 anim.SetTrigger("Hurt");
+                anim.SetTrigger("Die");
                 rb.velocity = Vector2.zero;
                 rb.gravityScale = 1.0f;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
@@ -94,5 +95,11 @@ public class EnemyHealth : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), false);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Attack"), LayerMask.NameToLayer("Enemy"), false);
+    }
+
+    private IEnumerator customEvent()
+    {
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("End Screen");
     }
 }

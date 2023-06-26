@@ -10,6 +10,7 @@ public class Health : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     public PlayerCollisions playerCollisions;
+    private Player player;
 
     [Header("Healing")]
     public int healAmount;
@@ -36,6 +37,7 @@ public class Health : MonoBehaviour
         isHealing = false;
         initiationCounter = initiationTime;
         healCounter = healTime;
+        player = GetComponent<Player>();
     }
 
     public void TakeDamage(int damage)
@@ -58,7 +60,7 @@ public class Health : MonoBehaviour
                 rb.velocity = Vector2.zero;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 Player.isDead = true;
-                StartCoroutine(respawn()); // replace with load
+                StartCoroutine(respawn());
                 //dieSoundEffect.Play();
             }
 
@@ -68,8 +70,7 @@ public class Health : MonoBehaviour
     IEnumerator respawn()
     {
         yield return new WaitForSeconds(3);
-        Player.currentHealth = 5;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        player.LoadPlayer();
     }
 
     public void healCheck()

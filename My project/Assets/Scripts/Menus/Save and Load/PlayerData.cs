@@ -9,17 +9,24 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class PlayerData
 {
-    // Health
-    public int currentHealth;
-    public int maxHealth;
+    [Header("States")]
+    public bool isDeadTemp;
 
-    // Soul
-    public float currentSoul;
-    public float maxSoul;
+    [Header("Health")]
+    public int currentHealthTemp;
+    public int maxHealthTemp;
+
+    [Header("Mana")]
+    public float currentManaTemp;
+    public float maxManaTemp;
+
+    [Header("Attack Damage")]
+    public int attackDamageTemp;
 
     // Abilities
-    public enum Abilities { sword, wallCling, dash };
-    public bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
+    public enum Abilities { sword, wallCling, dash, fireball, doubleJump };
+    public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
+    public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
     // Scene
     public String scene;
@@ -29,15 +36,21 @@ public class PlayerData
 
     public PlayerData(Player player)
     {
-        currentHealth = Player.currentHealth;
-        maxHealth = Player.maxHealth;
+        isDeadTemp = Player.isDead;
 
-        //currentSoul = player.GetComponent<Soul>().currentSouls;
-        //maxSoul = player.GetComponent<Soul>().maxSoul;
+        currentHealthTemp = Player.currentHealth;
+        maxHealthTemp = Player.maxHealth;
+
+        currentManaTemp = Player.currentMana;
+        maxManaTemp = Player.maxMana;
+
+        attackDamageTemp = Player.attackDamage;
 
         unlocked[(int)Abilities.sword] = Player.unlocked[(int)Abilities.sword];
         unlocked[(int)Abilities.wallCling] = Player.unlocked[(int)Abilities.wallCling];
         unlocked[(int)Abilities.dash] = Player.unlocked[(int)Abilities.dash];
+        unlocked[(int)Abilities.fireball] = Player.unlocked[(int)Abilities.fireball];
+        unlocked[(int)Abilities.doubleJump] = Player.unlocked[(int)Abilities.doubleJump];
 
         scene = SceneManager.GetActiveScene().name;
 

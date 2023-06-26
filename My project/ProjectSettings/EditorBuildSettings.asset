@@ -20,31 +20,37 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main Scenes/Start Menu.unity
     guid: ba18d54ce4fc72841b891d387977e9b3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/B2.unity
     guid: 5342d7e030eb548b996423b0cafaa521
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/B3.unity
     guid: 1d9eb10ed31c7824fb2dba529eea6fe4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/C5.unity
     guid: d7c60b1d4ed555c409adcf8d9da33c45
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/B5.unity
     guid: 9f72f0a1ecae347489eea439f5dd74d0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/B1.unity
     guid: 4951b026d3c7b3c4cab355aeda4a34c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/A4.unity
     guid: 7b93c538a42e19b41b4c14ddbaacf2c4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/B4.unity
     guid: df4e5619b44a5af48bcbdac6e090380b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Main Scenes/C4.unity
     guid: 4bfd9bf0dd3401245b34c0bbbab97054
   - enabled: 1
     path: Assets/Scenes/Main Scenes/End Screen.unity
     guid: f8261575b9ce9e44ca39ad9821032994
+  - enabled: 1
+    path: Assets/Scenes/MS2/Starting Scene.unity
+    guid: 1067af8bfb3db284fb36300d50ebd658
+  - enabled: 1
+    path: Assets/Scenes/JJ Test/Boss Battlefield.unity
+    guid: 35187d7723c13bf4780f303a577a357f
   m_configObjects: {}

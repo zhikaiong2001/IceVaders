@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,19 +32,33 @@ public class Player : MonoBehaviour
     public int attackDamageTemp;
 
     // Abilities
-    public enum Abilities { sword, wallCling, dash, fireball, doubleJump };
+    public enum Abilities 
+    { 
+        sword, 
+        wallCling, 
+        dash, 
+        fireball, 
+        doubleJump 
+    };
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
+    // Last Save
+    public Vector2 savePos;
+
+    // Variable Control
+    private static bool tempted = false;
+
     private void OnEnable()
     {
-        startingPosition = startingPositionTemp;
-        currentHealth = currentHealthTemp;
-        maxHealth = maxHealthTemp;
-        currentMana = currentManaTemp;
-        maxMana = maxManaTemp;
-        unlocked = unlockedTemp;
-        attackDamage = attackDamageTemp;
+            startingPosition = startingPositionTemp;
+            currentHealth = currentHealthTemp;
+            maxHealth = maxHealthTemp;
+            currentMana = currentManaTemp;
+            maxMana = maxManaTemp;
+            unlocked = unlockedTemp;
+            attackDamage = attackDamageTemp;
+            tempted = true;
     }
 
     public static bool unlockCheck(int ability)
@@ -54,6 +69,7 @@ public class Player : MonoBehaviour
     // Save and Load
     public void SavePlayer()
     {
+        savePos = transform.position;
         SaveSystem.SavePlayer(this);
     }
 
@@ -65,19 +81,24 @@ public class Player : MonoBehaviour
         position.x = data.position[0];
         position.y = data.position[1];
         startingPosition.initialValue = position;
-        Debug.Log(position.ToString());
 
         SceneManager.LoadScene(data.scene);
 
-        currentHealth = data.currentHealth;
-        maxHealth = data.maxHealth;
+        isDead = false;
 
-        //currentSoul = player.GetComponent<Soul>().currentSouls;
-        //maxSoul = player.GetComponent<Soul>().maxSoul;
+        currentHealth = data.currentHealthTemp;
+        maxHealth = data.maxHealthTemp;
 
-        unlocked[(int)Abilities.sword] = data.unlocked[(int)Abilities.sword];
-        unlocked[(int)Abilities.wallCling] = data.unlocked[(int)Abilities.wallCling];
-        unlocked[(int)Abilities.dash] = data.unlocked[(int)Abilities.dash];
+        currentMana = data.currentManaTemp;
+        maxMana = data.maxManaTemp;
+
+        attackDamage = data.attackDamageTemp;
+
+        unlocked[(int)Abilities.sword] = data.unlockedTemp[(int)Abilities.sword];
+        unlocked[(int)Abilities.wallCling] = data.unlockedTemp[(int)Abilities.wallCling];
+        unlocked[(int)Abilities.dash] = data.unlockedTemp[(int)Abilities.dash];
+        unlocked[(int)Abilities.fireball] = data.unlockedTemp[(int)Abilities.fireball];
+        unlocked[(int)Abilities.doubleJump] = data.unlockedTemp[(int)Abilities.doubleJump];
 
         transform.position = position;
     }

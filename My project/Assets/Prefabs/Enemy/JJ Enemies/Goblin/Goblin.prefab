@@ -313,7 +313,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 0
 --- !u!61 &3647730437742336782
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
   enemyAttackHitbox: {fileID: 3647730437620022316}
   damageLayers:
     serializedVersion: 2
-    m_Bits: 8192
+    m_Bits: 1024
   attackDamage: 1
   attackCooldown: 0.2
   attackDelay: 0.2

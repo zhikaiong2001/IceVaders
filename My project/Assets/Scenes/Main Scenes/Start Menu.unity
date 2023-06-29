@@ -363,13 +363,13 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
 --- !u!114 &321929862 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4415561493708495852, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
   m_PrefabInstance: {fileID: 321929861}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
+  m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &390741683
@@ -609,7 +609,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 321929862}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
         m_MethodName: LoadPlayer
         m_Mode: 1
         m_Arguments:
@@ -926,8 +926,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d968b7ac1efb8b4b9c12e18db01e9cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPosition: {x: 5, y: 10}
-  playerStorage: {fileID: 11400000, guid: fddbca4f385836d4581e31147f583b74, type: 2}
+  playerPosition: {x: -5, y: 1}
+  playerStorage: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
 --- !u!114 &1009571932
 MonoBehaviour:
   m_ObjectHideFlags: 0

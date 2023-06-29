@@ -10,7 +10,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("B2");
+        SceneManager.LoadScene("Starting Scene");
         playerStorage.initialValue = playerPosition;
     }
 }

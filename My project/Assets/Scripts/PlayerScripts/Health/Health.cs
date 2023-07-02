@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private PlayerMovement playerMovement;
     public PlayerCollisions playerCollisions;
     private Player player;
+    private SpriteRenderer sprite;
 
     [Header("Healing")]
     public int healAmount;
@@ -20,6 +21,8 @@ public class Health : MonoBehaviour
     public float healTime;
     private float healCounter;
     public bool isHealing { get; private set; }
+    private Color originalColor;
+    public Color healColor;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -38,6 +41,8 @@ public class Health : MonoBehaviour
         initiationCounter = initiationTime;
         healCounter = healTime;
         player = GetComponent<Player>();
+        sprite = GetComponent<SpriteRenderer>();
+        originalColor = sprite.color;
     }
 
     public void TakeDamage(int damage)
@@ -87,10 +92,12 @@ public class Health : MonoBehaviour
                 {
                     healCounter -= Time.deltaTime;
                     isHealing = true;
+                    sprite.color = healColor;
                 }
                 else
                 {
                     heal();
+                    sprite.color = originalColor;
                 }
             }
         }
@@ -100,6 +107,7 @@ public class Health : MonoBehaviour
             healCounter = healTime;
             isHealing = false;
             initiationCounter = initiationTime;
+            sprite.color = originalColor;
         }
     }
 

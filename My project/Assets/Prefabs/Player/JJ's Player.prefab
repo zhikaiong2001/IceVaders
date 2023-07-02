@@ -46,7 +46,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.44759196, y: -0.42677295}
+  m_Offset: {x: 0.37738663, y: -0.10382843}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -57,7 +57,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6431202, y: 2.111129}
+  m_Size: {x: 1.5027095, y: 2.757018}
   m_EdgeRadius: 0
 --- !u!114 &1142529242
 MonoBehaviour:
@@ -259,7 +259,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.44759196, y: -0.42677295}
+  m_Offset: {x: 0.37036604, y: -0.08276677}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -270,7 +270,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6431202, y: 2.111129}
+  m_Size: {x: 1.4886683, y: 2.7991414}
   m_EdgeRadius: 0
 --- !u!50 &4415561493708495855
 Rigidbody2D:
@@ -425,14 +425,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingPositionTemp: {fileID: 0}
+  startingPositionTemp: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
   isDeadTemp: 0
-  currentHealthTemp: 10
-  maxHealthTemp: 10
+  currentHealthTemp: 5
+  maxHealthTemp: 5
   currentManaTemp: 0
   maxManaTemp: 100
   attackDamageTemp: 40
   unlockedTemp: 0101010101
+  savePos: {x: 0, y: 0}
 --- !u!114 &4415561493708495852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -471,6 +472,7 @@ MonoBehaviour:
   healCost: 30
   initiationTime: 0.1
   healTime: 1
+  healColor: {r: 0.030356646, g: 1, b: 0, a: 1}
   iFramesDuration: 1
   takeDamageSoundEffect: {fileID: 0}
   dieSoundEffect: {fileID: 0}
@@ -536,7 +538,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c940df1af8e72214f8e6cd97362e4996, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wallJumpingPower: {x: 16, y: 32}
+  wallJumpingPower: {x: 64, y: 32}
   wallCheck: {fileID: 4415561494289038639}
   wallLayer:
     serializedVersion: 2

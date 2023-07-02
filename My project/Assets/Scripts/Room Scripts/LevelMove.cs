@@ -8,13 +8,24 @@ public class LevelMove : MonoBehaviour
     public string sceneToLoad;
     public Vector2 playerPosition;
     public VectorValue playerStorage;
+    [SerializeField] Animator transition;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
         {
             playerStorage.initialValue = playerPosition;
-            SceneManager.LoadScene(sceneToLoad);
+            //SceneManager.LoadScene(sceneToLoad);
+            StartCoroutine(LoadLevel());
         }
+    }
+
+    IEnumerator LoadLevel()
+    {
+        transition.SetTrigger("End");
+        yield return new WaitForSeconds(1);
+        SceneManager.LoadScene(sceneToLoad);
+        transition.SetTrigger("Start");
+
     }
 }

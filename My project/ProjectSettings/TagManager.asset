@@ -12,6 +12,9 @@ TagManager:
   - Ground
   - FireApostle
   - StoneOfRecall
+  - Golem
+  - Laser Beam
+  - Laser Beam Fire
   layers:
   - Default
   - TransparentFX

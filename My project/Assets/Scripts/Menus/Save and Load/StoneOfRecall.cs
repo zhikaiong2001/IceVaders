@@ -12,8 +12,11 @@ public class StoneOfRecall : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBody"))
         {
             collision.gameObject.GetComponent<Player>().SavePlayer();
-            stoneDialogue.gameObject.SetActive(true);
-            stoneDialogue.startDialogue();
+            if (stoneDialogue != null)
+            {
+                stoneDialogue.gameObject.SetActive(true);
+                stoneDialogue.startDialogue();
+            }
         }
     }
 
@@ -21,7 +24,10 @@ public class StoneOfRecall : MonoBehaviour
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("PlayerBody"))
         {
-            stoneDialogue.gameObject.SetActive(false);
+            if (stoneDialogue != null)
+            {
+                stoneDialogue.gameObject.SetActive(false);
+            }
         }
     }
 }

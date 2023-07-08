@@ -30,8 +30,8 @@ TagManager:
   - Attack
   - EnemyAttack
   - InvisibleWall
-  - 
-  - 
+  - Breakable
+  - GroundWall
   - 
   - 
   - 

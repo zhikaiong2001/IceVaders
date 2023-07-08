@@ -21,9 +21,9 @@ public class AttackHitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Door")
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Breakable"))
         {
-            collision.gameObject.SetActive(false);
+            collision.GetComponent<Breakable>().breakObject();
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {

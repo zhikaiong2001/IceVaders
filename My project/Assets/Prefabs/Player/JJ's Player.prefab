@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbac2680bada0d4486a248fda8e460c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   player: {fileID: 4415561493708495827}
 --- !u!1 &1488345801
 GameObject:
@@ -114,8 +114,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3324242596064312721}
-  - component: {fileID: 474810898776454050}
   - component: {fileID: 4891533228411874686}
+  - component: {fileID: 1319907794}
   m_Layer: 14
   m_Name: AttackHitbox
   m_TagString: Untagged
@@ -138,8 +138,21 @@ Transform:
   m_Father: {fileID: 4415561493658774141}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &474810898776454050
-BoxCollider2D:
+--- !u!114 &4891533228411874686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 934991598631618092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa3c3c454634044aa1c15e9638fa6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4415561493708495827}
+--- !u!60 &1319907794
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -151,32 +164,33 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.4742399, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2998477, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &4891533228411874686
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934991598631618092}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa3c3c454634044aa1c15e9638fa6e4, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  player: {fileID: 4415561493708495827}
+  m_Points:
+    m_Paths:
+    - - {x: 0.022769768, y: 0.97428817}
+      - {x: -1.7045909, y: 0.98793536}
+      - {x: -2.4882815, y: 0.84266555}
+      - {x: -1.6312885, y: 0.46553847}
+      - {x: -0.5174267, y: 0.39369795}
+      - {x: 0.34374025, y: 0.109238565}
+      - {x: 0.16464847, y: -0.23950347}
+      - {x: -0.30661035, y: -0.42305335}
+      - {x: -1.0887142, y: -0.5776101}
+      - {x: 1.8158563, y: -0.54246986}
+      - {x: 2.8191957, y: -0.38905597}
+      - {x: 3.2303612, y: -0.25300553}
+      - {x: 3.6345258, y: 0.022484595}
+      - {x: 3.2375722, y: 0.3498178}
+      - {x: 1.7935281, y: 0.72897804}
 --- !u!1 &4415561493708495827
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +307,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.37036604, y: -0.08276677}
+  m_Offset: {x: 0.37036604, y: -0.0867753}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -304,7 +318,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4886683, y: 2.7991414}
+  m_Size: {x: 1.4886683, y: 2.7911243}
   m_EdgeRadius: 0
 --- !u!50 &4415561493708495855
 Rigidbody2D:
@@ -343,7 +357,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage:
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -457,9 +471,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  startingPositionTemp: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingPositionTemp: {fileID: 0}
   isDeadTemp: 0
   difficultyTemp: 0
   currentHealthTemp: 5
@@ -479,15 +493,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97095ab11866af946a339e1da060d70e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  moveSpeed: 15
-  jumpForce: 25
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  jumpForce: 30
   jumped: 0
   isFirstJump: 0
   jumpableGround:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 262656
   jumpSoundEffect: {fileID: 0}
   isFacingRight: 1
 --- !u!114 &4415561493708495851
@@ -500,8 +514,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73156be0278b3004394472c1fcf927a8, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   playerCollisions: {fileID: 1142529242}
   healAmount: 1
   healCost: 30
@@ -522,8 +536,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cb0f87c2a5a5f943b053044d2001688, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1791104506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -534,8 +548,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d3a9662ad1832d844978fc9c9c62deb9, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   KBForceHor: 10
   KBForceVer: 10
   KBTime: 0.5
@@ -549,8 +563,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4eaa4e5e3a2f8294aa3e8ae1e0d2ebb1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   attackHitbox: {fileID: 4891533228411874686}
   animator: {fileID: 4415561493708495854}
   enemyLayers:
@@ -571,8 +585,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c940df1af8e72214f8e6cd97362e4996, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   wallJumpingPower: {x: 64, y: 32}
   wallCheck: {fileID: 4415561494289038639}
   wallLayer:
@@ -588,8 +602,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8871e175e2be0b84b901dfdf5e42e769, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   playerMovement: {fileID: 4415561493708495852}
   dashingPower: 40
   dashingTime: 0.2
@@ -605,8 +619,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4b29181d12012a044a664f24c0dbabdd, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   firePosition: {fileID: 4415561493658774141}
   fireball: {fileID: 1633948178378277258, guid: f82accb99dbfa854684d3682c93edda9, type: 3}
   cost: 30
@@ -625,8 +639,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f128c27ba892d743b4146ad0e7bb15e, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   coyoteTime: 3
   coyoteTimeCounter: 0
   secondJumpPower: 20
@@ -641,8 +655,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3cb0f87c2a5a5f943b053044d2001688, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4415561494289038638
 GameObject:
   m_ObjectHideFlags: 0

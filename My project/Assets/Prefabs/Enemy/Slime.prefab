@@ -416,6 +416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4848a0b21847e24682797d27ffa58e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KBForceHor: 15
-  KBForceVer: 5
+  KBForceHor: 20
+  KBForceVer: 0
   KBTime: 0.5

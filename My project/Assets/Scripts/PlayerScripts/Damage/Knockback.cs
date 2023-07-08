@@ -58,6 +58,7 @@ public class Knockback : MonoBehaviour
         yield return new WaitForSeconds(KBTime);
         isStunned = false;
         playerMovement.enableMovement();
+        rb.velocity = Vector2.zero;
     }
 
     private void flip()

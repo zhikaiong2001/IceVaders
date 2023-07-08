@@ -25,7 +25,7 @@ public class EnemyKnockback : MonoBehaviour
     public void knockCheck(bool rightSide)
     {
         fromRight = rightSide;
-        if (Player.isDead || isStunned)
+        if (isStunned)
         {
             return;
         }
@@ -65,6 +65,7 @@ public class EnemyKnockback : MonoBehaviour
         }
         yield return new WaitForSeconds(KBTime);
         isStunned = false;
+        rb.velocity = Vector2.zero;
         enemyMovement.enableMovement();
     }
 

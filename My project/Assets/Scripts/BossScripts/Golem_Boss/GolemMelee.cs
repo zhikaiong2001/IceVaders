@@ -83,9 +83,9 @@ public class GolemMelee : MonoBehaviour
         attackHitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
+        animator.SetTrigger("MeleeEnd");
         golemMovement.enableMovement();
         attackHitbox.gameObject.SetActive(false);
-        animator.SetTrigger("MeleeEnd");
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;
         golemMovement.nextAttack();

@@ -82,9 +82,8 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             jumped = true;
-            isFirstJump = false;
         }
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f && isFirstJump)
+        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
         {
             rb.velocity = new Vector2(rb.velocity.x, 0f);
         }

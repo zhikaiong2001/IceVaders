@@ -57,8 +57,8 @@ public class EnemyHealth : MonoBehaviour
                 anim.SetBool("isDead", true);
                 anim.SetTrigger("Hurt");
                 anim.SetTrigger("Die");
-                rb.velocity = Vector2.zero;
                 rb.gravityScale = 1.0f;
+                rb.velocity = Vector2.zero;
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 foreach (Transform child in transform)
                 {

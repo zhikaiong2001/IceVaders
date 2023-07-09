@@ -15,6 +15,17 @@ public class Player : MonoBehaviour
     public static bool isDead;
     public bool isDeadTemp;
 
+    // Difficulty
+    public enum Difficulty
+    {
+        Easy,
+        Normal,
+        Hard
+    }
+    public static Difficulty difficulty;
+    public Difficulty difficultyTemp;
+    public static float[] difficulyMult = { 0.75f, 1.0f, 1.25f };
+
     [Header("Health")]
     public static int currentHealth;
     public static int maxHealth;
@@ -61,9 +72,31 @@ public class Player : MonoBehaviour
             tempted = true;
     }
 
+    // Abilities Unlocked Getter
     public static bool unlockCheck(int ability)
     {
         return unlocked[ability];
+    }
+
+    // Difficulty Getter
+    public static float getDiffMult()
+    {
+        if (difficulty == Difficulty.Easy)
+        {
+            return difficulyMult[0];
+        }
+        else if (difficulty == Difficulty.Normal)
+        {
+            return difficulyMult[1];
+        }
+        else if (difficulty == Difficulty.Hard)
+        {
+            return difficulyMult[2];
+        }
+        else
+        {
+            return 10f;
+        }
     }
 
     // Save and Load

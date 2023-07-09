@@ -48,7 +48,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scenes/End Screen.unity
     guid: f8261575b9ce9e44ca39ad9821032994
   - enabled: 1
-    path: Assets/Scenes/MS2/Starting Scene.unity
+    path: Assets/Scenes/MS2/Tutorial/Tutorial.unity
     guid: 1067af8bfb3db284fb36300d50ebd658
   - enabled: 1
     path: Assets/Scenes/JJ Test/Boss Battlefield.unity

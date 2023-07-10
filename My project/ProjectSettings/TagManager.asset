@@ -15,6 +15,7 @@ TagManager:
   - Golem
   - Laser Beam
   - Laser Beam Fire
+  - Trap
   layers:
   - Default
   - TransparentFX

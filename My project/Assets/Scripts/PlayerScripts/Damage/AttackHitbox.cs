@@ -41,7 +41,16 @@ public class AttackHitbox : MonoBehaviour
             }
 
             ek.knockCheck(rightSide);
-            enemyHealth.TakeDamage(Player.attackDamage);
+            if (Player.paybackActive)
+            {
+                enemyHealth.TakeDamage(Player.attackDamage * 2);
+                Player.paybackActive = false;
+            }
+            else
+            {
+                enemyHealth.TakeDamage(Player.attackDamage);
+            }
+
             mana.gainMana(playerAttack.manaGainPerAttack);
         }
     }

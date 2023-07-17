@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
     public bool isHealing { get; private set; }
     private Color originalColor;
     public Color healColor;
+    private bool initialPress;
 
     [Header("iFrames")]
     [SerializeField] private float iFramesDuration;
@@ -43,6 +44,7 @@ public class Health : MonoBehaviour
         player = GetComponent<Player>();
         sprite = GetComponent<SpriteRenderer>();
         originalColor = sprite.color;
+        initialPress = true;
     }
 
     public void TakeDamage(int damage)
@@ -51,6 +53,10 @@ public class Health : MonoBehaviour
 
         if (Player.currentHealth > 0)
         {
+            if (Player.unlockCheck((int)Player.Abilities.payback))
+            {
+                Player.paybackActive = true;
+            }
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
             //takeDamageSoundEffect.Play();
@@ -80,6 +86,12 @@ public class Health : MonoBehaviour
 
     public void healCheck()
     {
+        if (initialPress)
+        {
+            rb.velocity = Vector2.zero;
+            initialPress = false;
+        }
+
         if (Input.GetKey(KeyCode.C) && Player.currentMana >= healCost)
         {
             if (initiationCounter > 0f)
@@ -111,6 +123,7 @@ public class Health : MonoBehaviour
             initiationCounter = initiationTime;
             sprite.color = originalColor;
             playerMovement.enableMovement();
+            initialPress = true;
         }
     }
 

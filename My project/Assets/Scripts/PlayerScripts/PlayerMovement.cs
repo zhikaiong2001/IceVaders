@@ -62,7 +62,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove)
         {
+            dirX = 0;
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
             health.healCheck();
+            updateAnimationState();
             return;
         }
 

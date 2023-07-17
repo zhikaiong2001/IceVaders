@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
 
     [Header("States")]
     public static bool isDead;
-    public bool isDeadTemp;
     public static bool useStartingPos;
     public bool useStartingPositionTemp;
+    public static bool paybackActive;
 
     // Difficulty
     public enum Difficulty
@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     }
     public static Difficulty difficulty;
     public Difficulty difficultyTemp;
-    public static float[] difficulyMult = { 0.75f, 1.0f, 1.25f };
+    public static float[] difficulyMult = { 1.5f, 1.0f, 0.75f };
 
     [Header("Health")]
     public static int currentHealth;
@@ -54,16 +54,14 @@ public class Player : MonoBehaviour
         wallCling, 
         dash, 
         fireball, 
-        doubleJump 
+        doubleJump,
+        payback
     };
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
     // Last Save
     public Vector2 savePos;
-
-    // Variable Control
-    private static bool tempted = false;
 
     private void OnEnable()
     {
@@ -74,7 +72,6 @@ public class Player : MonoBehaviour
             maxMana = maxManaTemp;
             unlocked = unlockedTemp;
             attackDamage = attackDamageTemp;
-            tempted = true;
             startingPosition = startingPositionTemp;
     }
 

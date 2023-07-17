@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &553537349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 553537350}
+  m_Layer: 12
+  m_Name: ShootLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &553537350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553537349}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.41, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1926223327183074228}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &670078936
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,6 +122,7 @@ GameObject:
   - component: {fileID: 9210303379700181258}
   - component: {fileID: 5642098309889806179}
   - component: {fileID: 418326955}
+  - component: {fileID: 418326956}
   m_Layer: 12
   m_Name: Boss1_Body
   m_TagString: FireApostle
@@ -106,12 +138,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926223327183074231}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.44, z: -2.4882207}
+  m_LocalPosition: {x: 0, y: -1.77, z: -2.4882207}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 670078937}
   - {fileID: 8409218762814915742}
+  - {fileID: 553537350}
   m_Father: {fileID: 1926223327230994142}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,7 +236,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -247,10 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e84ca7a059b8c49a544bc89bd9d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 1000
   currentHealth: 0
-  hurtFramesDuration: 1
-  numberOfFlashes: 3
+  hurtFramesDuration: 0.2
+  numberOfFlashes: 1
   defaultShader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   GUIShader: {fileID: 10101, guid: 0000000000000000e000000000000000, type: 0}
   takeDamageSoundEffect: {fileID: 0}
@@ -290,14 +323,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   fireball: {fileID: 7692591514229049931, guid: 4a30090e222db03429cd1e5dbfa14a56, type: 3}
-  damage: 0
-  speed: 5
-  fireTime: 1
-  fireCooldown: 1
-  startUpTime: 1
-  endTime: 1
-  numberOfFires: 20
-  fireDelay: 1
+  damage: 1
+  speed: 15
+  startUpTime: 2
+  endTime: 3
+  numberOfFires: 40
+  fireDelay: 0.3
   fireballSoundEffect: {fileID: 0}
 --- !u!114 &9210303379700181258
 MonoBehaviour:
@@ -317,12 +348,12 @@ MonoBehaviour:
     m_Bits: 1024
   start: {fileID: 1926223327870735003}
   end: {fileID: 2137315234336190978}
-  attackDamage: 0
+  attackDamage: 1
   attackCooldown: 1
   attackDelay: 1
-  range: 8
+  range: 7
   attackDuration: 1
-  speed: 5
+  speed: 6
 --- !u!114 &5642098309889806179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,7 +373,7 @@ MonoBehaviour:
   damageLayers:
     serializedVersion: 2
     m_Bits: 1024
-  firePosition: {fileID: 1926223327183074228}
+  firePosition: {fileID: 553537350}
   fireball: {fileID: 6217017180752193687, guid: 573c7640d7f5aae40867eebec3c0ae79, type: 3}
   damage: 1
   speed: 20
@@ -365,6 +396,27 @@ MonoBehaviour:
   KBForceHor: 0
   KBForceVer: 0
   KBTime: 0
+--- !u!114 &418326956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926223327183074231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef12d97c17d0824b8d81e565a1ce1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAttackHitbox: {fileID: 399168694}
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackDamage: 1
+  attackCooldown: 0
+  attackDelay: 0
+  range: -1
+  attackDuration: 0
 --- !u!1 &1926223327230994143
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +537,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2756114665410432661}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.84, y: 12.73, z: 0}
+  m_LocalPosition: {x: 14.44, y: 12.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -623,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4181499974097616554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.87, y: 12.73, z: 0}
+  m_LocalPosition: {x: -17.82, y: 12.73, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

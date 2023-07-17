@@ -19,6 +19,11 @@ public class PlayerAttack : MonoBehaviour
     // Attack Active Frames
     public float attackDuration;
 
+    // Payback
+    private SpriteRenderer sprite;
+    private Color originalColor;
+    public Color paybackColor;
+
     [SerializeField] private Mana Mana;
     public float manaGainPerAttack;
 
@@ -30,12 +35,23 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        playerMovement = GetComponent<PlayerMovement>(); 
+        playerMovement = GetComponent<PlayerMovement>();
+        sprite = GetComponent<SpriteRenderer>();
+        originalColor = sprite.color;
     }
 
     // Update is called once per frame
     public void attackCheck()
     {
+        if (Player.paybackActive)
+        {
+            sprite.color = paybackColor;
+        }
+        else
+        {
+            sprite.color = originalColor;
+        }
+
         if (canAttack && !isAttacking && Input.GetKeyDown(KeyCode.X) && Player.unlocked[(int)Player.Abilities.sword])
         {
             StartCoroutine(Attack());

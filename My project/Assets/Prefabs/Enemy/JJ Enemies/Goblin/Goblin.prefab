@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14e84ca7a059b8c49a544bc89bd9d09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 130
   currentHealth: 0
   hurtFramesDuration: 0.5
   numberOfFlashes: 3
@@ -427,9 +427,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4848a0b21847e24682797d27ffa58e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  KBForceHor: 3
+  KBForceHor: 20
   KBForceVer: 0
-  KBTime: 0.3
+  KBTime: 0.5
 --- !u!1 &3647730438177241631
 GameObject:
   m_ObjectHideFlags: 0

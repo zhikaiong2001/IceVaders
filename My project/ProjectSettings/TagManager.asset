@@ -53,9 +53,18 @@ TagManager:
   - name: Background
     uniqueID: 3257981685
     locked: 0
+  - name: HiddenAreaBackground
+    uniqueID: 982393363
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Terrain
     uniqueID: 509947181
+    locked: 0
+  - name: Hidden
+    uniqueID: 2795804031
+    locked: 0
+  - name: Mist
+    uniqueID: 999246433
     locked: 0

@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
         doubleJump = GetComponent<DoubleJump>();
         jumped = false;
         isFirstJump = true;
-        if (Player.startingPosition != null)
+        if (Player.startingPosition != null && Player.useStartingPos)
         {
             transform.position = Player.startingPosition.initialValue;
         }
@@ -62,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove)
         {
+            dirX = 0;
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+            health.healCheck();
+            updateAnimationState();
             return;
         }
 

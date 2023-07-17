@@ -93,11 +93,13 @@ public class Health : MonoBehaviour
                     healCounter -= Time.deltaTime;
                     isHealing = true;
                     sprite.color = healColor;
+                    playerMovement.disableMovement();
                 }
                 else
                 {
                     heal();
                     sprite.color = originalColor;
+                    playerMovement.enableMovement();
                 }
             }
         }
@@ -108,6 +110,7 @@ public class Health : MonoBehaviour
             isHealing = false;
             initiationCounter = initiationTime;
             sprite.color = originalColor;
+            playerMovement.enableMovement();
         }
     }
 

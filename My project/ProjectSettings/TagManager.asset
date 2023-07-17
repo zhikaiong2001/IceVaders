@@ -52,6 +52,9 @@ TagManager:
   - name: Background
     uniqueID: 3257981685
     locked: 0
+  - name: HiddenAreaBackground
+    uniqueID: 982393363
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

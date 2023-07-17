@@ -11,9 +11,14 @@ public class Player : MonoBehaviour
     public static VectorValue startingPosition;
     public VectorValue startingPositionTemp;
 
+    [Header("Spike Respawn Location")]
+    public static Vector2 spikeRespawn;
+
     [Header("States")]
     public static bool isDead;
     public bool isDeadTemp;
+    public static bool useStartingPos;
+    public bool useStartingPositionTemp;
 
     // Difficulty
     public enum Difficulty
@@ -70,6 +75,7 @@ public class Player : MonoBehaviour
             unlocked = unlockedTemp;
             attackDamage = attackDamageTemp;
             tempted = true;
+            startingPosition = startingPositionTemp;
     }
 
     // Abilities Unlocked Getter

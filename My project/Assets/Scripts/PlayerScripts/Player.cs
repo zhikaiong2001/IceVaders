@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     }
     public static Difficulty difficulty;
     public Difficulty difficultyTemp;
-    public static float[] difficulyMult = { 1.5f, 1.0f, 0.75f };
+    public static float[] difficulyMult = { 2f, 1.0f, 0.5f };
 
     [Header("Health")]
     public static int currentHealth;
@@ -48,12 +48,12 @@ public class Player : MonoBehaviour
     public int attackDamageTemp;
 
     // Abilities
-    public enum Abilities 
-    { 
-        sword, 
-        wallCling, 
-        dash, 
-        fireball, 
+    public enum Abilities
+    {
+        sword,
+        wallCling,
+        dash,
+        fireball,
         doubleJump,
         payback
     };
@@ -65,14 +65,15 @@ public class Player : MonoBehaviour
 
     private void OnEnable()
     {
-            startingPosition = startingPositionTemp;
-            currentHealth = currentHealthTemp;
-            maxHealth = maxHealthTemp;
-            currentMana = currentManaTemp;
-            maxMana = maxManaTemp;
-            unlocked = unlockedTemp;
-            attackDamage = attackDamageTemp;
-            startingPosition = startingPositionTemp;
+        startingPosition = startingPositionTemp;
+        currentHealth = currentHealthTemp;
+        maxHealth = maxHealthTemp;
+        currentMana = currentManaTemp;
+        maxMana = maxManaTemp;
+        unlocked = unlockedTemp;
+        attackDamage = attackDamageTemp;
+        startingPosition = startingPositionTemp;
+        difficulty = difficultyTemp;
     }
 
     // Abilities Unlocked Getter

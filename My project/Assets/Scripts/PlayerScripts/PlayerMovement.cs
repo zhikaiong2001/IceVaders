@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D bc;
     private Animator anim;
+    public PhysicsMaterial2D slip;
+    public PhysicsMaterial2D stay;
 
     [Header("Jump")]
     public float moveSpeed;
@@ -62,8 +64,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove)
         {
-            dirX = 0;
-            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
             health.healCheck();
             updateAnimationState();
             return;
@@ -151,11 +151,13 @@ public class PlayerMovement : MonoBehaviour
     // Universal Movement Controls
     public void enableMovement()
     {
+        bc.sharedMaterial = slip;
         canMove = true;
     }
 
     public void disableMovement()
     {
+        bc.sharedMaterial = stay;
         canMove = false;
     }
 }

@@ -62,7 +62,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!enemyMovement.alerted)
         {

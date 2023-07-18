@@ -71,7 +71,7 @@ public class EnemyKnockback : MonoBehaviour
 
     private void dirCheck()
     {
-        if (enemyMovement.rPos > 0f)
+        if (enemyMovement.rXPos > 0f)
         {
             fromRight = false;
         }

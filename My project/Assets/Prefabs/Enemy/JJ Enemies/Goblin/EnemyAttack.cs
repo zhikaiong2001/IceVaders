@@ -15,6 +15,8 @@ public class EnemyAttack : MonoBehaviour
     [Header("Attack")]
     public int attackDamage;
     public float attackCooldown;
+    public float windupTransTime;
+    public float windupTime;
     public float attackDelay;
     public float range;
     public float attackDuration;
@@ -48,7 +50,7 @@ public class EnemyAttack : MonoBehaviour
             return false;
         }
 
-        return Mathf.Abs(enemyMovement.rPos) < range;
+        return Mathf.Abs(enemyMovement.rXPos) < range;
     }
 
     private IEnumerator Attack()
@@ -57,6 +59,9 @@ public class EnemyAttack : MonoBehaviour
         canAttack = false;
         enemyMovement.disableMovement();
         rb.velocity = new Vector2(0f, 0f);
+        animator.SetTrigger("Windup");
+        yield return new WaitForSeconds(windupTransTime);
+        yield return new WaitForSeconds(windupTime * Player.getDiffMult());
         animator.SetTrigger("Attack");
         yield return new WaitForSeconds(attackDelay);
         enemyAttackHitbox.gameObject.SetActive(true);

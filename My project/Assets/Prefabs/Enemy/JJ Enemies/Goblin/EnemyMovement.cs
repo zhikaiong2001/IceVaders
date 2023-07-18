@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour
     // State Control
     public bool canMove { get; private set; }
     public bool alerted { get; private set; }
-    public float rPos { get; private set; }
+    public float rXPos { get; private set; }
     public float alertDist;
     [HideInInspector] public bool isFacingRight;
 
@@ -58,6 +58,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (!canMove)
         {
+            rXPos = transform.position.x - player.position.x;
             return;
         }
 
@@ -66,9 +67,9 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        rPos = transform.position.x - player.position.x;
+        rXPos = transform.position.x - player.position.x;
 
-        if (Mathf.Abs(rPos) < alertDist)
+        if (Mathf.Abs(relativePosition()) < alertDist)
         {
             alerted = true;
         }
@@ -80,10 +81,11 @@ public class EnemyMovement : MonoBehaviour
             if (isFlyingEnemy)
             {
                 enemyAI.enabled = true;
-            } else
+            } 
+            else
             {
                 Vector2 newPos = new Vector2(player.position.x, transform.position.y);
-            transform.position = Vector2.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
+                transform.position = Vector2.MoveTowards(transform.position, newPos, Time.deltaTime * speed);
             }
             
         }
@@ -93,6 +95,16 @@ public class EnemyMovement : MonoBehaviour
         flipCheck();
 
         updateAnimationState();
+    }
+
+    private float relativePosition()
+    {
+        float enemyX = transform.position.x;
+        float enemyY = transform.position.y;
+        float playerX = player.position.x;
+        float playerY = player.position.y;
+
+        return Mathf.Sqrt(Mathf.Pow(enemyX - playerX, 2) + Mathf.Pow(enemyY - playerY, 2));
     }
 
     private void updateAnimationState()
@@ -110,7 +122,7 @@ public class EnemyMovement : MonoBehaviour
             return;
         }
 
-        if (isFacingRight && rPos > 0f || !isFacingRight && rPos < 0f)
+        if (isFacingRight && rXPos > 0f || !isFacingRight && rXPos < 0f)
         {
             isFacingRight = !isFacingRight;
             Vector3 localScale = transform.localScale;

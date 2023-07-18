@@ -55,7 +55,7 @@ public class Boss1Fireball : MonoBehaviour
         boss1Movement.disableMovement();
         boss1Movement.flipCheck();
         Debug.Log(boss1Movement.isFacingRight);
-        yield return new WaitForSeconds(startUpTime);
+        yield return new WaitForSeconds(startUpTime * Player.getDiffMult());
         animator.SetTrigger("FireballStart");
         yield return new WaitForSeconds(fireTime);
         Instantiate(fireball, firePosition.position, transform.rotation);

@@ -24,6 +24,8 @@ public class FlamingFrenzy : MonoBehaviour
     public float attackDuration;
     private bool isAttacking;
     private bool canAttack;
+    public float windupTransTime;
+    public float windupTime;
 
     [Header("Attributes")]
     [SerializeField] private float speed;
@@ -77,8 +79,11 @@ public class FlamingFrenzy : MonoBehaviour
         canAttack = false;
         boss1Movement.disableMovement();
         rb.velocity = new Vector2(0f, 0f);
-        yield return new WaitForSeconds(attackDelay);
+        animator.SetTrigger("Windup");
+        yield return new WaitForSeconds(windupTransTime);
+        yield return new WaitForSeconds(windupTime * Player.getDiffMult());
         animator.SetTrigger("FlamingFrenzyStart");
+        yield return new WaitForSeconds(attackDelay);
         attackHitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;

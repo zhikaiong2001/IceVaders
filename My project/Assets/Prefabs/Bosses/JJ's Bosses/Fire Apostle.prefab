@@ -350,9 +350,11 @@ MonoBehaviour:
   end: {fileID: 2137315234336190978}
   attackDamage: 1
   attackCooldown: 1
-  attackDelay: 1
+  attackDelay: 0
   range: 7
   attackDuration: 1
+  windupTransTime: 0.7
+  windupTime: 0.3
   speed: 6
 --- !u!114 &5642098309889806179
 MonoBehaviour:
@@ -414,6 +416,8 @@ MonoBehaviour:
     m_Bits: 1024
   attackDamage: 1
   attackCooldown: 0
+  windupTransTime: 0
+  windupTime: 0
   attackDelay: 0
   range: -1
   attackDuration: 0

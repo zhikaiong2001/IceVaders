@@ -57,7 +57,7 @@ public class FireStorm : MonoBehaviour
         boss1Movement.disableMovement();
         animator.SetTrigger("FireStormStart");
         yield return new WaitForSeconds(startUpTime);
-        for (int i = 0; i < numberOfFires; i++)
+        for (int i = 0; i < numberOfFires / Player.getDiffMult(); i++)
         {
             if (animator.GetBool("isDead"))
             {
@@ -68,7 +68,7 @@ public class FireStorm : MonoBehaviour
             System.Random rnd = new System.Random();
             currentFirePoint = new Vector2(firePoints[0].x + (float) rnd.NextDouble() * (firePoints[1].x - firePoints[0].x), firePoints[0].y);
             fire(currentFirePoint);
-            yield return new WaitForSeconds(fireDelay);
+            yield return new WaitForSeconds(fireDelay * Player.getDiffMult());
         }
         animator.SetTrigger("FireStormEnd");
         yield return new WaitForSeconds(endTime);

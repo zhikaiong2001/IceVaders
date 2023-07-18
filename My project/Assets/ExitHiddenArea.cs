@@ -8,6 +8,9 @@ public class ExitHiddenArea : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        HiddenArea.SetActive(true);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            HiddenArea.SetActive(true);
+        }
     }
 }

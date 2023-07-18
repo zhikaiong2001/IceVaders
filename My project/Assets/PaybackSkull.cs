@@ -6,7 +6,10 @@ public class PaybackSkull : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        gameObject.SetActive(false);
-        Player.unlocked[(int)Player.Abilities.payback] = true;
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            gameObject.SetActive(false);
+            Player.unlocked[(int)Player.Abilities.payback] = true;
+        }
     }
 }

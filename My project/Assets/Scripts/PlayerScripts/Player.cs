@@ -122,6 +122,9 @@ public class Player : MonoBehaviour
         SceneManager.LoadScene(data.scene);
 
         isDead = false;
+        paybackActive = data.paybackActiveTemp;
+
+        difficulty = (Difficulty) data.difficultyTemp;
 
         currentHealth = data.currentHealthTemp;
         maxHealth = data.maxHealthTemp;
@@ -136,6 +139,7 @@ public class Player : MonoBehaviour
         unlocked[(int)Abilities.dash] = data.unlockedTemp[(int)Abilities.dash];
         unlocked[(int)Abilities.fireball] = data.unlockedTemp[(int)Abilities.fireball];
         unlocked[(int)Abilities.doubleJump] = data.unlockedTemp[(int)Abilities.doubleJump];
+        unlocked[(int)Abilities.payback] = data.unlockedTemp[(int)Abilities.payback];
 
         transform.position = position;
     }

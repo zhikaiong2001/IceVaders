@@ -22,7 +22,7 @@ public class SpikeStorm : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         fireBallDamage = GameObject.FindGameObjectWithTag("Golem").GetComponent<GolemRanged1>().damage;
         //projectileSpeed = GameObject.FindGameObjectWithTag("Golem").GetComponent<GolemRanged1>().speed;
-        rb.velocity = transform.right * projectileSpeed;
+        rb.velocity = transform.right * projectileSpeed / Player.getDiffMult();
         Debug.Log(rb.velocity.x);
     }
 

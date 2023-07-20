@@ -18,6 +18,7 @@ public class WallCling : MonoBehaviour
     [SerializeField] private Vector2 wallJumpingPower = new Vector2(16f, 32f);
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask wallLayer;
+    [SerializeField] private LayerMask wallLayer2; 
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,8 @@ public class WallCling : MonoBehaviour
 
     private bool isWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer);
+        return Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer)
+            || Physics2D.OverlapCircle(wallCheck.position, 0.2f, wallLayer2);
     }
 
     private void wallSlide()

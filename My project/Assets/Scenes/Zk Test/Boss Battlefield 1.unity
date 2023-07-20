@@ -531,6 +531,8 @@ MonoBehaviour:
     m_Bits: 1024
   attackDamage: 1
   attackCooldown: 0
+  windupTransTime: 0
+  windupTime: 0
   attackDelay: 0
   range: -1
   attackDuration: 0
@@ -1629,6 +1631,10 @@ PrefabInstance:
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: maxHealthTemp
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: difficultyTemp
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: currentHealthTemp
@@ -5816,7 +5822,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1036985611
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ffb6f7842139ede4f8acdf988c9c2b59, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -6820,6 +6826,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: WormTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 4381186247167728124, guid: cb8848a8b71259644b1a571e6d844629, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb8848a8b71259644b1a571e6d844629, type: 3}
 --- !u!1001 &6443314951846708225
@@ -6832,10 +6842,6 @@ PrefabInstance:
     - target: {fileID: 6443314953131523670, guid: 9889d89f49c0a754ca76bafe6cb326d8, type: 3}
       propertyPath: m_Name
       value: Golem
-      objectReference: {fileID: 0}
-    - target: {fileID: 6443314953131523670, guid: 9889d89f49c0a754ca76bafe6cb326d8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6443314953131523673, guid: 9889d89f49c0a754ca76bafe6cb326d8, type: 3}
       propertyPath: m_RootOrder

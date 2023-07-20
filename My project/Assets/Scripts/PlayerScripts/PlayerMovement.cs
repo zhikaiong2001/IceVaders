@@ -23,6 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove { get; private set; } = true;
     private float dirX = 0f;
     [SerializeField] private LayerMask jumpableGround;
+    [SerializeField] private LayerMask jumpableGround2;
     public AudioSource jumpSoundEffect;
 
     [HideInInspector] public bool isFacingRight = true;
@@ -145,7 +146,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded()
     {
-        return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
+        return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround)
+            || Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround2);
     }
 
     // Universal Movement Controls

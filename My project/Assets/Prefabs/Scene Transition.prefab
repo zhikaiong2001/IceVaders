@@ -143,9 +143,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbefb045b0a08d64a91569e39a992de6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  playerVelocity: 5
-  timeBeforeEnablingMove: 1.5
+  player: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+  playerVelocity: 0
+  timeBeforeEnablingMove: 0
 --- !u!1 &3038931837639690999
 GameObject:
   m_ObjectHideFlags: 0

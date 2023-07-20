@@ -895,6 +895,8 @@ MonoBehaviour:
     m_Bits: 1024
   attackDamage: 1
   attackCooldown: 0
+  windupTransTime: 0
+  windupTime: 0
   attackDelay: 0
   range: 0
   attackDuration: 0

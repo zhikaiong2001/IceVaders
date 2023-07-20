@@ -27,7 +27,7 @@ public class WormTrap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeLeft > 0.1f)
+        if (timeLeft > 0f)
         {
             timeLeft -= Time.deltaTime;
         } else
@@ -49,10 +49,11 @@ public class WormTrap : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         colli.enabled = true;
+        timeLeft = cycleCooldown + trapTime;
         yield return new WaitForSeconds(trapTime);
         anim.SetTrigger("Idle");
         colli.enabled = false;
-        timeLeft = cycleCooldown;
+        
 
     }
 

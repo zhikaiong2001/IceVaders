@@ -27,7 +27,7 @@ public class Spike : MonoBehaviour
         {
             transform.Rotate(0, 180f, 0);
         }
-        rb.velocity = transform.right * projectileSpeed;
+        rb.velocity = transform.right * projectileSpeed / Player.getDiffMult();
         Destroy(gameObject, 10f);
     }
 

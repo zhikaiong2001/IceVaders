@@ -52,7 +52,7 @@ public class GolemLaser : MonoBehaviour
         golemMovement.flipCheck();
         //Debug.Log(golemMovement.isFacingRight);
         laserStart.SetActive(true);
-        yield return new WaitForSeconds(startUpTime);
+        yield return new WaitForSeconds(startUpTime * Player.getDiffMult());
         laserFire.SetActive(true);
         laserStart.SetActive(false);
         yield return new WaitForSeconds(fireTime);

@@ -147,6 +147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeBeforeFirstActivation: 0
-  cycleCooldown: 3
+  cycleCooldown: 2
   trapDamage: 1
-  trapTime: 0.7
+  trapTime: 0.6

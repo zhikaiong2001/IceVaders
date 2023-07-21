@@ -5,6 +5,7 @@ using UnityEngine;
 public class Breakable : MonoBehaviour
 {
     public int strikesToBreak;
+    public GameObject attachment;
 
     [Header("Sound")]
     public AudioSource breakSound;
@@ -17,6 +18,10 @@ public class Breakable : MonoBehaviour
         if (strikesToBreak == 0)
         {
             gameObject.SetActive(false);
+            if (attachment != null)
+            {
+                attachment.SetActive(false);
+            }
         }
     }
 }

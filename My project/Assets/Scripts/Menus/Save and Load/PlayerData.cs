@@ -9,8 +9,22 @@ using UnityEngine.SceneManagement;
 [System.Serializable]
 public class PlayerData
 {
+    [Header("Spike Respawn Location")]
+    public static Vector2 spikeRespawn;
+
     [Header("States")]
     public bool isDeadTemp;
+    public bool paybackActiveTemp;
+
+    // Difficulty
+    public enum Difficulty
+    {
+        Easy,
+        Normal,
+        Hard
+    }
+    public Difficulty difficultyTemp;
+    public static float[] difficulyMult = { 2f, 1.0f, 0.5f };
 
     [Header("Health")]
     public int currentHealthTemp;
@@ -24,7 +38,15 @@ public class PlayerData
     public int attackDamageTemp;
 
     // Abilities
-    public enum Abilities { sword, wallCling, dash, fireball, doubleJump };
+    public enum Abilities
+    {
+        sword,
+        wallCling,
+        dash,
+        fireball,
+        doubleJump,
+        payback
+    };
     public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
@@ -36,7 +58,12 @@ public class PlayerData
 
     public PlayerData(Player player)
     {
+        spikeRespawn = Player.spikeRespawn;
+
         isDeadTemp = Player.isDead;
+        paybackActiveTemp = Player.paybackActive;
+
+        difficultyTemp = (Difficulty) Player.difficulty;
 
         currentHealthTemp = Player.currentHealth;
         maxHealthTemp = Player.maxHealth;
@@ -51,6 +78,7 @@ public class PlayerData
         unlocked[(int)Abilities.dash] = Player.unlocked[(int)Abilities.dash];
         unlocked[(int)Abilities.fireball] = Player.unlocked[(int)Abilities.fireball];
         unlocked[(int)Abilities.doubleJump] = Player.unlocked[(int)Abilities.doubleJump];
+        unlocked[(int)Abilities.payback] = Player.unlocked[(int)Abilities.payback];
 
         scene = SceneManager.GetActiveScene().name;
 

@@ -108,11 +108,11 @@ public class PlayerMovement : MonoBehaviour
     private void updateAnimationState()
     {
         MovementState state;
-        if (dirX > 0.5f)
+        if (rb.velocity.x > 0.5f)
         {
             state = MovementState.running;
         }
-        else if (dirX < -0.5f)
+        else if (rb.velocity.x < -0.5f)
         {
             state = MovementState.running;
         }
@@ -161,5 +161,6 @@ public class PlayerMovement : MonoBehaviour
     {
         bc.sharedMaterial = stay;
         canMove = false;
+        anim.SetInteger("state", (int)MovementState.idle);
     }
 }

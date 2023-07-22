@@ -481,13 +481,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingPositionTemp: {fileID: 11400000, guid: fb25bf35c09a8464093b534a3ecfd0ba, type: 2}
   useStartingPositionTemp: 0
-  difficultyTemp: 1
+  difficultyTemp: 0
   currentHealthTemp: 5
   maxHealthTemp: 5
   currentManaTemp: 0
   maxManaTemp: 100
   attackDamageTemp: 40
-  unlockedTemp: 010101010100
+  unlockedTemp: 010101000100
   position: {x: 0, y: 0}
 --- !u!114 &4415561493708495852
 MonoBehaviour:
@@ -586,7 +586,7 @@ MonoBehaviour:
   attackDelay: 0
   attackDuration: 0.06
   paybackColor: {r: 1, g: 0, b: 0.053242683, a: 1}
-  Mana: {fileID: 0}
+  Mana: {fileID: 1791104508}
   manaGainPerAttack: 10
 --- !u!114 &898500913982857825
 MonoBehaviour:

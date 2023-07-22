@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 4381186247167728113}
   - component: {fileID: 4381186247167728126}
   - component: {fileID: 4381186247167728127}
+  - component: {fileID: 4682176063954422216}
+  - component: {fileID: 1774658965276339936}
   m_Layer: 0
   m_Name: WormTrap
   m_TagString: Trap
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4381186247167728124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.77, y: 0.96, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -148,5 +150,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeBeforeFirstActivation: 0
   cycleCooldown: 2
-  trapDamage: 1
   trapTime: 0.6
+--- !u!114 &4682176063954422216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381186247167728124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368ff9237c2d2d443b996bcdbdcefea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 4381186247167728124}
+--- !u!114 &1774658965276339936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4381186247167728124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ef12d97c17d0824b8d81e565a1ce1f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyAttackHitbox: {fileID: 0}
+  damageLayers:
+    serializedVersion: 2
+    m_Bits: 1024
+  attackDamage: 1
+  attackCooldown: 0
+  windupTransTime: 0
+  windupTime: 0
+  attackDelay: 0
+  range: -1
+  attackDuration: 0

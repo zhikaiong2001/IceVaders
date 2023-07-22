@@ -6,7 +6,6 @@ public class WormTrap : MonoBehaviour
 {
     [SerializeField] private float timeBeforeFirstActivation = 0f;
     [SerializeField] private float cycleCooldown = 3f;
-    [SerializeField] private float trapDamage = 1f;
     [SerializeField] private float trapTime = 0.7f;
     private GameObject player;
     private BoxCollider2D colli;
@@ -55,13 +54,5 @@ public class WormTrap : MonoBehaviour
         colli.enabled = false;
         
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D coll)
-    {
-        if(coll.gameObject.tag == "Player")
-        {
-            coll.gameObject.GetComponent<Health>().TakeDamage((int)trapDamage);
-        }
     }
 }

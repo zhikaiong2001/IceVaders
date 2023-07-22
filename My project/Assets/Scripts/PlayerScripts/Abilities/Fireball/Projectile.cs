@@ -54,7 +54,8 @@ public class Projectile : MonoBehaviour
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
-            collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+                collision.gameObject.layer == LayerMask.NameToLayer("GroundWall"))
         {
             impact();
         }

@@ -35,7 +35,5 @@ public class LevelStart : MonoBehaviour
         yield return new WaitForSeconds(timeBeforeEnablingMove);
         move.enabled = true;
         anim.SetInteger("state", 0);
-
-
     }
 }

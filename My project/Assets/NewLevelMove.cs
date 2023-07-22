@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelMove : MonoBehaviour
+public class NewLevelMove : MonoBehaviour
 {
     public string sceneToLoad;
     [SerializeField] private Vector2 playerPosition;
@@ -11,7 +11,7 @@ public class LevelMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if (collision.tag == "Player")
         {
             Player.useStartingPosition = true;
             Player.startingPosition.initialValue = playerPosition;

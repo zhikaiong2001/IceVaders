@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         doubleJump = GetComponent<DoubleJump>();
         jumped = false;
         isFirstJump = true;
-        if (Player.startingPosition != null && Player.useStartingPos)
+        if (Player.useStartingPosition)
         {
             transform.position = Player.startingPosition.initialValue;
         }

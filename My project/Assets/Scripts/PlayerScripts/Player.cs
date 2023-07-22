@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     public static VectorValue startingPosition;
     public VectorValue startingPositionTemp;
 
+    public static bool useStartingPosition;
+    public bool useStartingPositionTemp;
+
     [Header("Spike Respawn Location")]
     public static Vector2 spikeRespawn;
 
     [Header("States")]
     public static bool isDead;
-    public static bool useStartingPos;
-    public bool useStartingPositionTemp;
     public static bool paybackActive;
 
     // Difficulty
@@ -61,19 +62,38 @@ public class Player : MonoBehaviour
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
     // Last Save
-    public Vector2 savePos;
+    public Vector2 position;
+
+    private static bool tempActivated = false;
 
     private void OnEnable()
     {
-        startingPosition = startingPositionTemp;
-        currentHealth = currentHealthTemp;
-        maxHealth = maxHealthTemp;
-        currentMana = currentManaTemp;
-        maxMana = maxManaTemp;
-        unlocked = unlockedTemp;
-        attackDamage = attackDamageTemp;
-        startingPosition = startingPositionTemp;
-        difficulty = difficultyTemp;
+        if (!tempActivated)
+        {
+            startingPosition = startingPositionTemp;
+            useStartingPosition = useStartingPositionTemp;
+            currentHealth = currentHealthTemp;
+            maxHealth = maxHealthTemp;
+            currentMana = currentManaTemp;
+            maxMana = maxManaTemp;
+            unlocked = unlockedTemp;
+            attackDamage = attackDamageTemp;
+            difficulty = difficultyTemp;
+            tempActivated = true;
+        }
+    }
+
+    private void Update()
+    {
+        useStartingPositionTemp = useStartingPosition;
+        currentHealthTemp = currentHealth;
+        maxHealthTemp = maxHealth;
+        currentManaTemp = currentMana;
+        maxManaTemp = maxMana;
+        unlockedTemp = unlocked;
+        attackDamageTemp = attackDamage;
+        difficultyTemp = difficulty;
+        position = startingPosition.initialValue;
     }
 
     // Abilities Unlocked Getter
@@ -106,35 +126,34 @@ public class Player : MonoBehaviour
     // Save and Load
     public void SavePlayer()
     {
-        savePos = transform.position;
         SaveSystem.SavePlayer(this);
     }
 
     public void LoadPlayer()
     {
+        useStartingPosition = true;
         PlayerData data = SaveSystem.LoadPlayer();
 
         Vector2 position;
         position.x = data.position[0];
         position.y = data.position[1];
+        
         startingPosition.initialValue = position;
 
-        SceneManager.LoadScene(data.scene);
-
         isDead = false;
-        paybackActive = data.paybackActiveTemp;
 
         difficulty = (Difficulty) data.difficultyTemp;
 
         currentHealth = data.currentHealthTemp;
         maxHealth = data.maxHealthTemp;
-
+         
         currentMana = data.currentManaTemp;
         maxMana = data.maxManaTemp;
 
         attackDamage = data.attackDamageTemp;
 
         unlocked[(int)Abilities.sword] = data.unlockedTemp[(int)Abilities.sword];
+        Debug.Log(data.unlockedTemp[(int)Abilities.sword]);
         unlocked[(int)Abilities.wallCling] = data.unlockedTemp[(int)Abilities.wallCling];
         unlocked[(int)Abilities.dash] = data.unlockedTemp[(int)Abilities.dash];
         unlocked[(int)Abilities.fireball] = data.unlockedTemp[(int)Abilities.fireball];
@@ -142,5 +161,8 @@ public class Player : MonoBehaviour
         unlocked[(int)Abilities.payback] = data.unlockedTemp[(int)Abilities.payback];
 
         transform.position = position;
+        Debug.Log(transform.position);
+
+        SceneManager.LoadScene(data.scene, LoadSceneMode.Single);
     }
 }

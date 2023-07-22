@@ -14,7 +14,6 @@ public class PlayerData
 
     [Header("States")]
     public bool isDeadTemp;
-    public bool paybackActiveTemp;
 
     // Difficulty
     public enum Difficulty
@@ -47,7 +46,6 @@ public class PlayerData
         doubleJump,
         payback
     };
-    public static bool[] unlocked = new bool[Enum.GetNames(typeof(Abilities)).Length];
     public bool[] unlockedTemp = new bool[Enum.GetNames(typeof(Abilities)).Length];
 
     // Scene
@@ -61,7 +59,6 @@ public class PlayerData
         spikeRespawn = Player.spikeRespawn;
 
         isDeadTemp = Player.isDead;
-        paybackActiveTemp = Player.paybackActive;
 
         difficultyTemp = (Difficulty) Player.difficulty;
 
@@ -73,12 +70,12 @@ public class PlayerData
 
         attackDamageTemp = Player.attackDamage;
 
-        unlocked[(int)Abilities.sword] = Player.unlocked[(int)Abilities.sword];
-        unlocked[(int)Abilities.wallCling] = Player.unlocked[(int)Abilities.wallCling];
-        unlocked[(int)Abilities.dash] = Player.unlocked[(int)Abilities.dash];
-        unlocked[(int)Abilities.fireball] = Player.unlocked[(int)Abilities.fireball];
-        unlocked[(int)Abilities.doubleJump] = Player.unlocked[(int)Abilities.doubleJump];
-        unlocked[(int)Abilities.payback] = Player.unlocked[(int)Abilities.payback];
+        unlockedTemp[(int)Abilities.sword] = Player.unlocked[(int)Abilities.sword];
+        unlockedTemp[(int)Abilities.wallCling] = Player.unlocked[(int)Abilities.wallCling];
+        unlockedTemp[(int)Abilities.dash] = Player.unlocked[(int)Abilities.dash];
+        unlockedTemp[(int)Abilities.fireball] = Player.unlocked[(int)Abilities.fireball];
+        unlockedTemp[(int)Abilities.doubleJump] = Player.unlocked[(int)Abilities.doubleJump];
+        unlockedTemp[(int)Abilities.payback] = Player.unlocked[(int)Abilities.payback];
 
         scene = SceneManager.GetActiveScene().name;
 

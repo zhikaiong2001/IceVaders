@@ -59,8 +59,13 @@ public class GolemRanged1 : MonoBehaviour
         yield return new WaitForSeconds(startUpTime);
         animator.SetTrigger("Ranged1Start");
         yield return new WaitForSeconds(fireTime);
+        if (GetComponent<EnemyHealth>().isDead)
+        {
+            yield break;
+        }
+        
         Instantiate(fireball, firePosition.position, transform.rotation);
-        //fireballSoundEffect.Play();
+        fireballSoundEffect.Play();
         animator.SetTrigger("Ranged1End");
         yield return new WaitForSeconds(endTime);
         golemMovement.enableMovement();

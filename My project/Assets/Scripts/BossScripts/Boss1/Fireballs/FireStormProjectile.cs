@@ -16,6 +16,7 @@ public class FireStormProjectile : MonoBehaviour
     private EnemyAttack enemyAttack;
     private Health playerHealth;
     private bool rightSide;
+    public GameObject explosionSound;
 
     void Start()
     {
@@ -55,31 +56,43 @@ public class FireStormProjectile : MonoBehaviour
 
             kb.knockCheck(rightSide);
             playerHealth.TakeDamage(fireBallDamage);
-            //impact();
+            impact();
+            Destroy(gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
         {
+            GameObject temp = Instantiate(explosionSound, transform.position, transform.rotation);
+            Destroy(temp, 2f);
             Destroy(gameObject);
-            //impact();
+            impact();
         }
     }
 
     private void impact()
     {
-        Destroy(gameObject);
-        if (transform.right.x < 0f)
-        {
-            Vector2 explosionsPosition = new Vector2(transform.position.x -
-                this.GetComponent<CircleCollider2D>().offset.x - this.GetComponent<CircleCollider2D>().radius * 2 - offSet, transform.position.y);
-            Instantiate(impactEffect, explosionsPosition, transform.rotation);
-        }
-        else
-        {
-            Vector2 explosionsPosition = new Vector2(transform.position.x +
-                this.GetComponent<CircleCollider2D>().offset.x + this.GetComponent<CircleCollider2D>().radius * 2 + offSet, transform.position.y);
-            Instantiate(impactEffect, explosionsPosition, transform.rotation);
-        }
+        /*
+         if (transform.right.x < 0f)
+         {
+             Vector2 explosionsPosition = new Vector2(transform.position.x -
+                 this.GetComponent<CircleCollider2D>().offset.x - this.GetComponent<CircleCollider2D>().radius * 2 - offSet, transform.position.y);
+             Instantiate(impactEffect, explosionsPosition, transform.rotation);
+         }
+         else
+         {
+             Vector2 explosionsPosition = new Vector2(transform.position.x +
+                 this.GetComponent<CircleCollider2D>().offset.x + this.GetComponent<CircleCollider2D>().radius * 2 + offSet, transform.position.y);
+             Instantiate(impactEffect, explosionsPosition, transform.rotation);
+         }
+        */
+        Vector2 explosionsPosition = new Vector2(transform.position.x
+                 , 
+                 transform.position.y + this.GetComponent<CircleCollider2D>().offset.x + this.GetComponent<CircleCollider2D>().radius * 2 + offSet);
+        //transform.Rotate(180)
+        Instantiate(impactEffect, explosionsPosition, transform.rotation);
+        impactEffect.GetComponent<SpriteRenderer>().flipX = true;
+
     }
+   // Destroy(gameObject);
 }

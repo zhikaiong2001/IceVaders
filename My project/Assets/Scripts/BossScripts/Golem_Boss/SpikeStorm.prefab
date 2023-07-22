@@ -138,6 +138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810996872971112
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,6 +277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997400361905
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997440536941
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997490180933
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997529370140
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997937611504
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,6 +972,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810997983047564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1104,6 +1111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998076894282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998269254157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998403543773
 GameObject:
   m_ObjectHideFlags: 0
@@ -1518,6 +1528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998589415670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1656,6 +1667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998653825817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1794,6 +1806,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   offSet: 0
+  impactSound: {fileID: 450432968328472001, guid: 7c8b234138628b9428754a46a7475867, type: 3}
 --- !u!1 &777810998787650196
 GameObject:
   m_ObjectHideFlags: 0

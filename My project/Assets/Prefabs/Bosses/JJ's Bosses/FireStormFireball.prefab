@@ -160,4 +160,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpeed: 20
   impactEffect: {fileID: 720558395293235095, guid: 275d3ff5b7ef84940ae3c9a4240eda94, type: 3}
-  offSet: 1
+  offSet: -0.5
+  explosionSound: {fileID: 5358862032121419864, guid: b3877dbc81178dc4d93517164bec6781, type: 3}

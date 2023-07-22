@@ -59,7 +59,7 @@ public class Boss1Fireball : MonoBehaviour
         animator.SetTrigger("FireballStart");
         yield return new WaitForSeconds(fireTime);
         Instantiate(fireball, firePosition.position, transform.rotation);
-        //fireballSoundEffect.Play();
+        fireballSoundEffect.Play();
         animator.SetTrigger("FireballEnd");
         yield return new WaitForSeconds(endTime);
         boss1Movement.enableMovement();

@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody2D rb;
     private PlayerMovement playerMovement;
     public LayerMask enemyLayers;
+    public AudioSource attackSound;
 
     // Attack Rate
     public float attackCooldown;
@@ -65,6 +66,7 @@ public class PlayerAttack : MonoBehaviour
         playerMovement.disableMovement();
         rb.velocity = new Vector2(rb.velocity.x * 0.5f, 0f);
         animator.SetTrigger("Attack");
+        attackSound.Play();
         yield return new WaitForSeconds(attackDelay);
         attackHitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(attackDuration);

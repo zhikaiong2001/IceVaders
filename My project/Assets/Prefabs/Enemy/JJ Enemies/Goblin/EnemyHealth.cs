@@ -48,7 +48,7 @@ public class EnemyHealth : MonoBehaviour
             anim.SetTrigger("Hurt");
             StopAllCoroutines();
             StartCoroutine(Invulnerability());
-            //takeDamageSoundEffect.Play();
+            takeDamageSoundEffect.Play();
         }
         else
         {
@@ -65,7 +65,7 @@ public class EnemyHealth : MonoBehaviour
                     child.gameObject.layer = LayerMask.NameToLayer("Dead");
                 }
                 isDead = true;
-                //dieSoundEffect.Play();
+                dieSoundEffect.Play();
                 if (enemyAI != null)
                 {
                     if (enemyAI.enabled)

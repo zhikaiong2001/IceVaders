@@ -144,10 +144,10 @@ public class Player : MonoBehaviour
 
         difficulty = (Difficulty) data.difficultyTemp;
 
-        currentHealth = data.currentHealthTemp;
+        currentHealth = data.maxHealthTemp;
         maxHealth = data.maxHealthTemp;
          
-        currentMana = data.currentManaTemp;
+        currentMana = 0;
         maxMana = data.maxManaTemp;
 
         attackDamage = data.attackDamageTemp;

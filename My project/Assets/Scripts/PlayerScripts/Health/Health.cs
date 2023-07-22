@@ -59,7 +59,7 @@ public class Health : MonoBehaviour
             }
             anim.SetTrigger("hurt");
             StartCoroutine(Invulnerability());
-            //takeDamageSoundEffect.Play();
+            takeDamageSoundEffect.Play();
         }
         else
         {
@@ -72,7 +72,7 @@ public class Health : MonoBehaviour
                 this.gameObject.layer = LayerMask.NameToLayer("Dead");
                 Player.isDead = true;
                 StartCoroutine(respawn());
-                //dieSoundEffect.Play();
+                dieSoundEffect.Play();
             }
 
         }
@@ -131,7 +131,7 @@ public class Health : MonoBehaviour
     {
         Player.currentHealth = Mathf.Clamp(Player.currentHealth + healAmount, 0, Player.maxHealth);
         Player.currentMana = Mathf.Clamp(Player.currentMana - healCost, 0, Player.maxMana);
-        //healSoundEffect.Play();
+        healSoundEffect.Play();
         healCounter = healTime;
         isHealing = false;
     }

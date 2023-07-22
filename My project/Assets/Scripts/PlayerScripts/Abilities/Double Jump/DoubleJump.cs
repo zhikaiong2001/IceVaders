@@ -48,6 +48,6 @@ public class DoubleJump : MonoBehaviour
         playerMovement.isFirstJump = false;
         rb.velocity = new Vector2(rb.velocity.x, secondJumpPower);
         canDoubleJump = false;
-        //secondJumpSoundEffect.Play();
+        secondJumpSoundEffect.Play();
     }
 }

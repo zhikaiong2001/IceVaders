@@ -56,7 +56,7 @@ public class FireballSkill : MonoBehaviour
             rb.velocity = Vector2.zero;
             Instantiate(fireball, firePosition.position, transform.rotation);
             mana.useMana(cost);
-            //fireballSoundEffect.Play();
+            fireballSoundEffect.Play();
             yield return new WaitForSeconds(fireTime);
             rb.gravityScale = originalGravity;
             isFiring = false;

@@ -10,10 +10,21 @@ public class BreakableGround : MonoBehaviour
     public PlayerMovement playerMovement;
     public float breakTime;
 
+    public string referenceName;
+
+    void OnEnable()
+    {
+        if (BreakableController.checkBreakable(referenceName))
+        {
+            gameObject.transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            BreakableController.breakBreakable(referenceName);
             StartCoroutine(Break());
         }
     }

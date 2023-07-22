@@ -7,6 +7,7 @@ public class Dash : MonoBehaviour
 {
     public PlayerMovement playerMovement;
     private Rigidbody2D rb;
+    public AudioSource dashSound;
 
     public bool isDashing { get; private set; }
     private bool canDash;
@@ -52,6 +53,7 @@ public class Dash : MonoBehaviour
         rb.gravityScale = 0f;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Enemy"), true);
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("EnemyAttack"), true);
+        dashSound.Play();
         rb.velocity = new Vector2(transform.localScale.x * dashingPower, 0f);
         PlayerAfterImagePool.Instance.GetFromPool();
         lastImageXpos = transform.position.x;

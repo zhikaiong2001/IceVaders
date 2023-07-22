@@ -107,4 +107,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MS3/JJ/Start.unity
     guid: 5faaba8cf410628499415a14990d0d14
+  - enabled: 0
+    path: Assets/Scenes/Zk Test/MS3/1.unity
+    guid: 17474426f5b4ffd40bece11da5e49958
+  - enabled: 0
+    path: Assets/Scenes/Zk Test/MS3/Golem Battlefield.unity
+    guid: c3dffe2c2ca0399479eb2e3643847101
   m_configObjects: {}

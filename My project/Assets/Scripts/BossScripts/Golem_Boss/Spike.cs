@@ -56,7 +56,8 @@ public class Spike : MonoBehaviour
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
-            collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("GroundWall"))
         {
             Destroy(gameObject);
         }

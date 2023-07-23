@@ -17,6 +17,8 @@ public class SpikeStorm : MonoBehaviour
     private Health playerHealth;
     private bool rightSide;
 
+    public  GameObject impactSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -37,12 +39,16 @@ public class SpikeStorm : MonoBehaviour
             playerHealth = player.GetComponent<Health>();
             kb.knockCheck(rightSide);
             playerHealth.TakeDamage(fireBallDamage);
-            Destroy(gameObject);
+            //impactSound.Play();
+            // Destroy(gameObject);
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
-            collision.gameObject.layer == LayerMask.NameToLayer("Ground"))
+            collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            collision.gameObject.layer == LayerMask.NameToLayer("GroundWall"))
         {
+            //impactSound.Play();
+            Instantiate(impactSound, transform.position, transform.rotation);
             Destroy(gameObject);
         }
     }

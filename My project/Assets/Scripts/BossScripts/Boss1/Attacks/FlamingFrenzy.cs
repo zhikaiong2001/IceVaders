@@ -30,6 +30,8 @@ public class FlamingFrenzy : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float speed;
 
+    [SerializeField] private GameObject fireSound;
+
     void Start()
     {
         boss1Movement = GetComponent<Boss1Movement>();
@@ -84,8 +86,14 @@ public class FlamingFrenzy : MonoBehaviour
         yield return new WaitForSeconds(windupTime * Player.getDiffMult());
         animator.SetTrigger("FlamingFrenzyStart");
         yield return new WaitForSeconds(attackDelay);
+        if (GetComponent<EnemyHealth>().isDead)
+        {
+            yield break;
+        }
         attackHitbox.gameObject.SetActive(true);
+        fireSound.GetComponent<AudioSource>().enabled = true;
         yield return new WaitForSeconds(attackDuration);
+        fireSound.GetComponent<AudioSource>().enabled = false;
         isAttacking = false;
         boss1Movement.enableMovement();
         attackHitbox.gameObject.SetActive(false);

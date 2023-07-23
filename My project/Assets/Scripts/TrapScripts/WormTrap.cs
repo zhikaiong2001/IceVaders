@@ -12,6 +12,8 @@ public class WormTrap : MonoBehaviour
     private Animator anim;
     private float timeLeft;
     private bool isAttacking;
+    public AudioSource trapSound;
+    public float soundMinDistance;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,7 @@ public class WormTrap : MonoBehaviour
         anim = GetComponent<Animator>();
         timeLeft = timeBeforeFirstActivation;
         isAttacking = false;
+        player = GameObject.FindGameObjectWithTag("Player");
 
         
     }
@@ -48,6 +51,14 @@ public class WormTrap : MonoBehaviour
     {
         anim.SetTrigger("Attack");
         colli.enabled = true;
+        trapSound.Play();
+        if (Vector3.Distance(transform.position, player.transform.position) < soundMinDistance)
+        {
+            trapSound.volume = 0.20f;
+        } else
+        {
+            trapSound.volume = 0f;
+        }
         timeLeft = cycleCooldown + trapTime;
         yield return new WaitForSeconds(trapTime);
         anim.SetTrigger("Idle");

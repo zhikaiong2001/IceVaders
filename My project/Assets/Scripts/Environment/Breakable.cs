@@ -8,6 +8,7 @@ public class Breakable : MonoBehaviour
     public GameObject attachment;
 
     [Header("Sound")]
+    public AudioSource weakenSound;
     public AudioSource breakSound;
 
     public string referenceName;
@@ -22,11 +23,12 @@ public class Breakable : MonoBehaviour
 
     public void breakObject()
     {
-        //breakSound.Play();
+        weakenSound.Play();
         strikesToBreak -= 1;
 
         if (strikesToBreak == 0)
         {
+            breakSound.Play();
             BreakableController.breakBreakable(referenceName);
             gameObject.SetActive(false);
             if (attachment != null)

@@ -53,6 +53,10 @@ public class GolemLaser : MonoBehaviour
         //Debug.Log(golemMovement.isFacingRight);
         laserStart.SetActive(true);
         yield return new WaitForSeconds(startUpTime * Player.getDiffMult());
+        if (GetComponent<EnemyHealth>().isDead)
+        {
+            yield break;
+        }
         laserFire.SetActive(true);
         laserStart.SetActive(false);
         yield return new WaitForSeconds(fireTime);

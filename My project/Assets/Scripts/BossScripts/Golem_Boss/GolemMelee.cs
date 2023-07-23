@@ -28,6 +28,9 @@ public class GolemMelee : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float speed;
 
+    [Header("Sounds")]
+    [SerializeField] private AudioSource meleeSound;
+
     void Start()
     {
         golemMovement = GetComponent<GolemMovement>();
@@ -83,6 +86,11 @@ public class GolemMelee : MonoBehaviour
         animator.SetTrigger("MeleeTransition");
         yield return new WaitForSeconds(0.75f);
         attackHitbox.gameObject.SetActive(true);
+        if (!GetComponent<EnemyHealth>().isDead)
+        {
+            meleeSound.Play();
+        }
+        
         yield return new WaitForSeconds(attackDuration);
         isAttacking = false;
         animator.SetTrigger("MeleeEnd");

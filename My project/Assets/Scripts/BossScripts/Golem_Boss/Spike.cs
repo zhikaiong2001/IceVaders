@@ -16,6 +16,7 @@ public class Spike : MonoBehaviour
     private EnemyAttack enemyAttack;
     private Health playerHealth;
     private bool rightSide;
+    [SerializeField] private AudioSource impactSound;
 
     void Start()
     {
@@ -52,13 +53,14 @@ public class Spike : MonoBehaviour
 
             kb.knockCheck(rightSide);
             playerHealth.TakeDamage(fireBallDamage);
-            //impact();
+           
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Wall") ||
             collision.gameObject.layer == LayerMask.NameToLayer("Ground") ||
             collision.gameObject.layer == LayerMask.NameToLayer("GroundWall"))
         {
+            impactSound.Play();
             Destroy(gameObject);
         }
         Destroy(gameObject, 10f);

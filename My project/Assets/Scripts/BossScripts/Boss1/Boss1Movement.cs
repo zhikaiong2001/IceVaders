@@ -25,10 +25,10 @@ public class Boss1Movement : MonoBehaviour
     private int currentAttackIndex;
     private AttackState[] attackOrder =
     {
-        //AttackState.fireball,
+        AttackState.fireball,
         AttackState.flamingfrenzy,
-        //AttackState.fireball,
-        //AttackState.firestorm
+        AttackState.fireball,
+        AttackState.firestorm
     };
 
     // Add-Ons

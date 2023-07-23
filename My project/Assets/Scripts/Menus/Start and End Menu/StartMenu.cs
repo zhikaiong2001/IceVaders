@@ -10,6 +10,7 @@ public class StartMenu : MonoBehaviour
 
     public void NewGame()
     {
+        Player.tempActivated = false;
         Player.useStartingPosition = true;
         Player.startingPosition.initialValue = playerPosition;
         SceneManager.LoadScene("Start");
@@ -17,6 +18,7 @@ public class StartMenu : MonoBehaviour
 
     public void StartTutorial()
     {
+        Player.tempActivated = false;
         playerStorage.initialValue = playerPosition;
         Player.startingPosition = playerStorage;
         SceneManager.LoadScene("Tutorial");

@@ -296,6 +296,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2099801768}
     m_Modifications:
+    - target: {fileID: 6407704601901766288, guid: d973bebde5e4e8a418a436bce0ec9157, type: 3}
+      propertyPath: referenceName
+      value: heart2
+      objectReference: {fileID: 0}
     - target: {fileID: 6407704601901766290, guid: d973bebde5e4e8a418a436bce0ec9157, type: 3}
       propertyPath: m_Name
       value: Heart
@@ -3286,7 +3290,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1069921349
 RectTransform:
@@ -3653,7 +3657,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216567046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.730622, y: -36.550167, z: 0.034811974}
+  m_LocalPosition: {x: 15.542382, y: -36.542233, z: 0.034811974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -52911,6 +52915,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2099801768}
     m_Modifications:
+    - target: {fileID: 2083374250, guid: de57b7fefb1e70e47a6f7235d8b9af67, type: 3}
+      propertyPath: referenceName
+      value: sword1
+      objectReference: {fileID: 0}
     - target: {fileID: 6407704601901766290, guid: de57b7fefb1e70e47a6f7235d8b9af67, type: 3}
       propertyPath: m_Name
       value: Sword

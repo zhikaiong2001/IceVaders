@@ -1577,7 +1577,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4487181369564225436, guid: 6c252d6738a207049af596bed8f5e856, type: 3}
       propertyPath: playerPosition.x
-      value: 72.51
+      value: 65.51
       objectReference: {fileID: 0}
     - target: {fileID: 4487181369564225436, guid: 6c252d6738a207049af596bed8f5e856, type: 3}
       propertyPath: playerPosition.y
@@ -13672,7 +13672,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1069921349
 RectTransform:
@@ -13839,7 +13839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216567046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.990093, y: 18.804686, z: 0.034811974}
+  m_LocalPosition: {x: 21.17889, y: 18.866728, z: 0.034811974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14778,19 +14778,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: unlockedTemp.Array.data[1]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: unlockedTemp.Array.data[2]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: unlockedTemp.Array.data[3]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: unlockedTemp.Array.data[4]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: unlockedTemp.Array.data[5]

@@ -632,6 +632,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2099801768}
     m_Modifications:
+    - target: {fileID: 6407704601901766288, guid: d973bebde5e4e8a418a436bce0ec9157, type: 3}
+      propertyPath: referenceName
+      value: heart4
+      objectReference: {fileID: 0}
     - target: {fileID: 6407704601901766290, guid: d973bebde5e4e8a418a436bce0ec9157, type: 3}
       propertyPath: m_Name
       value: Heart
@@ -811,6 +815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec89209f1f644b49b72b5cf539a9c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  referenceName: 
 --- !u!4 &373869452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
@@ -13094,7 +13099,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1069921349
 RectTransform:
@@ -13385,7 +13390,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1216567046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.990376, y: 18.835613, z: 0.034811974}
+  m_LocalPosition: {x: 21.179173, y: 18.897648, z: 0.034811974}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

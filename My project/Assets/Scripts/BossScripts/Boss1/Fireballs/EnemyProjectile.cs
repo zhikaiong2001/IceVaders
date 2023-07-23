@@ -79,19 +79,22 @@ public class EnemyProjectile : MonoBehaviour
               Instantiate(impactEffect, explosionsPosition, transform.rotation);
           }
         */
-        if (transform.position.x < player.transform.position.x)
+        if (player != null)
         {
-            Vector2 explosionsPosition = new Vector2(transform.position.x + offSet, transform.position.y);
-            Instantiate(impactEffect, explosionsPosition, transform.rotation);
-            impactEffect.GetComponent<SpriteRenderer>().flipX = false;
-        }
-        else
-        {
-            //Vector2 explosionsPosition = new Vector2(-1 * (transform.position.x +
-            //this.GetComponent<CircleCollider2D>().offset.x + this.GetComponent<CircleCollider2D>().radius * 2 + offSet), transform.position.y);
-            Vector2 explosionsPosition = new Vector2(transform.position.x - offSet, transform.position.y);
-            Instantiate(impactEffect, explosionsPosition, transform.rotation);
-            
+            if (transform.position.x < player.transform.position.x)
+            {
+                Vector2 explosionsPosition = new Vector2(transform.position.x + offSet, transform.position.y);
+                Instantiate(impactEffect, explosionsPosition, transform.rotation);
+                impactEffect.GetComponent<SpriteRenderer>().flipX = false;
+            }
+            else
+            {
+                //Vector2 explosionsPosition = new Vector2(-1 * (transform.position.x +
+                //this.GetComponent<CircleCollider2D>().offset.x + this.GetComponent<CircleCollider2D>().radius * 2 + offSet), transform.position.y);
+                Vector2 explosionsPosition = new Vector2(transform.position.x - offSet, transform.position.y);
+                Instantiate(impactEffect, explosionsPosition, transform.rotation);
+
+            }
         }
         GameObject temp = Instantiate(explosionSound, transform.position, transform.rotation);
         Destroy(temp, 2f);

@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     // Last Save
     public Vector2 position;
 
-    private static bool tempActivated = false;
+    public static bool tempActivated = false;
 
     private void OnEnable()
     {
@@ -81,19 +81,6 @@ public class Player : MonoBehaviour
             difficulty = difficultyTemp;
             tempActivated = true;
         }
-    }
-
-    private void Update()
-    {
-        useStartingPositionTemp = useStartingPosition;
-        currentHealthTemp = currentHealth;
-        maxHealthTemp = maxHealth;
-        currentManaTemp = currentMana;
-        maxManaTemp = maxMana;
-        unlockedTemp = unlocked;
-        attackDamageTemp = attackDamage;
-        difficultyTemp = difficulty;
-        position = startingPosition.initialValue;
     }
 
     // Abilities Unlocked Getter

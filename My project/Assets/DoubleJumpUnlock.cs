@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallClingUnlock : MonoBehaviour
+public class DoubleJumpUnlock : MonoBehaviour
 {
     public string referenceName;
 
@@ -20,7 +20,7 @@ public class WallClingUnlock : MonoBehaviour
         {
             UnlockableController.unlockUnlock(referenceName);
             gameObject.SetActive(false);
-            Player.unlocked[(int) Player.Abilities.wallCling] = true;
+            Player.unlocked[(int)Player.Abilities.doubleJump] = true;
         }
     }
 }

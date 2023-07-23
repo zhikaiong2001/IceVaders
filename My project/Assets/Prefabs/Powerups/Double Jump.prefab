@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 6407704601901766291}
   - component: {fileID: 6407704601901766302}
   - component: {fileID: 6407704601901766289}
-  - component: {fileID: -3520303024668069250}
+  - component: {fileID: 4458586213789964069}
   m_Layer: 0
-  m_Name: Dash
+  m_Name: Double Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fa61cfacce39345498dba8541b9744a6, type: 3}
-  m_Color: {r: 0, g: 0.70425534, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.9685755, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-3520303024668069250
+--- !u!114 &4458586213789964069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6407704601901766290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b29e9a103c07bf48a94844dd5cd028f, type: 3}
+  m_Script: {fileID: 11500000, guid: c98db9cd6db36e64dbc10a74d7ccafaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  referenceName: dash
+  referenceName: doublejump

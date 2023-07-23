@@ -336,7 +336,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &79130129
 RectTransform:
@@ -1482,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {x: -5, y: 1}
-  playerStorage: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
+  playerStorage: {fileID: 11400000, guid: fb25bf35c09a8464093b534a3ecfd0ba, type: 2}
 --- !u!114 &2121945332
 MonoBehaviour:
   m_ObjectHideFlags: 0

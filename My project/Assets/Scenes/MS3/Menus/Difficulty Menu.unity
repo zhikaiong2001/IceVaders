@@ -366,17 +366,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: unlockedTemp.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: unlockedTemp.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
+      propertyPath: unlockedTemp.Array.data[4]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.64
+      value: -130
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.38
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493658774141, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_LocalPosition.z
@@ -416,21 +428,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4415561493708495827, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
---- !u!114 &321929862 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1791104502, guid: 6df1c4793702b487885f7cf04396ad30, type: 3}
-  m_PrefabInstance: {fileID: 321929861}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcbc7c225632bde45a955b7e7b9af5c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &390741683
 GameObject:
   m_ObjectHideFlags: 0
@@ -669,9 +670,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 321929862}
-        m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: LoadPlayer
+      - m_Target: {fileID: 599248182}
+        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -732,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {x: 0, y: 0}
-  playerStorage: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
+  playerStorage: {fileID: 11400000, guid: fb25bf35c09a8464093b534a3ecfd0ba, type: 2}
 --- !u!114 &599248183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,7 +797,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750642857}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1017,7 +1018,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {x: 0, y: 0}
-  playerStorage: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
+  playerStorage: {fileID: 11400000, guid: fb25bf35c09a8464093b534a3ecfd0ba, type: 2}
 --- !u!114 &1009571932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,7 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {x: 0, y: 0}
-  playerStorage: {fileID: 11400000, guid: 84229d1e2e5e385488becc041e215e04, type: 2}
+  playerStorage: {fileID: 11400000, guid: fb25bf35c09a8464093b534a3ecfd0ba, type: 2}
 --- !u!114 &2121945332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1632,7 +1633,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2121945331}
         m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
-        m_MethodName: StartTutorial
+        m_MethodName: NewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

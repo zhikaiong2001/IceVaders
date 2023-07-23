@@ -10,14 +10,16 @@ public class StartMenu : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("Mountain of Giants Start");
-        playerStorage.initialValue = playerPosition;
+        Player.useStartingPosition = true;
+        Player.startingPosition.initialValue = playerPosition;
+        SceneManager.LoadScene("Start");
     }
 
     public void StartTutorial()
     {
-        SceneManager.LoadScene("Tutorial");
         playerStorage.initialValue = playerPosition;
+        Player.startingPosition = playerStorage;
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void SelectDifficulty()

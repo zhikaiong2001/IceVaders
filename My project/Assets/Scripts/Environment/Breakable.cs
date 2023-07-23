@@ -30,7 +30,8 @@ public class Breakable : MonoBehaviour
         {
             breakSound.Play();
             BreakableController.breakBreakable(referenceName);
-            gameObject.SetActive(false);
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
             if (attachment != null)
             {
                 attachment.SetActive(false);

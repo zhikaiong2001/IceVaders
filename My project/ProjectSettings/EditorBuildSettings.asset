@@ -5,114 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Testing Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Testing Scenes/Main 0.unity
-    guid: e0bfdfb5c26d958459f387a72913dadd
-  - enabled: 0
-    path: Assets/Scenes/Testing Scenes/Main 1.unity
-    guid: 9d865addd74867c449491845fb5d7c2e
-  - enabled: 0
-    path: Assets/Scenes/Testing Scenes/Main 2.unity
-    guid: 0b71c80665f049b4bb9eebf7a363f433
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/Start Menu.unity
-    guid: ba18d54ce4fc72841b891d387977e9b3
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/B2.unity
-    guid: 5342d7e030eb548b996423b0cafaa521
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/B3.unity
-    guid: 1d9eb10ed31c7824fb2dba529eea6fe4
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/C5.unity
-    guid: d7c60b1d4ed555c409adcf8d9da33c45
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/B5.unity
-    guid: 9f72f0a1ecae347489eea439f5dd74d0
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/B1.unity
-    guid: 4951b026d3c7b3c4cab355aeda4a34c4
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/A4.unity
-    guid: 7b93c538a42e19b41b4c14ddbaacf2c4
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/B4.unity
-    guid: df4e5619b44a5af48bcbdac6e090380b
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/C4.unity
-    guid: 4bfd9bf0dd3401245b34c0bbbab97054
-  - enabled: 0
-    path: Assets/Scenes/Main Scenes/End Screen.unity
-    guid: f8261575b9ce9e44ca39ad9821032994
-  - enabled: 0
-    path: Assets/Scenes/MS2/Tutorial/Tutorial.unity
-    guid: 1067af8bfb3db284fb36300d50ebd658
-  - enabled: 0
-    path: Assets/Scenes/JJ Test/Boss Battlefield.unity
-    guid: 35187d7723c13bf4780f303a577a357f
-  - enabled: 0
-    path: Assets/Scenes/MS2/Forgotten Crossroads Clone/Start.unity
-    guid: 75cf4da34d3c145478c20e3d0ce9ccd0
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Maze of Doom.unity
     guid: 5c09c1b3bf7e15f40b282c9ed999c59a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Up for a Secret.unity
     guid: d96347426d899504797d0df3380f3465
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Four Doors.unity
     guid: a77e3eec1ae07c949aca7a73fcaef70e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Shortcut sike.unity
     guid: 3acdfa3cda195b444a53ce756a4e1cf9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Hollow Knight Prison.unity
     guid: 2e2c69638522f1348914e2d52f75ac98
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Up 2.unity
     guid: 315d0db9216a1594a9c6632743f801e1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Stairway to Hell.unity
     guid: ad854356f46b4a74c967f04a605cdd0c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/The Well.unity
     guid: 459375aaf1a77b647aaa7d970014e5c4
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Aspid Pit Connector.unity
-    guid: f98c1f99159960841b35f872e7ec5638
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Aspid Pit.unity
-    guid: f821097954e00b8479685a53b419231e
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Below Train Station.unity
-    guid: 437812f5a3a8926459884a7d709d7203
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Dive to Boss.unity
-    guid: e948f87837ebf1141baf59b296f4fbe5
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Golem Boss hallway.unity
-    guid: 329f72787d4a84040bb87a91c9b120b5
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Hourglass.unity
-    guid: 5c5905d05036f4446909f9eee9c6cfbe
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Train R connector.unity
-    guid: c2ad63ee0c91a3243a6abcfb74c2ee94
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Train Shortcut Connector.unity
-    guid: 47c5c7eadc02dcb4a8db527f4104e53b
-  - enabled: 0
-    path: Assets/Scenes/MS3/JJ/Start.unity
-    guid: 5faaba8cf410628499415a14990d0d14
-  - enabled: 0
-    path: Assets/Scenes/Zk Test/MS3/1.unity
-    guid: 17474426f5b4ffd40bece11da5e49958
-  - enabled: 0
-    path: Assets/Scenes/Zk Test/MS3/Golem Battlefield.unity
-    guid: c3dffe2c2ca0399479eb2e3643847101
   - enabled: 1
     path: Assets/Scenes/MS3/Main Scenes/Golem Boss hallway.unity
     guid: 270c4065c27e4504c9134f0677a61d84

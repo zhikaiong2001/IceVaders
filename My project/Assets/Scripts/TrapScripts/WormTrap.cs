@@ -54,7 +54,7 @@ public class WormTrap : MonoBehaviour
         trapSound.Play();
         if (Vector3.Distance(transform.position, player.transform.position) < soundMinDistance)
         {
-            trapSound.volume = 0.20f;
+            trapSound.volume = 0.03f;
         } else
         {
             trapSound.volume = 0f;
